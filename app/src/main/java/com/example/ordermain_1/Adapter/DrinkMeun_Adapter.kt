@@ -21,12 +21,13 @@ class DrinkMeun_Adapter:RecyclerView.Adapter<DrinkMeun_Adapter.DrinkMenuViewHold
 
     }
 
+
     override fun onBindViewHolder(holder: DrinkMenuViewHolder, position: Int) {
         drinkmenuItemList?.let{
             holder.bind(it[position])
         }
     }
-    //주석달기
+    //주석 한번 오지게 달아보겠습니다.
     //push
 
 
