@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -19,7 +20,9 @@ import com.example.ordermain_1.App
 
 import com.example.ordermain_1.R
 import com.example.ordermain_1.Item.RealMenuItem
+import com.example.ordermain_1.Item.fakeRealMenu
 import com.example.ordermain_1.PageDR.GoOrderPage
+import kotlinx.android.synthetic.main.activity_go_order_page.view.*
 import kotlinx.android.synthetic.main.item_layout_realmenu.view.*
 
 
@@ -66,11 +69,13 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
     }
 
     class RealMenuViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
-
         init{
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context,GoOrderPage::class.java)
-                intent.putExtra("no",itemView.real_menuname_txt.text)
+//                intent.putExtra("menu_img", itemView.real_menu_img.toString())
+                intent.putExtra("menu_name",itemView.real_menuname_txt.text)
+                intent.putExtra("menu_information",itemView.real_menuinformation_txt.text)
+                intent.putExtra("menu_price",itemView.real_menuprice_txt.text)
                 itemView.context.startActivity(intent)
             }
         }
