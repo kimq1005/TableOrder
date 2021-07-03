@@ -22,6 +22,7 @@ import com.example.ordermain_1.R
 import com.example.ordermain_1.Item.RealMenuItem
 import com.example.ordermain_1.Item.fakeRealMenu
 import com.example.ordermain_1.PageDR.GoOrderPage
+import kotlinx.android.synthetic.main.activity_go_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.view.*
 import kotlinx.android.synthetic.main.item_layout_realmenu.view.*
 
@@ -69,15 +70,24 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
     }
 
     class RealMenuViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
+
         init{
             itemView.setOnClickListener {
+//                val url = itemView.tag as? String ?: return@setOnClickListener
+
                 val intent = Intent(itemView.context,GoOrderPage::class.java)
+//                intent.putExtra("menu_img", url)
 //                intent.putExtra("menu_img", itemView.real_menu_img.toString())
                 intent.putExtra("menu_name",itemView.real_menuname_txt.text)
                 intent.putExtra("menu_information",itemView.real_menuinformation_txt.text)
                 intent.putExtra("menu_price",itemView.real_menuprice_txt.text)
                 itemView.context.startActivity(intent)
+
+
             }
+
+
+
         }
 
 
@@ -85,11 +95,11 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
 
 
         fun bind(realmeunuitem: RealMenuItem){
+
             Glide.with(itemView).load(realmeunuitem.realmenuimg).into(menuImg)
             itemView.real_menuname_txt.text = realmeunuitem.realmenuname
             itemView.real_menuinformation_txt.text = realmeunuitem.realmenuinformation
             itemView.real_menuprice_txt.text = realmeunuitem.realmenuprice
-
 //            itemView.setOnClickListener {
 //                val intent = Intent(itemView?.context,GoOrderPage::class.java)
 //
