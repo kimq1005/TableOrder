@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.item_layout_realmenu.view.*
 class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>() {
 
     private var realmenuItemList : List<RealMenuItem>?=null
-    val TAG : String ="로그"
+
 
 
 
@@ -77,9 +77,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
 
                 val intent = Intent(itemView.context,GoOrderPage::class.java)
 //                intent.putExtra("menu_img", url)
-//                intent.putExtra("menu_img", itemView.real_menu_img.toString())
                 intent.putExtra("menu_name",itemView.real_menuname_txt.text)
-                intent.putExtra("menu_information",itemView.real_menuinformation_txt.text)
                 intent.putExtra("menu_price",itemView.real_menuprice_txt.text)
                 itemView.context.startActivity(intent)
 
@@ -100,21 +98,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
             itemView.real_menuname_txt.text = realmeunuitem.realmenuname
             itemView.real_menuinformation_txt.text = realmeunuitem.realmenuinformation
             itemView.real_menuprice_txt.text = realmeunuitem.realmenuprice
-//            itemView.setOnClickListener {
-//                val intent = Intent(itemView?.context,GoOrderPage::class.java)
-//
-//                intent.apply {
-//                    putExtra("data", realmeunuitem.toString())
-//                }.run {
-//                    ContextCompat.startActivity(itemView?.context, intent,null)
-//                    Log.d(TAG, "bind: 됐니?")
-//                }
 
-
-
-
-                //이주석을 받아라
-//            }
 
 
         }
@@ -128,6 +112,9 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
        realmenuItemList = list
         notifyDataSetChanged()
     }
+
+
+
 
 
 

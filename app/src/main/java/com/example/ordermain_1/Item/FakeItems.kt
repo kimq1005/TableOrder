@@ -55,7 +55,7 @@ val fakeRealMenu = listOf(
         RealMenuItem( R.drawable.food2,
                 "참치초밥",
                 "할 메뉴없어서 그냥 갖다붙인 초밥",
-                "5,000억"),
+                "5,000"),
         RealMenuItem( R.drawable.food2,
                 "참치초밥",
                 "할 메뉴없어서 그냥 갖다붙인 초밥",

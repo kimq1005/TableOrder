@@ -49,7 +49,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
-        android:text="5,000억"/>
+        android:text="5,000"/>
 
 
 
