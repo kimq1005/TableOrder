@@ -40,14 +40,6 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_layout_realmenu,parent,false)
         return RealMenuViewHolder(view)
 
-//                .apply {
-//            itemView.setOnClickListener {
-//                val intent = Intent(parent.context,GoOrderPage::class.java).apply {
-//                    putExtra("data",)
-//                }
-//
-//            }
-//        }
 
 
     }
@@ -56,11 +48,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
         realmenuItemList?.let{
             holder.bind(it[position])
         }
-//
-//        holder.itemView.setOnClickListener{
-//            val intent = Intent(holder.itemView?.context, GoOrderPage::class.java)
-//            ContextCompat.startActivity(holder.itemView.context,intent,null)
-//        }
+
 
     }
 
@@ -77,6 +65,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
 
                 val intent = Intent(itemView.context,GoOrderPage::class.java)
 //                intent.putExtra("menu_img", url)
+                intent.putExtra("menu_img",itemView.real_menu_img.toString())
                 intent.putExtra("menu_name",itemView.real_menuname_txt.text)
                 intent.putExtra("menu_price",itemView.real_menuprice_txt.text)
                 itemView.context.startActivity(intent)

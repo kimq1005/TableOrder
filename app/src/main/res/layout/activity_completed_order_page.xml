@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PageDR.Completed_Order_Page">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_hamburger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/ic_baseline_menu_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="15dp" />
+
+
+
+        <ImageView
+            android:id="@+id/QR_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_qr_code_24"
+            android:layout_marginRight="15dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EFEFEF">
+
+        <RelativeLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/com_name"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="업체명"
+                android:textSize="30dp"/>
+
+
+            <TextView
+                android:id="@+id/com_adView"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/com_name"
+                android:background="@drawable/rectangle_all_corner_radius"
+                android:text="광고칸"/>
+
+
+            <LinearLayout
+                android:id="@+id/com_menulist_layout"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:layout_below="@+id/com_adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="치즈킴밥"
+                        android:textSize="17sp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/OrderPageMenuScore_layout"
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:id="@+id/com_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="3,200"
+                            android:textSize="20sp"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle_all_corner_radius"
+                            android:gravity="right"
+                            android:layout_alignParentEnd="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/MinusBtn"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="-"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginLeft="20dp"
+                                />
+
+                            <TextView
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:id="@+id/ZeroBtn"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="1"
+                                android:textSize="20sp"
+                                android:layout_marginRight="20dp"
+                                />
+
+                            <TextView
+
+                                android:id="@+id/PlusBtn"
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:textColor="@color/black"
+                                android:layout_height="match_parent"
+                                android:text="+"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"/>
+
+
+
+                        </LinearLayout>
+
+
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:background="#EFEFEF"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="치즈킴밥"
+                        android:textSize="17sp"/>
+
+                    <RelativeLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="3,200"
+                            android:textSize="20sp"
+                            />
+
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle_all_corner_radius"
+                            android:gravity="right"
+                            android:layout_alignParentEnd="true"
+                            >
+
+                            <TextView
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="-"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginLeft="20dp"
+                                />
+
+                            <TextView
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="1"
+                                android:textSize="20sp"
+                                android:layout_marginRight="20dp"
+                                />
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:textColor="@color/black"
+                                android:layout_height="match_parent"
+                                android:text="+"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"/>
+
+
+
+                        </LinearLayout>
+
+
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:background="#EFEFEF"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="치즈킴밥"
+                        android:textSize="17sp"/>
+
+                    <RelativeLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="3,200"
+                            android:textSize="20sp"
+                            />
+
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle_all_corner_radius"
+                            android:gravity="right"
+                            android:layout_alignParentEnd="true"
+                            >
+
+                            <TextView
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="-"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginLeft="20dp"
+                                />
+
+                            <TextView
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="1"
+                                android:textSize="20sp"
+                                android:layout_marginRight="20dp"
+                                />
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:textColor="@color/black"
+                                android:layout_height="match_parent"
+                                android:text="+"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"/>
+
+
+
+                        </LinearLayout>
+
+
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <View
+                    android:background="#EFEFEF"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="치즈킴밥"
+                        android:textSize="17sp"/>
+
+                    <RelativeLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="3,200"
+                            android:textSize="20sp"
+                            />
+
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle_all_corner_radius"
+                            android:gravity="right"
+                            android:layout_alignParentEnd="true"
+                            >
+
+                            <TextView
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="-"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginLeft="20dp"
+                                />
+
+                            <TextView
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:layout_height="match_parent"
+                                android:text="1"
+                                android:textSize="20sp"
+                                android:layout_marginRight="20dp"
+                                />
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_width="30dp"
+                                android:textColor="@color/black"
+                                android:layout_height="match_parent"
+                                android:text="+"
+                                android:textSize="25sp"
+                                android:layout_marginRight="20dp"/>
+
+
+
+                        </LinearLayout>
+
+
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/com_menulist_layout"
+                android:textSize="15sp"
+                android:text="문의사항을 적어주십쇼"/>
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+    
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
