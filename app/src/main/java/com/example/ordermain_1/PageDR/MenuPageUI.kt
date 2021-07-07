@@ -55,8 +55,8 @@ class MenuPageUI : AppCompatActivity() {
                     integrator.initiateScan()
                 }
 
-                initViewPager2()
-                subscribeObservers()
+                initMenuPageUIAdapter()
+                initMenuPageUIViewModel()
 
 
     }
@@ -64,7 +64,7 @@ class MenuPageUI : AppCompatActivity() {
 
 
 
-    private fun initViewPager2() {
+    private fun initMenuPageUIAdapter() {
         viewPager2.apply {
             viewPagerAdapter = ViewPagerAdapter(this@MenuPageUI)
             adapter = viewPagerAdapter
@@ -108,11 +108,10 @@ class MenuPageUI : AppCompatActivity() {
     }
 
 
-    private fun subscribeObservers() {
+    private fun initMenuPageUIViewModel() {
         viewModel.bannerItemList.observe(this, Observer { bannerItemList ->
             viewPagerAdapter.submitList(bannerItemList)
         })
-
 
         viewModel.menuinformationitemList.observe(this, { menuinformationitemList ->
             menuInformationRecyclerViewAdapter.submitList(menuinformationitemList)

@@ -2,92 +2,104 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:padding="10dp">
+    android:layout_height="150dp"
+    android:background="@color/white"
+    >
 
-    <TextView
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="치즈킴밥"
-        android:textSize="17sp"/>
+    <View
+        android:id="@+id/view_2"
+        android:background="#EFEFEF"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        />
 
     <RelativeLayout
-        android:id="@+id/OrderPageMenuScore_layout"
-        android:layout_marginTop="20dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/view_2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent"
+        android:padding="20dp">
 
         <TextView
-            android:id="@+id/com_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/com_menuname_txt"
             android:textColor="@color/black"
-            android:text="3,200"
-            android:textSize="20sp"
-            />
-
-        <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="원"
-            android:layout_toRightOf="@+id/com_price"
-            android:textSize="20sp"
-            />
+            android:text="치즈킴밥"
+            android:textSize="14sp"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/OrderPageMenuScore_layout"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_all_corner_radius"
-            android:gravity="right"
-            android:layout_alignParentEnd="true"
             >
 
             <TextView
-                android:id="@+id/MinusBtn"
-                android:gravity="center"
+                android:id="@+id/com_price_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:text="-"
-                android:textSize="25sp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
+                android:text="3,200"
+                android:textSize="14sp"
                 />
 
-            <TextView
-                android:textColor="@color/black"
-                android:gravity="center"
-                android:id="@+id/ZeroBtn"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:text="1"
-                android:textSize="20sp"
-                android:layout_marginRight="20dp"
-                />
 
-            <TextView
 
-                android:id="@+id/PlusBtn"
-                android:gravity="center"
-                android:layout_width="30dp"
-                android:textColor="@color/black"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:textSize="25sp"
-                android:layout_marginRight="20dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectangle_all_corner_radius"
+                android:gravity="right"
+                android:layout_alignParentEnd="true"
+                >
 
 
 
-        </LinearLayout>
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="-"
+                    android:textSize="20sp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="1"
+                    android:textSize="14sp"
+                    android:layout_marginRight="20dp"
+                    />
+
+                <TextView
+
+                    android:gravity="center"
+                    android:layout_width="30dp"
+                    android:textColor="@color/black"
+                    android:layout_height="match_parent"
+                    android:text="+"
+                    android:textSize="14sp"
+                    android:layout_marginRight="20dp"/>
 
 
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
 
 
     </RelativeLayout>
+
+
 
 </RelativeLayout>

@@ -148,3 +148,10 @@ val fakeDrinkMenu=listOf(
                 "이건 소주다",
                 "4,000억"),
 )
+
+val fakeComOrder=listOf(
+    ComOrderItem("황소초밥","1,2000"),
+    ComOrderItem("새우초밥","2,5000"),
+    
+
+)
