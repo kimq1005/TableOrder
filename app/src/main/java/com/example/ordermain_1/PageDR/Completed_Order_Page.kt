@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ordermain_1.Adapter.*
+import com.example.ordermain_1.Item.ComOrderItem
 import com.example.ordermain_1.Item.fakeComOrder
 import com.example.ordermain_1.MainActivityViewModel
 import com.example.ordermain_1.R
@@ -14,12 +15,15 @@ class Completed_Order_Page : AppCompatActivity() {
 
 
     private lateinit var comorderAdapter: ComOrder_Adapter
-
-
     private lateinit var viewModel : MainActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completed_order_page)
+
+        val com_menu_name = intent.getStringExtra("wowmenuname")
+        val com_menu_price = intent.getStringExtra("wowmenuprice")
+
 
 
 
@@ -28,6 +32,11 @@ class Completed_Order_Page : AppCompatActivity() {
 
         initComOrderPageAdatper()
         initComOrderPageViewModel()
+
+
+        wowOrderGobtn.setOnClickListener{
+            comorderAdapter.additemList(ComOrderItem(com_menu_name,com_menu_price))
+        }
 
     }
 
@@ -38,11 +47,17 @@ class Completed_Order_Page : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@Completed_Order_Page,LinearLayoutManager.VERTICAL,false)
             adapter = comorderAdapter
         }
+
+
     }
 
     private fun initComOrderPageViewModel() {
         viewModel.comoderList.observe(this,{comoderList->
             comorderAdapter.submitList(comoderList)
         })
+
+
+
     }
+
 }
