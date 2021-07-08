@@ -22,6 +22,7 @@ class MenuPageUI : AppCompatActivity() {
 
             val TAG: String ="로그로그"
 
+
             private lateinit var viewPagerAdapter : ViewPagerAdapter
             private lateinit var menuInformationRecyclerViewAdapter : MenuInformationRecyclerViewAdapter
             private lateinit var realmenuAdapter: RealMenu_Adapter
@@ -44,6 +45,7 @@ class MenuPageUI : AppCompatActivity() {
                 viewModel.setrealmenuItems(fakeRealMenu)
                 viewModel.setsidemenuItems(fakeSideMenu)
                 viewModel.setdrinkmenuItems(fakeDrinkMenu)
+
 
                 QR_icon_yeah.setOnClickListener {
                     val integrator = IntentIntegrator(this)

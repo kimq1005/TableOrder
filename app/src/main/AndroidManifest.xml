@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderMain_1">
-        <activity android:name=".PageDR.GoOrderPage"></activity>
+        <activity android:name=".PageDR.Completed_Order_Page"></activity>
+        <activity android:name=".PageDR.GoOrderPage" />
         <activity android:name=".MyBarcodeReaderActivity" />
         <activity android:name=".PageDR.QR_Code_Page" />
         <activity android:name=".PageDR.MenuPageUI" />

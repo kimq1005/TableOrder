@@ -144,6 +144,7 @@
                 android:layout_alignParentBottom="true">
 
                 <Button
+                    android:id="@+id/wowOrderGobtn"
                     android:layout_width="205dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"

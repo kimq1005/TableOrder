@@ -11,7 +11,7 @@ class MainActivityViewModel : ViewModel() {
     private val _realmenuList : MutableLiveData<List<RealMenuItem>> = MutableLiveData()
     private val _sidemenuList : MutableLiveData<List<SidemenuItem>>  = MutableLiveData()
     private val _drinkmenuList : MutableLiveData<List<DrinkmenuItem>> = MutableLiveData()
-    private val _comorderList : MutableLiveData<List<ComOrderItem>> = MutableLiveData()
+    private val _comorderList : MutableLiveData<ArrayList<ComOrderItem>> = MutableLiveData()
 
 
 
@@ -20,7 +20,7 @@ class MainActivityViewModel : ViewModel() {
     val realmenuList : LiveData<List<RealMenuItem>> get() = _realmenuList
     val sidemenuList : LiveData<List<SidemenuItem>> get() = _sidemenuList
     val drinkmenuList : LiveData<List<DrinkmenuItem>> get() = _drinkmenuList
-    val comoderList : LiveData<List<ComOrderItem>> get() = _comorderList
+    val comoderList : LiveData<ArrayList<ComOrderItem>> get() = _comorderList
 
 
 
@@ -45,7 +45,7 @@ class MainActivityViewModel : ViewModel() {
         _drinkmenuList.value = list
     }
 
-    fun setcomoderItems(list:List<ComOrderItem>){
+    fun setcomoderItems(list:ArrayList<ComOrderItem>){
         _comorderList.value = list
     }
 

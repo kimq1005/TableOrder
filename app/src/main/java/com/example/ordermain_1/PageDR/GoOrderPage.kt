@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.ordermain_1.Adapter.ComOrder_Adapter
+import com.example.ordermain_1.Item.ComOrderItem
 import com.example.ordermain_1.Item.RealMenuItem
 import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_go_order_page.*
@@ -17,6 +19,7 @@ class GoOrderPage : AppCompatActivity() {
 
 
     private var resultprice: Int= 0
+    private lateinit var comorderAdapter: ComOrder_Adapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +51,10 @@ class GoOrderPage : AppCompatActivity() {
         resultprice = list_1.toInt()
 
         GO_Complted_Page.setOnClickListener {
+
             val intent = Intent(this,Completed_Order_Page::class.java)
+            intent.putExtra("wowmenuname",menu_name)
+            intent.putExtra("wowmenuprice",menu_price)
             startActivity(intent)
         }
 
@@ -65,7 +71,6 @@ class GoOrderPage : AppCompatActivity() {
 
 
     private fun menuBtnClick() {
-
 
         var sum:Int = 0
         var result_sum:String? =null

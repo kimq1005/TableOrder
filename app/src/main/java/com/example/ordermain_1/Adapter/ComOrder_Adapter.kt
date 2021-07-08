@@ -12,7 +12,9 @@ import kotlinx.android.synthetic.main.item_layout_com_order.view.*
 
 class ComOrder_Adapter:RecyclerView.Adapter<ComOrder_Adapter.ComOrderViewHolder>() {
 
-    private var comorderitemList : List<ComOrderItem>? = null
+    private var comorderitemList : ArrayList<ComOrderItem>? =null
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComOrderViewHolder {
@@ -38,8 +40,22 @@ class ComOrder_Adapter:RecyclerView.Adapter<ComOrder_Adapter.ComOrderViewHolder>
         }
     }
 
-    fun submitList(list:List<ComOrderItem>?){
+    fun submitList(list:ArrayList<ComOrderItem>?){
         comorderitemList = list
         notifyDataSetChanged()
     }
+
+    fun additemList(comOrderItem:ComOrderItem){
+        comorderitemList?.add(comOrderItem)
+        notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int){
+        if(position >0){
+            comorderitemList?.removeAt(position)
+            notifyDataSetChanged()
+        }
+    }
+
+
 }

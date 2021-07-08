@@ -114,8 +114,6 @@
 
 
 
-
-
             <TextView
                 android:id="@+id/maindish"
                 android:layout_width="match_parent"

@@ -17,6 +17,7 @@ import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ordermain_1.App
+import com.example.ordermain_1.Item.ComOrderItem
 
 import com.example.ordermain_1.R
 import com.example.ordermain_1.Item.RealMenuItem
@@ -31,8 +32,6 @@ import kotlinx.android.synthetic.main.item_layout_realmenu.view.*
 class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>() {
 
     private var realmenuItemList : List<RealMenuItem>?=null
-
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RealMenuViewHolder {
