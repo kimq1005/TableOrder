@@ -57,8 +57,15 @@ class MenuPageUI : AppCompatActivity() {
                     integrator.initiateScan()
                 }
 
+                //if(장바구니 담기 버튼이 클릭되었다면){데이터 절로 보내 ㅇㅋ}
+
                 initMenuPageUIAdapter()
                 initMenuPageUIViewModel()
+
+                ohshit23.setOnClickListener {
+                    val intent= Intent(this,Completed_Order_Page::class.java)
+                    startActivity(intent)
+                }
 
 
     }
