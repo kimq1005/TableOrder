@@ -27,6 +27,7 @@ class Completed_Order_Page : AppCompatActivity() {
 
 
 
+
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.setcomoderItems(fakeComOrder)
 

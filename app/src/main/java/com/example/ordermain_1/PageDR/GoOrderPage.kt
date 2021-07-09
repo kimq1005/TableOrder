@@ -19,8 +19,6 @@ class GoOrderPage : AppCompatActivity() {
 
 
     private var resultprice: Int= 0
-    private lateinit var comorderAdapter: ComOrder_Adapter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -52,22 +50,31 @@ class GoOrderPage : AppCompatActivity() {
 
         GO_Complted_Page.setOnClickListener {
 
-            val intent = Intent(this,Completed_Order_Page::class.java)
-            intent.putExtra("wowmenuname",menu_name)
-            intent.putExtra("wowmenuprice",menu_price)
-            startActivity(intent)
+            SpendmenuData()
+            GOback()
+
         }
-
-
 
 
         menuBtnClick()
 
-
-
-
     }
 
+
+    private fun GOback() {
+        val intent = Intent(this,MenuPageUI::class.java)
+        startActivity(intent)
+    }
+
+    private fun SpendmenuData() {
+        val intent = Intent(this,Completed_Order_Page::class.java)
+        val menu_name = intent.getStringExtra("menu_name")
+        val menu_price = intent.getStringExtra("menu_price")
+
+        intent.putExtra("wowmenuname",menu_name)
+        intent.putExtra("wowmenuprice",menu_price)
+
+    }
 
 
     private fun menuBtnClick() {
@@ -81,7 +88,6 @@ class GoOrderPage : AppCompatActivity() {
 
             ZeroBtn.text = sum.toString()
             OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
-
 
         }
 
