@@ -24,10 +24,6 @@ class Completed_Order_Page : AppCompatActivity() {
         val com_menu_name = intent.getStringExtra("wowmenuname")
         val com_menu_price = intent.getStringExtra("wowmenuprice")
 
-
-
-
-
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.setcomoderItems(fakeComOrder)
 
@@ -41,24 +37,18 @@ class Completed_Order_Page : AppCompatActivity() {
 
     }
 
-
     private fun initComOrderPageAdatper() {
         comorderrecyclerview.apply {
             comorderAdapter= ComOrder_Adapter()
             layoutManager = LinearLayoutManager(this@Completed_Order_Page,LinearLayoutManager.VERTICAL,false)
             adapter = comorderAdapter
         }
-
-
     }
 
     private fun initComOrderPageViewModel() {
         viewModel.comoderList.observe(this,{comoderList->
             comorderAdapter.submitList(comoderList)
         })
-
-
-
     }
 
 }
