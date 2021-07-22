@@ -33,8 +33,8 @@ class GoOrderPage : AppCompatActivity() {
         Glide.with(this).load(menu_img).into(OrderPage_menuImg_img)
         OrderPage_menuName_txt.text= menu_name
         OrderPage_menuPrice_txt.text  = menu_price
-
         OrderPage_resultPrice_txt.text = menu_price
+
 
 
         var holymoly = OrderPage_menuPrice_txt.text
@@ -50,8 +50,14 @@ class GoOrderPage : AppCompatActivity() {
 
         GO_Complted_Page.setOnClickListener {
 
-            SpendmenuData()
-            GOback()
+            val intent = Intent(this,Completed_Order_Page::class.java)
+            val menu_name = intent.getStringExtra("menu_name")
+            val menu_price = intent.getStringExtra("menu_price")
+
+            intent.putExtra("wowmenuname",menu_name)
+            intent.putExtra("wowmenuprice",menu_price)
+//            SpendmenuData()
+
 
         }
 
@@ -61,20 +67,15 @@ class GoOrderPage : AppCompatActivity() {
     }
 
 
-    private fun GOback() {
-        val intent = Intent(this,MenuPageUI::class.java)
-        startActivity(intent)
-    }
-
-    private fun SpendmenuData() {
-        val intent = Intent(this,Completed_Order_Page::class.java)
-        val menu_name = intent.getStringExtra("menu_name")
-        val menu_price = intent.getStringExtra("menu_price")
-
-        intent.putExtra("wowmenuname",menu_name)
-        intent.putExtra("wowmenuprice",menu_price)
-
-    }
+//    private fun SpendmenuData() {
+//        val intent = Intent(this,Completed_Order_Page::class.java)
+//        val menu_name = intent.getStringExtra("menu_name")
+//        val menu_price = intent.getStringExtra("menu_price")
+//
+//        intent.putExtra("wowmenuname",menu_name)
+//        intent.putExtra("wowmenuprice",menu_price)
+//
+//    }
 
 
     private fun menuBtnClick() {
@@ -122,5 +123,7 @@ class GoOrderPage : AppCompatActivity() {
 
 
     }
+
+
 
 }

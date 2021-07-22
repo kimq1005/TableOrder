@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
             val intent =Intent(this, MenuPageUI::class.java)
             startActivity(intent)
         }
+        
+        next2.setOnClickListener {
+            val intent =Intent(this,LastYeah::class.java)
+            startActivity(intent)
+        }
 
     }
 

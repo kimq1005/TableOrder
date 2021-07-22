@@ -69,10 +69,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
                 intent.putExtra("menu_price",itemView.real_menuprice_txt.text)
                 itemView.context.startActivity(intent)
 
-
             }
-
-
 
         }
 
