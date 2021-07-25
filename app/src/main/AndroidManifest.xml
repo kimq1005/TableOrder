@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ordermain_1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -11,10 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderMain_1">
-        <activity android:name=".PageDR.LastYeah"></activity>
+        <activity android:name=".PageDR.GoDrinkOrderPage"></activity>
+        <activity android:name=".PageDR.GoSideOrderPage" />
+        <activity android:name=".PageDR.LastYeah" />
         <activity android:name=".PageDR.Completed_Order_Page" />
-        <activity android:name=".PageDR.GoOrderPage" />
-        <activity android:name=".MyBarcodeReaderActivity" />
+        <activity android:name=".PageDR.GoOrderPage" /> <!-- <activity android:name=".MyBarcodeReaderActivity" /> -->
         <activity android:name=".PageDR.QR_Code_Page" />
         <activity android:name=".PageDR.MenuPageUI" />
         <activity android:name=".PageDR.MainActivity">
