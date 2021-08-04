@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PageDR.MainActivity">
+    tools:context=".PageMainActivity.MainActivity">
 
 
         <ImageView
@@ -52,6 +52,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="실험이용"
+                            android:textColor="@color/black"
                             style="?attr/materialButtonOutlinedStyle"/>
 
                         <ImageView
@@ -68,6 +69,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2실험이용"
+                            android:textColor="@color/black"
                             style="?attr/materialButtonOutlinedStyle"/>
 
 

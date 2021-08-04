@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PageDR.Completed_Order_Page"
+    tools:context=".PageComOrderPage.Completed_Order_Page"
     android:background="#EFEFEF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,13 +87,27 @@
                 android:layout_below="@id/com_adView"
                 android:id="@+id/comorderrecyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sideorderrecyclerview"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/comorderrecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/drinkorderrecyclerview"
+                android:layout_below="@id/sideorderrecyclerview"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_marginTop="20dp"
                 android:background="@color/white"
-                android:layout_below="@+id/comorderrecyclerview"
+                android:layout_below="@+id/drinkorderrecyclerview"
                 android:padding="10dp"
                 android:id="@+id/com_resultprice_layout"
                 android:layout_width="match_parent"

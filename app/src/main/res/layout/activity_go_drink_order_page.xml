@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PageDR.GoDrinkOrderPage">
+    tools:context=".PageGoOrderPage.GoDrinkOrderPage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout"
@@ -234,6 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:textColor="@color/black"
                 style="?attr/materialButtonOutlinedStyle"
                 android:text="장바구니에 담기" />
 

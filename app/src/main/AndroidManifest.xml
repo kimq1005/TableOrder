@@ -13,14 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderMain_1">
-        <activity android:name=".PageDR.GoDrinkOrderPage"></activity>
-        <activity android:name=".PageDR.GoSideOrderPage" />
-        <activity android:name=".PageDR.LastYeah" />
-        <activity android:name=".PageDR.Completed_Order_Page" />
-        <activity android:name=".PageDR.GoOrderPage" /> <!-- <activity android:name=".MyBarcodeReaderActivity" /> -->
-        <activity android:name=".PageDR.QR_Code_Page" />
-        <activity android:name=".PageDR.MenuPageUI" />
-        <activity android:name=".PageDR.MainActivity">
+        <activity android:name=".PageGoOrderPage.GoDrinkOrderPage"></activity>
+        <activity android:name=".PageGoOrderPage.GoSideOrderPage" />
+        <activity android:name=".PageLastYeah.LastYeah" />
+        <activity android:name=".PageComOrderPage.Completed_Order_Page" />
+        <activity android:name=".PageGoOrderPage.GoOrderPage" /> <!-- <activity android:name=".MyBarcodeReaderActivity" /> -->
+        <activity android:name=".PageMainActivity.QR_Code_Page" />
+        <activity android:name=".PageMenuPageUI.MenuPageUI" />
+        <activity android:name=".PageMainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

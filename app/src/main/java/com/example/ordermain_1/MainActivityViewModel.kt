@@ -3,7 +3,8 @@ package com.example.ordermain_1
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.ordermain_1.Item.*
+import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
+import com.example.ordermain_1.PageMenuPageUI.*
 
 class MainActivityViewModel : ViewModel() {
     private val _bannerItemList: MutableLiveData<List<BannerItem>> = MutableLiveData()
@@ -11,7 +12,7 @@ class MainActivityViewModel : ViewModel() {
     private val _realmenuList : MutableLiveData<List<RealMenuItem>> = MutableLiveData()
     private val _sidemenuList : MutableLiveData<List<SidemenuItem>>  = MutableLiveData()
     private val _drinkmenuList : MutableLiveData<List<DrinkmenuItem>> = MutableLiveData()
-    private val _comorderList : MutableLiveData<ArrayList<ComOrderItem>> = MutableLiveData()
+    private val _realmenuorderList : MutableLiveData<List<RealmenuEntity>> = MutableLiveData()
 
 
 
@@ -20,7 +21,7 @@ class MainActivityViewModel : ViewModel() {
     val realmenuList : LiveData<List<RealMenuItem>> get() = _realmenuList
     val sidemenuList : LiveData<List<SidemenuItem>> get() = _sidemenuList
     val drinkmenuList : LiveData<List<DrinkmenuItem>> get() = _drinkmenuList
-    val comoderList : LiveData<ArrayList<ComOrderItem>> get() = _comorderList
+    val realmenucomoderList : LiveData<List<RealmenuEntity>> get() = _realmenuorderList
 
 
 
@@ -45,8 +46,8 @@ class MainActivityViewModel : ViewModel() {
         _drinkmenuList.value = list
     }
 
-    fun setcomoderItems(list:ArrayList<ComOrderItem>){
-        _comorderList.value = list
+    fun setcomoderItems(list:List<RealmenuEntity>){
+        _realmenuorderList.value = list
     }
 
 
