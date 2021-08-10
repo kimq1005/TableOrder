@@ -71,21 +71,10 @@
                 android:background="@color/white"/>
 
 
-            <TextView
-                android:id="@+id/com_adView"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/com_name"
-                android:background="@drawable/rectangle_all_corner_radius"
-                android:text="광고칸"/>
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/com_adView"
-                android:id="@+id/comorderrecyclerview"
+                android:layout_below="@+id/com_name"
+                android:id="@+id/realmenurecyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
@@ -93,7 +82,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/sideorderrecyclerview"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/comorderrecyclerview"
+                android:layout_below="@id/realmenurecyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

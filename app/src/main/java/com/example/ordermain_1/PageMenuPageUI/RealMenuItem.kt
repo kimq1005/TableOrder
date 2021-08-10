@@ -4,5 +4,5 @@ data class RealMenuItem (
         val realmenuimg:Int ?=null,
         val realmenuname:String ?=null,
         val realmenuinformation:String ?=null,
-        val realmenuprice:String ?=null
+        val realmenuprice:Int ?=null
         )

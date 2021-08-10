@@ -52,12 +52,10 @@ class DrinkMeun_Adapter:RecyclerView.Adapter<DrinkMeun_Adapter.DrinkMenuViewHold
 
 
         fun bind(drinkmeunuitem: DrinkmenuItem){
-
             Glide.with(itemView).load(drinkmeunuitem.drinkmenuimg).into(menuImg)
             itemView.drink_menuname_txt.text = drinkmeunuitem.drinkmenuname
             itemView.drink_menuinformation_txt.text = drinkmeunuitem.drinkmenuinformation
-            itemView.drink_menuprice_txt.text = drinkmeunuitem.drinkmenuprice
-
+            itemView.drink_menuprice_txt.text = drinkmeunuitem.drinkmenuprice.toString()
         }
 
 

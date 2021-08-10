@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.OnDeleteListener
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_go_order_page.view.*
 import kotlinx.android.synthetic.main.item_layout_com_order.view.*
-import kotlinx.android.synthetic.main.item_layout_realmenu.view.*
 
-class ComOrder_Adapter:RecyclerView.Adapter<ComOrder_Adapter.ComOrderViewHolder>() {
+class Com_RealMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.Adapter<Com_RealMenu_Adapter.ComOrderViewHolder>() {
 
     lateinit var realmenuList : List<RealmenuEntity>
 
@@ -24,18 +24,25 @@ class ComOrder_Adapter:RecyclerView.Adapter<ComOrder_Adapter.ComOrderViewHolder>
 
     override fun onBindViewHolder(holder: ComOrderViewHolder, position: Int) {
         val realmenupostion = realmenuList[position]
-        holder.activityrealmenuname.text = realmenupostion.realmenuname
-        holder.activityrealmenuprice.text = realmenupostion.realmenuprice
+        holder.Holder_realmenuname.text = realmenupostion.realmenuname
+        holder.Holder_realmenuprice.text = realmenupostion.realmenuprice
+        holder.Holder_realmenusocre.text = realmenupostion.realmenufoodscore
+
+        holder.Holder_realmenudelete.setOnClickListener {
+            onDeleteListener.onrealmenuDeleteListner(realmenupostion)
+        }
     }
 
     override fun getItemCount(): Int {
-        return realmenuList?.size ?:0
+        return realmenuList.size
     }
 
     class ComOrderViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
 
-        val activityrealmenuname = itemView.OrderPage_menuName_txt
-        val activityrealmenuprice = itemView.OrderPage_menuPrice_txt
+        val Holder_realmenuname = itemView.com_menuname_txt
+        val Holder_realmenuprice = itemView.com_price_txt
+        val Holder_realmenudelete = itemView.com_delete_btn
+        val Holder_realmenusocre = itemView.com_menuscore
 
     }
 

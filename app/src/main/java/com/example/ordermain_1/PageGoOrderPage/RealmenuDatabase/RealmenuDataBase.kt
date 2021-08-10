@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 
 @Database(entities = arrayOf(RealmenuEntity::class),version = 1)
 abstract class RealmenuDataBase:RoomDatabase() {
-    abstract fun RealmenuDAO() : RealmenuDAO
+    abstract fun realmenuDAO() : RealmenuDAO
 
     companion object{
         private var INSTANCE : RealmenuDataBase? =null

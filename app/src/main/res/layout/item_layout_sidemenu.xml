@@ -38,17 +38,36 @@
         android:layout_below="@+id/side_menuname_txt"
         android:text="음식설명설명설명 설명ㅇ예이야일="/>
 
-    <TextView
-        android:id="@+id/side_menuprice_txt"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/side_menuinformation_txt"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="5dp"
-        android:text="5,000억"/>
+        android:layout_below="@+id/side_menuinformation_txt">
+        <TextView
+            android:id="@+id/side_menuprice_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:text="5000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:text="원"/>
+
+    </LinearLayout>
+
+
+
 
 
 

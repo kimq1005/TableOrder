@@ -70,7 +70,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
             Glide.with(itemView).load(realmeunuitem.realmenuimg).into(menuImg)
             itemView.real_menuname_txt.text = realmeunuitem.realmenuname
             itemView.real_menuinformation_txt.text = realmeunuitem.realmenuinformation
-            itemView.real_menuprice_txt.text = realmeunuitem.realmenuprice
+            itemView.real_menuprice_txt.text = realmeunuitem.realmenuprice.toString()
 
         }
 

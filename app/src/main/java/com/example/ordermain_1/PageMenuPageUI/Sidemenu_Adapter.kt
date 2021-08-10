@@ -36,7 +36,6 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, GoSideOrderPage::class.java)
-
                 intent.putExtra("side_menu_img",itemView.side_menu_img.toString())
                 intent.putExtra("side_menu_name",itemView.side_menuname_txt.text)
                 intent.putExtra("side_menu_price",itemView.side_menuprice_txt.text)
@@ -54,7 +53,7 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
             Glide.with(itemView).load(sidemeunuitem.sidemenuimg).into(sidemenuImg)
             itemView.side_menuname_txt.text = sidemeunuitem.sidemenuname
             itemView.side_menuinformation_txt.text = sidemeunuitem.sidemenuinformation
-            itemView.side_menuprice_txt.text = sidemeunuitem.sidemenuprice
+            itemView.side_menuprice_txt.text = sidemeunuitem.sidemenuprice.toString()
 
         }
 

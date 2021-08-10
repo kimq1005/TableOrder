@@ -29,46 +29,37 @@ val fakeRealMenu = listOf(
         R.drawable.food3,
         "왕초밥",
         "왕초밥은 리얼 개맛있고요 어쩌고 저쩌고아잉 왕진짜 후회안하는 개쩌는 맛입니다.우왕키윽",
-        "2,000억"),
+        16000),
 
-    RealMenuItem(
-        R.drawable.food1,
-    "새우초밥",
-    "새우가 덕지덕지 들어간 갓새우초밥",
-    "1,200억"),
 
     RealMenuItem(
         R.drawable.food2,
     "참치초밥",
     "할 메뉴없어서 그냥 갖다붙인 초밥",
-    "5,000억"),
+    12000),
 
         RealMenuItem(
             R.drawable.food1,
                 "참치초밥",
                 "할 메뉴없어서 그냥 갖다붙인 초밥",
-                "5,000억"),
+                30000),
 
         RealMenuItem(
             R.drawable.food2,
                 "참치초밥",
                 "할 메뉴없어서 그냥 갖다붙인 초밥",
-                "5,000억"),
+                2000),
         RealMenuItem(
             R.drawable.food2,
                 "참치초밥",
                 "할 메뉴없어서 그냥 갖다붙인 초밥",
-                "5,000억"),
+                3000),
         RealMenuItem(
             R.drawable.food2,
                 "참치초밥",
                 "할 메뉴없어서 그냥 갖다붙인 초밥",
-                "5,000"),
-        RealMenuItem(
-            R.drawable.food2,
-                "참치초밥",
-                "할 메뉴없어서 그냥 갖다붙인 초밥",
-                "5,000억")
+                5000),
+
 
 
 
@@ -85,42 +76,42 @@ val fakeSideMenu = listOf(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                "3,200억"
+                3200
         ),
 
         SidemenuItem(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                "3,200억"
+                3400
         ),
 
         SidemenuItem(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                "3,200억"
+                5500
         ),
 
         SidemenuItem(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                "3,200억"
+                6700
         ),
 
         SidemenuItem(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                "3,200억"
+                8800
         ),
 
         SidemenuItem(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                "3,200억"
+                102990
         )
 
 
@@ -131,40 +122,40 @@ val fakeDrinkMenu=listOf(
             R.drawable.food2,
         "소주",
         "이건 소주다",
-        "4,000억"),
+        4000),
 
         DrinkmenuItem(
             R.drawable.food2,
                 "소주",
                 "이건 소주다",
-                "4,000억"),
+                3500),
 
         DrinkmenuItem(
             R.drawable.food2,
                 "소주",
                 "이건 소주다",
-                "4,000억"),
+                4500),
 
         DrinkmenuItem(
             R.drawable.food2,
                 "소주",
                 "이건 소주다",
-                "4,000억"),
+                6300),
 
         DrinkmenuItem(
             R.drawable.food2,
                 "소주",
                 "이건 소주다",
-                "4,000억"),
+                7200),
 
         DrinkmenuItem(
             R.drawable.food2,
                 "소주",
                 "이건 소주다",
-                "4,000억"),
+                4000),
 )
 
 val fakeComOrder=listOf(
-    RealmenuEntity(1,"음식이름이다","29999억")
+    RealmenuEntity(1,"음식이름이다","29999")
 )
 

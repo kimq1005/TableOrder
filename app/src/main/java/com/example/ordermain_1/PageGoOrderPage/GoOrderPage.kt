@@ -1,17 +1,29 @@
 package com.example.ordermain_1.PageGoOrderPage
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
+import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuDataBase
+import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.R
+import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.*
 
+
+@SuppressLint("StaticFieldLeak")
 class GoOrderPage : AppCompatActivity() {
 
+    val TAG : String = "로그"
+    lateinit var realdb: RealmenuDataBase
 
-    private var resultprice: Int= 0
+
+    var realmenuList = listOf<RealmenuEntity>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -19,33 +31,22 @@ class GoOrderPage : AppCompatActivity() {
         setContentView(R.layout.activity_go_order_page)
 
 
-
+        realdb = RealmenuDataBase.getinstance(this)!!
         realmenucall()
 
 
-        var holymoly = OrderPage_menuPrice_txt.text
-        var list = mutableListOf<String>()
-
-
-
-        list.add(holymoly.toString())
-        var list_1 = list[0]
-
-
-        list_1 = list_1.replace(",","")
-        list_1 = list_1.replace("억","")
-        resultprice = list_1.toInt()
 
         GO_Complted_Page.setOnClickListener {
-            val intent = Intent(this, Completed_Order_Page::class.java)
-            startActivity(intent)
+            val realmenu = RealmenuEntity(null,OrderPage_menuName_txt.text.toString(),OrderPage_resultPrice_txt.text.toString())
+            realmenuInsert(realmenu)
+            Log.d(TAG, "realmenu 데이터베이스 저장 완료 ${OrderPage_menuName_txt.text}")
         }
 
         menuBtnClick()
 
     }
 
-    private fun realmenucall() {
+    fun realmenucall() {
         val menu_name = intent.getStringExtra("menu_name")
         val menu_price = intent.getStringExtra("menu_price")
         val menu_img = getIntent().getStringExtra("menu_img")
@@ -56,17 +57,23 @@ class GoOrderPage : AppCompatActivity() {
         OrderPage_resultPrice_txt.text = menu_price
     }
 
-    private fun menuBtnClick() {
+    fun menuBtnClick() {
+
+
+        val price = OrderPage_menuPrice_txt.text
+        val Stringprice = price.toString()
+        val Intprice = Stringprice.toInt()
+
 
         var sum:Int = 0
-        var result_sum:String? =null
+
         PlusBtn.setOnClickListener {
             for(i in 1..1){
                  sum=sum+1
             }
 
             ZeroBtn.text = sum.toString()
-            OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
+            OrderPage_resultPrice_txt.text = (sum* Intprice).toString()
 
         }
 
@@ -77,23 +84,44 @@ class GoOrderPage : AppCompatActivity() {
                 sum=sum-1
             }
 
-            ZeroBtn.text = sum.toString()
-            OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
-
-
             if(sum<0){
                 sum = 0
-                ZeroBtn.text = sum.toString()
-
             }
+
+            ZeroBtn.text = sum.toString()
+            OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
+
+
+
 
 
         }
 
 
+    }
 
+    fun realmenuInsert(realmenuEntity: RealmenuEntity){
+        val realmenuinsertTask = (object: AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                realdb.realmenuDAO().realmenuInsert(realmenuEntity)
+            }
 
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                realmenugetAll()
+            }
 
+        }).execute()
+
+    }
+
+    private fun realmenugetAll(){
+        val realmenugetTask = (object : AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                realmenuList = realdb.realmenuDAO().realmenugetAll()
+            }
+
+        }).execute()
     }
 
 

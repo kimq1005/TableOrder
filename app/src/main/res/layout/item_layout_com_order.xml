@@ -19,6 +19,13 @@
         android:layout_height="match_parent"
         android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/com_delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_alignParentRight="true"/>
+
         <TextView
             android:layout_marginTop="10dp"
             android:id="@+id/com_menuname_txt"
@@ -69,6 +76,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/com_menuscore"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_width="30dp"
