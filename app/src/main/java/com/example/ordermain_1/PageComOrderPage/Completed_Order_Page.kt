@@ -1,9 +1,11 @@
 package com.example.ordermain_1.PageComOrderPage
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ordermain_1.DataBaseObject.DBobject
@@ -16,6 +18,9 @@ import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.PageGoOrderPage.SidemenuDatabase.SidemenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.SidemenuDatabase.SidemenuEntity
+import com.example.ordermain_1.PageLastYeah.LastYeah
+import com.example.ordermain_1.PageLastYeah.LastYeahDatabase.LastDataBase
+import com.example.ordermain_1.PageLastYeah.LastYeahDatabase.LastEntity
 import com.example.ordermain_1.PageMenuPageUI.fakeComOrder
 import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_completed_order_page.*
@@ -25,15 +30,20 @@ import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 @SuppressLint("StaticFieldLeak")
 class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
+    val TAG: String ="로그"
+
     lateinit var realmenuList : List<RealmenuEntity>
     lateinit var sidemenuList : List<SidemenuEntity>
     lateinit var drinkmenuList : List<DrinkmenuEntity>
+    lateinit var lastList : List<LastEntity>
 
     lateinit var realdb : RealmenuDataBase
     lateinit var sidedb : SidemenuDataBase
     lateinit var drinkdb : DrinkmenuDataBase
+    lateinit var lastdb : LastDataBase
 
     private lateinit var viewModel : MainActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completed_order_page)
@@ -41,8 +51,12 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         realdb = RealmenuDataBase.getinstance(this)!!
         sidedb = SidemenuDataBase.getinstance(this)!!
         drinkdb = DrinkmenuDataBase.getinstance(this)!!
+        lastdb = LastDataBase.getinstance(this)!!
 
 
+        wowOrderGobtn.setOnClickListener {
+//            startActivity(Intent(this,LastYeah::class.java))
+        }
 
         realmenugetAll()
         sidemenugetAll()
@@ -167,6 +181,21 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         }).execute()
     }
 
+    private fun lastinsert(lastEntity: LastEntity){
+        val lastinsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                lastdb.lastDAO().lastinsert(lastEntity)
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                lastdb.lastDAO().lastgetAll()
+            }
+        })
+    }
+
+
+
     override fun onrealmenuDeleteListner(realmenuEntity: RealmenuEntity) {
         realmenuDelete(realmenuEntity)
     }
@@ -178,6 +207,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     override fun ondrinkmenuDeleteListener(drinkmenuEntity: DrinkmenuEntity) {
        drinkmenuDelete(drinkmenuEntity)
     }
+
+
 
 
 }
