@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_go_drink_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.*
 import kotlinx.android.synthetic.main.activity_go_side_order_page.MinusBtn
 import kotlinx.android.synthetic.main.activity_go_side_order_page.PlusBtn
-import kotlinx.android.synthetic.main.activity_go_side_order_page.ZeroBtn
+
 
 @SuppressLint("StaticFieldLeak")
 class GoDrinkOrderPage : AppCompatActivity() {
@@ -49,14 +49,14 @@ class GoDrinkOrderPage : AppCompatActivity() {
         resultprice = list_1.toInt()
 
         GO_Drink_Complted_Page.setOnClickListener {
-            var drinkmenu = DrinkmenuEntity(null,Drink_OrderPage_menuName_txt.text.toString(),Drink_OrderPage_resultPrice_txt.text.toString())
+            var drinkmenu = DrinkmenuEntity(null,Drink_OrderPage_menuName_txt.text.toString(),Drink_OrderPage_resultPrice_txt.text.toString(),DrinkZeroBtn.text.toString())
             drinkmenuinsert(drinkmenu)
 
             Log.d(TAG, "sidemenu 데이터베이스 저장 완료 ${Drink_OrderPage_menuName_txt.text} ")
+
         }
 
-
-
+        
         menuBtnClick()
 
     }
@@ -81,7 +81,7 @@ class GoDrinkOrderPage : AppCompatActivity() {
                 sum=sum+1
             }
 
-            ZeroBtn.text = sum.toString()
+            DrinkZeroBtn.text = sum.toString()
             Drink_OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
 
         }
@@ -93,7 +93,7 @@ class GoDrinkOrderPage : AppCompatActivity() {
                 sum=sum-1
             }
 
-            ZeroBtn.text = sum.toString()
+            DrinkZeroBtn.text = sum.toString()
             Drink_OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
 
 

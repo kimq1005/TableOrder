@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ordermain_1.*
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
+import com.example.ordermain_1.rerofit.retrofitItem
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 
 class MenuPageUI : AppCompatActivity() {
 
-            val TAG: String ="로그로그"
+            //Item
+            private lateinit var menulist : ArrayList<retrofitItem>
+
+
             private lateinit var viewPagerAdapter : ViewPagerAdapter
             private lateinit var menuInformationRecyclerViewAdapter : MenuInformationRecyclerViewAdapter
             private lateinit var realmenuAdapter: RealMenu_Adapter
@@ -29,14 +34,14 @@ class MenuPageUI : AppCompatActivity() {
                 setContentView(R.layout.activity_menu_page_ui)
 
 
-
                 viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-
                 viewModel.setBannerItems(fakeBannerItemList)
                 viewModel.setmenuinformationItems(fakeMenuinformation)
                 viewModel.setrealmenuItems(fakeRealMenu)
                 viewModel.setsidemenuItems(fakeSideMenu)
                 viewModel.setdrinkmenuItems(fakeDrinkMenu)
+
+
 
 
                 QR_icon_yeah.setOnClickListener {
@@ -64,6 +69,11 @@ class MenuPageUI : AppCompatActivity() {
 
 
     private fun initMenuPageUIAdapter() {
+
+        val bundle = intent.getBundleExtra("array_bundle")
+        menulist = bundle?.getSerializable("menu_list") as ArrayList<retrofitItem>
+
+
         viewPager2.apply {
             viewPagerAdapter = ViewPagerAdapter(this@MenuPageUI)
             adapter = viewPagerAdapter
@@ -83,22 +93,34 @@ class MenuPageUI : AppCompatActivity() {
             adapter = menuInformationRecyclerViewAdapter
         }
 
+
+
         realmenurecyclerView.apply{
+
             realmenuAdapter = RealMenu_Adapter()
-            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL, false)
+            realmenuAdapter.submitList(menulist)
+            layoutManager = GridLayoutManager(this@MenuPageUI,2,GridLayoutManager.VERTICAL,false)
             adapter =  realmenuAdapter
+
+//            realmenuAdapter = RealMenu_Adapter()
+//            layoutManager = GridLayoutManager(this@MenuPageUI,2,GridLayoutManager.VERTICAL,false)
+//            adapter =  realmenuAdapter
 
         }
 
         sidemenurecyclerView.apply{
+//            sidemenuAdapter = Sidemenu_Adapter()
+//            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL,false)
+//            adapter= sidemenuAdapter
+
             sidemenuAdapter = Sidemenu_Adapter()
-            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this@MenuPageUI,2, GridLayoutManager.VERTICAL,false)
             adapter= sidemenuAdapter
         }
 
        drinkmenurecyclerView.apply{
             drinkmeunAdapter = DrinkMeun_Adapter()
-            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this@MenuPageUI,2, LinearLayoutManager.VERTICAL,false)
             adapter= drinkmeunAdapter
         }
 
@@ -115,9 +137,9 @@ class MenuPageUI : AppCompatActivity() {
             menuInformationRecyclerViewAdapter.submitList(menuinformationitemList)
         })
 
-        viewModel.realmenuList.observe(this, { realmenuList ->
-            realmenuAdapter.submitList(realmenuList)
-        })
+//        viewModel.realmenuList.observe(this, { realmenuList ->
+//            realmenuAdapter.submitList(menulist)
+//        })
 
         viewModel.sidemenuList.observe(this,{sidemenuList->
             sidemenuAdapter.submitList(sidemenuList)
@@ -129,6 +151,9 @@ class MenuPageUI : AppCompatActivity() {
 
 
     }
+
+
+
 
 
 

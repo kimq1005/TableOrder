@@ -8,6 +8,8 @@ import android.widget.Toast
 import com.example.ordermain_1.PageLastYeah.LastYeah
 import com.example.ordermain_1.PageMenuPageUI.MenuPageUI
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.Retrofit_Manager
+import com.example.ordermain_1.rerofit.util.RESPONS_STATE
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,20 +21,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         main_camerlogo.setOnClickListener {
             QRscan()
         }
         //주석주석
 
         next.setOnClickListener {
-            val intent =Intent(this, MenuPageUI::class.java)
-            startActivity(intent)
+            retrofitCall()
+//            val intent =Intent(this, MenuPageUI::class.java)
+//            startActivity(intent)
             Log.d(TAG, "메인엑티비티 가즈아")
         }
         
         next2.setOnClickListener {
             val intent =Intent(this, LastYeah::class.java)
             startActivity(intent)
+
         }
     }
 
@@ -52,9 +57,11 @@ class MainActivity : AppCompatActivity() {
         var result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if(result != null) {
             if(result.contents != null){
+
+
+
                 Toast.makeText(this,"scanned: ${result.contents} format: ${result.formatName}", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MenuPageUI::class.java)
-                startActivity(intent)
+
             }else{
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
             }
@@ -67,6 +74,34 @@ class MainActivity : AppCompatActivity() {
         }else{
             super.onActivityResult(requestCode, resultCode, data)
         }
+
+    }
+
+
+
+    private fun retrofitCall() {
+
+        Retrofit_Manager.retrofit_manger.CallMenuName("pizza",completion = {
+            responsestate,menuarrayList ->
+
+            when(responsestate){
+                RESPONS_STATE.OKAY->{
+                    Log.d(TAG, "메인엑티비티 레트로핏 성공 : $menuarrayList ")
+
+                    val intent = Intent(this,MenuPageUI::class.java)
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("menu_list",menuarrayList)
+                    intent.putExtra("array_bundle",bundle)
+
+                    startActivity(intent)
+                }
+
+                RESPONS_STATE.FAIL->{
+                    Log.d(TAG, "메인엑티비티 레트로핏실패요")
+                }
+            }
+        })
 
     }
 }

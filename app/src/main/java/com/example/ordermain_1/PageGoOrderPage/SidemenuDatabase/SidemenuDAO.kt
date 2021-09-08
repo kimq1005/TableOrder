@@ -8,8 +8,6 @@ import androidx.room.Query
 
 @Dao
 interface SidemenuDAO {
-
-
     @Insert(onConflict = REPLACE)
     fun sidemenuinsert(sidemenuEntity: SidemenuEntity)
 

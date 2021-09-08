@@ -4,7 +4,9 @@
 
     <solid android:color="#fff"/>
 
+
     <corners
+        android:color="@color/black"
         android:topLeftRadius="15dp"
         android:topRightRadius="15dp"
         />

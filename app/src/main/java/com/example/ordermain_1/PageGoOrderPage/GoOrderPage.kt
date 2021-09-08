@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.ordermain_1.DataBaseObject.DBobject
+import com.example.ordermain_1.DataBaseObject.MyTestSum
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
@@ -21,6 +23,7 @@ class GoOrderPage : AppCompatActivity() {
 
     val TAG : String = "로그"
     lateinit var realdb: RealmenuDataBase
+//    lateinit var myTestSum: ArrayList<MyTestSum>
 
 
     var realmenuList = listOf<RealmenuEntity>()
@@ -36,9 +39,12 @@ class GoOrderPage : AppCompatActivity() {
 
 
 
-        GO_Complted_Page.setOnClickListener {
-            val realmenu = RealmenuEntity(null,OrderPage_menuName_txt.text.toString(),OrderPage_resultPrice_txt.text.toString())
+        GO_Complted_Page.setOnClickListener {   //저장된거야 이건
+            val realmenu = RealmenuEntity(null,OrderPage_menuName_txt.text.toString(),OrderPage_resultPrice_txt.text.toString(),ZeroBtn.text.toString())
+//            DBobject.mysum.add(OrderPage_resultPrice_txt.toString())
             realmenuInsert(realmenu)
+//            Toast.makeText(this,"${DBobject.mysum}",Toast.LENGTH_SHORT).show()
+
             Log.d(TAG, "realmenu 데이터베이스 저장 완료 ${OrderPage_menuName_txt.text}")
         }
 
@@ -47,18 +53,32 @@ class GoOrderPage : AppCompatActivity() {
     }
 
     fun realmenucall() {
+
+//        lateinit var menu_name:String
+//        lateinit var menu_price:String
+
+
+//        if( intent.getStringExtra("menu_name")!=null){
+//            menu_name = intent.getStringExtra("menu_name").toString()
+//        }
+//
+//        if( intent.getStringExtra("menu_price")!=null){
+//            menu_price = intent.getStringExtra("menu_price").toString()
+//        }
         val menu_name = intent.getStringExtra("menu_name")
         val menu_price = intent.getStringExtra("menu_price")
-        val menu_img = getIntent().getStringExtra("menu_img")
+        Log.d(TAG, "realmenucall: ${menu_name.toString()} ")
+//        val menu_img = getIntent().getStringExtra("menu_img")
 
-        Glide.with(this).load(menu_img).into(OrderPage_menuImg_img)
-        OrderPage_menuName_txt.text= menu_name
-        OrderPage_menuPrice_txt.text  = menu_price
+//        Glide.with(this).load(menu_img).into(OrderPage_menuImg_img)
+        OrderPage_menuName_txt.text= menu_name.toString()
+        OrderPage_menuPrice_txt.text  = menu_price.toString()
         OrderPage_resultPrice_txt.text = menu_price
+
     }
 
-    fun menuBtnClick() {
 
+    fun menuBtnClick() {
 
         val price = OrderPage_menuPrice_txt.text
         val Stringprice = price.toString()
@@ -78,7 +98,6 @@ class GoOrderPage : AppCompatActivity() {
         }
 
 
-
         MinusBtn.setOnClickListener {
             for(i in 1..1){
                 sum=sum-1
@@ -90,9 +109,6 @@ class GoOrderPage : AppCompatActivity() {
 
             ZeroBtn.text = sum.toString()
             OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
-
-
-
 
 
         }

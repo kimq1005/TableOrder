@@ -36,17 +36,14 @@ class GoSideOrderPage : AppCompatActivity() {
 
 
         sidemenucall()
-
-
-
-
         menuBtnClick()
 
-        GO_SideComplted_Page.setOnClickListener {
-            val sidemenu = SidemenuEntity(null,Side_OrderPage_menuName_txt.text.toString(),Side_OrderPage_resultPrice_txt.text.toString())
+        GO_SideComplted_Page.setOnClickListener {//
+            val sidemenu = SidemenuEntity(null,Side_OrderPage_menuName_txt.text.toString(),Side_OrderPage_resultPrice_txt.text.toString(),SideZeroBtn.text.toString())
             sidemenuinsert(sidemenu)
             Toast.makeText(this,"사이드메뉴 저장됐다 질문받는다",Toast.LENGTH_SHORT).show()
             Log.d(TAG, "사이드메뉴 저장 로그다")
+
         }
 
     }
@@ -76,7 +73,7 @@ class GoSideOrderPage : AppCompatActivity() {
                 sum=sum+1
             }
 
-            ZeroBtn.text = sum.toString()
+            SideZeroBtn.text = sum.toString()
             Side_OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
 
         }
@@ -87,7 +84,7 @@ class GoSideOrderPage : AppCompatActivity() {
                 sum=sum-1
             }
 
-            ZeroBtn.text = sum.toString()
+            SideZeroBtn.text = sum.toString()
             Side_OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
 
 

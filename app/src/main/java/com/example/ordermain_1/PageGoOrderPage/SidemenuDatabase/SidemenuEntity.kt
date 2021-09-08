@@ -7,8 +7,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "sidemenu")
 data class SidemenuEntity (
     @PrimaryKey(autoGenerate = true)
-    var id : Long?,
 
+    var id : Long?,
     var sidemenuname : String? =null,
-    var sidemenuprice : String? =null
-        )
+    var sidemenuprice : String? =null,
+    var sidemenufoodscore: String? = null
+    )
