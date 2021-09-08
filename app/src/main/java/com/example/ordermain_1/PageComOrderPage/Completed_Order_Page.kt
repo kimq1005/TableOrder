@@ -55,15 +55,18 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
 
         wowOrderGobtn.setOnClickListener {
-//            startActivity(Intent(this,LastYeah::class.java))
+            startActivity(Intent(this,LastYeah::class.java))
         }
+
+
 
         realmenugetAll()
         sidemenugetAll()
         drinkmenugetAll()
 
-
     }
+
+
     private fun drinkmenugetAll(){
         var dirnkmenugetTask = (object :AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {

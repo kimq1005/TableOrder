@@ -24,6 +24,8 @@ class Com_SideMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.
         val sidemenupostion = sidemenuList[position]
         holder.Holder_sidemenuname.text = sidemenupostion.sidemenuname
         holder.Holder_sidemenuprice.text = sidemenupostion.sidemenuprice
+        holder.Holder_drinkmenuscore.text = sidemenupostion.sidemenufoodscore
+
         holder.Holder_deletebtn.setOnClickListener {
            onDeleteListener.onsidemenuDeleteListener(sidemenupostion)
         }
@@ -37,6 +39,7 @@ class Com_SideMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.
         val Holder_sidemenuname = itemView.com_menuname_txt
         val Holder_sidemenuprice = itemView.com_price_txt
         val Holder_deletebtn = itemView.com_delete_btn
+        val Holder_drinkmenuscore = itemView.com_menuscore
 
     }
 

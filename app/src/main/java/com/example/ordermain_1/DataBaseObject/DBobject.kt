@@ -11,8 +11,11 @@ import kotlinx.android.synthetic.main.activity_completed_order_page.*
 @SuppressLint("StaticFieldLeak")
 object DBobject {
 
+
+
     lateinit var realmenuList : List<RealmenuEntity>
     lateinit var realdb : RealmenuDataBase
+    lateinit var mysum : MutableList<String>
 
     fun realmenugetAll() {
         val realmenugetallTask=(object: AsyncTask<Unit, Unit, Unit>(){
@@ -44,4 +47,7 @@ object DBobject {
         }).execute()
     }
 
+
+
 }
+

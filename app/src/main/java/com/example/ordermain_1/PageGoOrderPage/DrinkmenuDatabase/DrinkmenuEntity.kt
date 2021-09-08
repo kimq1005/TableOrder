@@ -9,6 +9,6 @@ data class DrinkmenuEntity(
     var id : Long?=null,
 
     var drinkmenuname : String? =null,
-    var drinkmenuprice :  String? =null
-
+    var drinkmenuprice :  String? =null,
+    var drinkmenufoodscore : String? =null
 )

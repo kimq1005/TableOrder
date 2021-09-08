@@ -76,4 +76,18 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+
+    //레트로핏
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+    //gson 컨버터  => 제이슨데이터를 객체로 변환시켜주고, 반대로 제이슨 데이터로 변환 시켜주는 것것
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //레트로핏 로깅 인터셉터터
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.1"
+
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 }

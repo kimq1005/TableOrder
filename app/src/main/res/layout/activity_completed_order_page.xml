@@ -46,15 +46,9 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintlayout">
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,7 +75,6 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/sideorderrecyclerview"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/realmenurecyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -89,14 +82,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/drinkorderrecyclerview"
                 android:layout_below="@id/sideorderrecyclerview"
-                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:layout_marginTop="20dp"
                 android:background="@color/white"
-                android:layout_below="@+id/drinkorderrecyclerview"
+                android:layout_below="@id/drinkorderrecyclerview"
                 android:padding="10dp"
                 android:id="@+id/com_resultprice_layout"
                 android:layout_width="match_parent"
@@ -134,17 +126,17 @@
                 android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:layout_below="@+id/com_resultprice_layout"
+                android:layout_below="@id/com_resultprice_layout"
                 android:textSize="15sp"
                 android:background="@drawable/rectangle_all_corner_radius"
                 android:text="문의사항을 적어주십쇼"/>
 
-
             <LinearLayout
-                android:layout_below="@+id/people_voice"
+                android:id="@+id/Btns"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true">
+                android:layout_below="@+id/people_voice"
+                >
 
                 <Button
                     android:id="@+id/wowOrderGobtn"
@@ -165,7 +157,6 @@
                     android:layout_width="205dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-
                     />
 
 
@@ -174,11 +165,14 @@
             </LinearLayout>
 
 
-
         </RelativeLayout>
 
 
     </ScrollView>
+
+
+
+
 
 
 

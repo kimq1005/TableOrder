@@ -185,7 +185,7 @@
                 <TextView
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:id="@+id/ZeroBtn"
+                    android:id="@+id/SideZeroBtn"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:text="1"

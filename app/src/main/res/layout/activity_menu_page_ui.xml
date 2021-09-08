@@ -5,46 +5,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF"
     tools:context=".PageMenuPageUI.MenuPageUI">
 
+
+
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintlayout"
+
+        android:background="@color/white"
+        android:id="@+id/top_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+
         <ImageView
-            android:id="@+id/iv_hamburger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/back_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/ic_baseline_menu_24"
+            android:src="@drawable/leftgoarrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="15dp" />
 
 
+        <ImageView
+            android:id="@+id/orderlist_icon"
+           app:layout_constraintRight_toLeftOf="@+id/QR_icon_yeah"
+
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/orderlist_txt"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/orderlist"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/orderlist_icon"
+            android:id="@+id/orderlist_txt"
+            android:textSize="11dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/shopping_baket_txt"
+            android:text="OrderList"/>
+
 
         <ImageView
             android:id="@+id/QR_icon_yeah"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/shopping_baket_txt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_baseline_qr_code_24"
+            android:src="@drawable/qrcode"
             android:layout_marginRight="15dp" />
 
+
+
+        <TextView
+            android:id="@+id/shopping_baket_txt"
+            android:layout_marginRight="22dp"
+            android:textSize="11dp"
+            app:layout_constraintTop_toBottomOf="@+id/QR_icon_yeah"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QR"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView2"
@@ -53,7 +107,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintlayout">
+        app:layout_constraintTop_toBottomOf="@+id/top_app_bar">
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -110,7 +166,12 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-
+            <View
+                android:layout_above="@+id/maindish"
+                android:background="#EFEFEF"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+            />
 
 
 
@@ -120,11 +181,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="대표 메뉴"
+                android:text="MAIN"
                 android:textSize="25dp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_below="@+id/shopinformation"
-                android:background="@drawable/white_rectangle_top_raidus"/>
+                />
+
+
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -132,27 +196,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/maindish"
-                android:background="@drawable/menu_corner_style"
                 />
 
+
             <TextView
+                android:layout_marginTop="40dp"
                 android:id="@+id/sidedish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginTop="40dp"
                 android:padding="10dp"
-                android:text="사이드메뉴"
+                android:text="SIDE"
                 android:textSize="25dp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_below="@+id/realmenurecyclerView"
-                android:background="@drawable/white_rectangle_top_raidus"/>
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/sidemenurecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/menu_corner_style"
                 android:layout_below="@+id/sidedish"/>
 
 
@@ -163,18 +227,20 @@
                 android:gravity="center"
                 android:layout_marginTop="40dp"
                 android:padding="10dp"
-                android:text="주류 메뉴"
+                android:text="DRINK"
+                android:textStyle="bold"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:layout_below="@+id/sidemenurecyclerView"
-                android:background="@drawable/white_rectangle_top_raidus"/>
+               />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/drinkmenurecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/menu_corner_style"
-                android:layout_below="@+id/drinkdish"/>
+                android:layout_below="@+id/drinkdish"
+                android:layout_marginTop="0dp"
+                />
 
 
         </RelativeLayout>
@@ -196,7 +262,7 @@
             android:id="@+id/ohshit23"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/snowflake"
+            android:src="@drawable/addtocart"
             tools:ignore="MissingConstraints" />
 
 

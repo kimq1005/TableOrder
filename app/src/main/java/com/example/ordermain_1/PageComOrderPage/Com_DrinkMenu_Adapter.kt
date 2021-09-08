@@ -24,6 +24,7 @@ class Com_DrinkMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView
         val drinkmenupostion = drinkmenuList[position]
         holder.Holder_drinkmenuname.text = drinkmenupostion.drinkmenuname
         holder.Holder_drinkmenuprice.text = drinkmenupostion.drinkmenuprice
+        holder.Holder_drinkmenusocre.text = drinkmenupostion.drinkmenufoodscore
 
         holder.Holder_drinkmenuDeleteBtn.setOnClickListener {
             onDeleteListener.ondrinkmenuDeleteListener(drinkmenupostion)
@@ -39,6 +40,7 @@ class Com_DrinkMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView
         val Holder_drinkmenuname = itemView.com_menuname_txt
         val Holder_drinkmenuprice = itemView.com_price_txt
         val Holder_drinkmenuDeleteBtn = itemView.com_delete_btn
+        val Holder_drinkmenusocre = itemView.com_menuscore
 
     }
 
