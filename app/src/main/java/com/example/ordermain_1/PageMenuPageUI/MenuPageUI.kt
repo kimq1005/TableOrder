@@ -105,23 +105,23 @@ class MenuPageUI : AppCompatActivity() {
 //            realmenuAdapter = RealMenu_Adapter()
 //            layoutManager = GridLayoutManager(this@MenuPageUI,2,GridLayoutManager.VERTICAL,false)
 //            adapter =  realmenuAdapter
-
         }
 
         sidemenurecyclerView.apply{
+
 //            sidemenuAdapter = Sidemenu_Adapter()
 //            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL,false)
 //            adapter= sidemenuAdapter
 
             sidemenuAdapter = Sidemenu_Adapter()
             layoutManager = GridLayoutManager(this@MenuPageUI,2, GridLayoutManager.VERTICAL,false)
-            adapter= sidemenuAdapter
+            adapter = sidemenuAdapter
         }
 
        drinkmenurecyclerView.apply{
             drinkmeunAdapter = DrinkMeun_Adapter()
             layoutManager = GridLayoutManager(this@MenuPageUI,2, LinearLayoutManager.VERTICAL,false)
-            adapter= drinkmeunAdapter
+            adapter = drinkmeunAdapter
         }
 
 
@@ -148,14 +148,9 @@ class MenuPageUI : AppCompatActivity() {
         viewModel.drinkmenuList.observe(this,{drinkmenuList->
             drinkmeunAdapter.submitList(drinkmenuList)
         })
+        
 
 
     }
-
-
-
-
-
-
 
 }

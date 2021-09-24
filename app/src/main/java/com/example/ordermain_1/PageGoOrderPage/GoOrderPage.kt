@@ -68,9 +68,9 @@ class GoOrderPage : AppCompatActivity() {
         val menu_name = intent.getStringExtra("menu_name")
         val menu_price = intent.getStringExtra("menu_price")
         Log.d(TAG, "realmenucall: ${menu_name.toString()} ")
-//        val menu_img = getIntent().getStringExtra("menu_img")
 
-//        Glide.with(this).load(menu_img).into(OrderPage_menuImg_img)
+        val menu_img = getIntent().getStringExtra("menu_img")
+        Glide.with(this).load(menu_img).into(OrderPage_menuImg_img)
         OrderPage_menuName_txt.text= menu_name.toString()
         OrderPage_menuPrice_txt.text  = menu_price.toString()
         OrderPage_resultPrice_txt.text = menu_price

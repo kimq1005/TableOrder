@@ -57,9 +57,7 @@ class MainActivity : AppCompatActivity() {
         var result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if(result != null) {
             if(result.contents != null){
-
-
-
+                retrofitCall()
                 Toast.makeText(this,"scanned: ${result.contents} format: ${result.formatName}", Toast.LENGTH_SHORT).show()
 
             }else{

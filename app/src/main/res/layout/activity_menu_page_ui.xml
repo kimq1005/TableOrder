@@ -11,7 +11,6 @@
 
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:background="@color/white"
@@ -184,7 +183,7 @@
                 android:text="MAIN"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/order"
                 android:layout_below="@+id/shopinformation"
                 />
 
@@ -209,7 +208,7 @@
                 android:text="SIDE"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/order"
                 android:layout_below="@+id/realmenurecyclerView"
                 />
 
@@ -230,7 +229,7 @@
                 android:text="DRINK"
                 android:textStyle="bold"
                 android:textSize="25dp"
-                android:textColor="@color/black"
+                android:textColor="@color/order"
                 android:layout_below="@+id/sidemenurecyclerView"
                />
 

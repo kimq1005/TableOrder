@@ -45,17 +45,13 @@ class Retrofit_Manager {
 
                                 val resultItemObject = resultItem.asJsonObject
                                 val menuImageLink = resultItemObject.get("urls").asJsonObject.get("thumb").asString
-
-
-
                                 val createdAt = resultItemObject.get("created_at").asString
                                 val parser = SimpleDateFormat("yyyy-mm-dd'T'HH:mm:ss")
                                 val formatter = SimpleDateFormat("yyyy")
-
                                 val outputDateString = formatter.format(parser.parse(createdAt))
-
                                 val menuinfo = retrofitItem(menuImageLink,outputDateString,outputDateString)
                                 menuArray.add(menuinfo)
+
                             }
 
                             completion(RESPONS_STATE.OKAY,menuArray)

@@ -33,7 +33,6 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
         return RealMenuViewHolder(view)
 
 
-
     }
 
     override fun onBindViewHolder(holder: RealMenuViewHolder, position: Int) {
@@ -63,15 +62,11 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
 
 //                bundle.putSerializable("realmenu_list",realmenulist)
 //                intent.putExtra("array_bundle",bundle)
-
-
                 intent.putExtra("menu_img",itemView.test_menu_image.toString())
                 intent.putExtra("menu_name",itemView.test_menu_name.text)
                 intent.putExtra("menu_price",itemView.test_menu_price.text)
                 itemView.context.startActivity(intent)
-
             }
-
         }
 
 
