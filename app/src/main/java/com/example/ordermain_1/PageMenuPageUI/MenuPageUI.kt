@@ -54,6 +54,15 @@ class MenuPageUI : AppCompatActivity() {
                     integrator.initiateScan()
                 }
 
+                orderlist_icon.setOnClickListener {
+                    val intent = Intent(this,Completed_Order_Page::class.java)
+                    startActivity(intent)
+                }
+
+                back_icon.setOnClickListener {
+                    onBackPressed()
+                }
+
                 //if(장바구니 담기 버튼이 클릭되었다면){데이터 절로 보내 ㅇㅋ}
 
                 initMenuPageUIAdapter()
@@ -85,15 +94,11 @@ class MenuPageUI : AppCompatActivity() {
             })
         }
 
-
-
         shopinformation.apply {
             menuInformationRecyclerViewAdapter = MenuInformationRecyclerViewAdapter()
             layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL, false)
             adapter = menuInformationRecyclerViewAdapter
         }
-
-
 
         realmenurecyclerView.apply{
 
@@ -102,9 +107,6 @@ class MenuPageUI : AppCompatActivity() {
             layoutManager = GridLayoutManager(this@MenuPageUI,2,GridLayoutManager.VERTICAL,false)
             adapter =  realmenuAdapter
 
-//            realmenuAdapter = RealMenu_Adapter()
-//            layoutManager = GridLayoutManager(this@MenuPageUI,2,GridLayoutManager.VERTICAL,false)
-//            adapter =  realmenuAdapter
         }
 
         sidemenurecyclerView.apply{

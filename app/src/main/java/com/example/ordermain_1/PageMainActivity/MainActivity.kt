@@ -12,10 +12,12 @@ import com.example.ordermain_1.rerofit.Retrofit_Manager
 import com.example.ordermain_1.rerofit.util.RESPONS_STATE
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
 
     val TAG : String = "로그"
+//    private val plusList = ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,13 +80,38 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun retrofitCall() {
+//        Retrofit_Manager.retrofit_manger.CallMenuName(searchString = "cat",completion = {
+//                responsestate,menuarrayList,sidearrayList ->
+//
+//            when(responsestate){
+//                RESPONS_STATE.OKAY->{
+//
+//                    Log.d(TAG, "retrofitCall:$menuarrayList")
+//
+////                    val intent = Intent(this,MenuPageUI::class.java)
+////                    val bundle = Bundle()
+////
+////                    bundle.putSerializable("side_list",menuarrayList)
+////                    intent.putExtra("sdfafray_bundle",bundle)
+////
+////                    startActivity(intent)
+//
+//                }
+//
+//                RESPONS_STATE.FAIL->{
+//                    Log.d(TAG, "메인엑티비티 레트로핏실패요")
+//                }
+//            }
+//        })
 
-        Retrofit_Manager.retrofit_manger.CallMenuName("pizza",completion = {
-            responsestate,menuarrayList ->
+        Retrofit_Manager.retrofit_manger.CallMenuName(searchString = "pizza", completion = {
+            responsestate,menuarrayList,sidearrayList ->
+
 
             when(responsestate){
                 RESPONS_STATE.OKAY->{
                     Log.d(TAG, "메인엑티비티 레트로핏 성공 : $menuarrayList ")
+
 
                     val intent = Intent(this,MenuPageUI::class.java)
                     val bundle = Bundle()

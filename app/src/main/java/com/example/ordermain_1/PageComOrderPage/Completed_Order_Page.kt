@@ -25,6 +25,7 @@ import com.example.ordermain_1.PageMenuPageUI.fakeComOrder
 import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
+import kotlinx.android.synthetic.main.item_layout_com_order.*
 
 
 @SuppressLint("StaticFieldLeak")
@@ -42,11 +43,14 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     lateinit var drinkdb : DrinkmenuDataBase
     lateinit var lastdb : LastDataBase
 
+
+
     private lateinit var viewModel : MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completed_order_page)
+
 
         realdb = RealmenuDataBase.getinstance(this)!!
         sidedb = SidemenuDataBase.getinstance(this)!!
@@ -65,6 +69,7 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         drinkmenugetAll()
 
     }
+
 
 
     private fun drinkmenugetAll(){

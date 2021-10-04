@@ -32,6 +32,10 @@ class GoSideOrderPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go_side_order_page)
 
+        side_back_icon.setOnClickListener {
+            onBackPressed()
+        }
+
         sidedb = SidemenuDataBase.getinstance(this)!!
 
 

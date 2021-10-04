@@ -30,6 +30,10 @@ class GoDrinkOrderPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_go_drink_order_page)
 
+        drink_back_icon.setOnClickListener {
+            onBackPressed()
+        }
+
         drinkdb = DrinkmenuDataBase.getinstance(this)!!
 
         drinkmenucall()
@@ -55,6 +59,8 @@ class GoDrinkOrderPage : AppCompatActivity() {
             Log.d(TAG, "sidemenu 데이터베이스 저장 완료 ${Drink_OrderPage_menuName_txt.text} ")
 
         }
+
+
 
         
         menuBtnClick()

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ordermain_1.DataBaseObject.MyTestSum
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.OnDeleteListener
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.R
@@ -16,6 +17,7 @@ import kotlin.coroutines.coroutineContext
 class Com_RealMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.Adapter<Com_RealMenu_Adapter.ComOrderViewHolder>() {
 
     lateinit var realmenuList : List<RealmenuEntity>
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComOrderViewHolder {
@@ -30,6 +32,7 @@ class Com_RealMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.
         holder.Holder_realmenuname.text = realmenupostion.realmenuname
         holder.Holder_realmenuprice.text = realmenupostion.realmenuprice
         holder.Holder_realmenusocre.text = realmenupostion.realmenufoodscore
+
         holder.Holder_realmenudelete.setOnClickListener {
             onDeleteListener.onrealmenuDeleteListner(realmenupostion)
         }

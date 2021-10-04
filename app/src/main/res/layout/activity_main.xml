@@ -8,22 +8,22 @@
     tools:context=".PageMainActivity.MainActivity">
 
 
-        <ImageView
-            android:visibility="invisible"
-            android:id="@+id/scannedBitmap"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/mainlogo"
-            android:layout_marginTop="170dp"
-            android:layout_centerHorizontal="true"
-            />
+<!--        <ImageView-->
+<!--            android:visibility="invisible"-->
+<!--            android:id="@+id/scannedBitmap"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:src="@drawable/mainlogo"-->
+<!--            android:layout_marginTop="170dp"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            />-->
 
         <TextView
-
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/myfont"
             android:textStyle="italic"
             android:textColor="@color/order"
             android:textSize="30sp"
-            android:layout_below="@+id/scannedBitmap"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,13 +39,13 @@
 
 
                 <TextView
-                    android:textColor="@color/white"
                     android:id="@+id/maintext1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="-QR코드로 카메라를 인식해 주십시오-"
                     android:gravity="center"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <View
                     android:layout_marginTop="2dp"
@@ -77,7 +77,6 @@
 
 
                         <Button
-
                             android:id="@+id/next2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

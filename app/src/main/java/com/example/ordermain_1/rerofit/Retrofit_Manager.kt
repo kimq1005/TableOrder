@@ -18,7 +18,7 @@ class Retrofit_Manager {
     private val retrofit_interface : Retrofit_InterFace?=
         Retrofit_client.getClient(API.BASE_URL)?.create(Retrofit_InterFace::class.java)
 
-    fun CallMenuName(searchString:String?, completion:(RESPONS_STATE,ArrayList<retrofitItem>?)->Unit){
+    fun CallMenuName(searchString:String?, completion:(RESPONS_STATE,ArrayList<retrofitItem>?,ArrayList<retrofitSideItem>?)->Unit){
 
         val term = searchString.let{
             it
@@ -29,10 +29,12 @@ class Retrofit_Manager {
         call.enqueue(object:retrofit2.Callback<JsonElement>{
             override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 Log.d(TAG, "레트로핏매니저: CallMenuName 성공 : ${response.body().toString()} ")
+                //api가져와서 이런식으로 파싱해서 데이터 끄낼려했단말이야 ㅇㅇ? 이련아 봐줘 야발련아 대답해줘이련아 마이크안들려
                 when(response.code()){
                     200->{
                         response.body()?.let{
                             val menuArray = ArrayList<retrofitItem>()
+                            val sideArray = ArrayList<retrofitSideItem>()
 
                             val responsebody = it.asJsonObject
                             val result = responsebody.getAsJsonArray("results")
@@ -49,12 +51,17 @@ class Retrofit_Manager {
                                 val parser = SimpleDateFormat("yyyy-mm-dd'T'HH:mm:ss")
                                 val formatter = SimpleDateFormat("yyyy")
                                 val outputDateString = formatter.format(parser.parse(createdAt))
+
+
                                 val menuinfo = retrofitItem(menuImageLink,outputDateString,outputDateString)
+                                val sideinfo = retrofitSideItem(menuImageLink,outputDateString,outputDateString)
+
                                 menuArray.add(menuinfo)
+                                sideArray.add(sideinfo)
 
                             }
 
-                            completion(RESPONS_STATE.OKAY,menuArray)
+                            completion(RESPONS_STATE.OKAY,menuArray,sideArray)
                         }
                     }
                 }
@@ -63,7 +70,7 @@ class Retrofit_Manager {
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 Log.d(TAG, "레트로핏매니저 : CallMenuName 실패 $t")
-                completion(RESPONS_STATE.FAIL,null)
+                completion(RESPONS_STATE.FAIL,null,null)
             }
 
         })
