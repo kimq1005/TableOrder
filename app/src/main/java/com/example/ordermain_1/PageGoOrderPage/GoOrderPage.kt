@@ -16,6 +16,7 @@ import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.*
+import kotlinx.android.synthetic.main.layout_realmenu_item.view.*
 
 
 @SuppressLint("StaticFieldLeak")
@@ -44,29 +45,30 @@ class GoOrderPage : AppCompatActivity() {
         }
 
 
-
         GO_Complted_Page.setOnClickListener { //저장된거야 이건
             
 
-            
             val realmenu = RealmenuEntity(null,OrderPage_menuName_txt.text.toString(),OrderPage_resultPrice_txt.text.toString(),ZeroBtn.text.toString())
-//            DBobject.mysum.add(OrderPage_resultPrice_txt.toString())
             realmenuInsert(realmenu)
-//            Toast.makeText(this,"${DBobject.mysum}",Toast.LENGTH_SHORT).show()
 
-
-
+//            GoCompleteActivity_with_Sum()
             Log.d(TAG, "realmenu 데이터베이스 저장 완료 ${OrderPage_menuName_txt.text}")
+            Log.d(TAG, "onCreate:$realmenu")
         }
 
         menuBtnClick()
-        
-        testSUm()
+
 
     }
 
-    private fun testSUm() {
-       
+    private fun GoCompleteActivity_with_Sum() {
+
+        Toast.makeText(this,"장바구니 담기 완료",Toast.LENGTH_SHORT).show()
+        val pricewowsum = OrderPage_resultPrice_txt.text
+        val intent = Intent(this,Completed_Order_Page::class.java)
+        intent.putExtra("test_menu_pricesum",pricewowsum)
+        startActivity(intent)
+
     }
 
     fun realmenucall() {
@@ -92,9 +94,7 @@ class GoOrderPage : AppCompatActivity() {
         OrderPage_menuName_txt.text= menu_name.toString()
         OrderPage_menuPrice_txt.text  = menu_price.toString()
         OrderPage_resultPrice_txt.text = menu_price.toString()
-        
-        
-        
+
 
     }
 
@@ -129,7 +129,10 @@ class GoOrderPage : AppCompatActivity() {
             }
 
             ZeroBtn.text = sum.toString()
+
             OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
+
+
 
 
         }
@@ -160,6 +163,7 @@ class GoOrderPage : AppCompatActivity() {
 
         }).execute()
     }
+
 
 
 

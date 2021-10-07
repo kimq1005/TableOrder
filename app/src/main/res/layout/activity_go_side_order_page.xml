@@ -111,6 +111,7 @@
                 />
 
             <TextView
+                android:fontFamily="@font/osw"
                 android:id="@+id/Side_OrderPage_menuName_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -306,12 +307,15 @@
             </LinearLayout>
 
 
-            <Button
+            <TextView
                 android:id="@+id/GO_SideComplted_Page"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/order"
-                style="?attr/materialButtonOutlinedStyle"
+                android:layout_height="45dp"
+                android:background="@color/order"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/osw"
+                android:textSize="20sp"
                 android:layout_alignParentBottom="true"
                 android:text="장바구니에 담기" />
 

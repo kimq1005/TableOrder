@@ -27,6 +27,26 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
         sidemenuItemList?.let{
             holder.bind(it[position])
         }
+
+//        holder.itemView.setOnClickListener {
+//            val intent = Intent(holder.itemView.context, GoSideOrderPage::class.java)
+//            intent.putExtra("side_menu_img",holder.itemView.test_menu_image.toString())
+//            intent.putExtra("side_menu_name", holder.itemView.test_menu_name.text)
+//            intent.putExtra("side_menu_price", holder.itemView.test_menu_price.text)
+//            holder.itemView.context.startActivity(intent)
+//        }
+
+        //        holder.itemView.setOnClickListener {
+//            val intent = Intent(holder.itemView.context, GoOrderPage::class.java)
+//
+//            intent.putExtra("menu_img",menuList[position].menuimage)
+//            intent.putExtra("menu_name",holder.itemView.test_menu_name.text)
+//            intent.putExtra("menu_price",holder.itemView.test_menu_price.text)
+//
+//            holder.itemView.context.startActivity(intent)
+//
+//
+//        }
     }
 
     override fun getItemCount(): Int {

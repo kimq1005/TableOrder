@@ -112,6 +112,7 @@
                 />
 
             <TextView
+                android:fontFamily="@font/myfont"
                 android:id="@+id/Drink_OrderPage_menuName_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -305,13 +306,16 @@
 
 
 
-            <Button
+            <TextView
                 android:id="@+id/GO_Drink_Complted_Page"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
-                android:textColor="@color/black"
-                style="?attr/materialButtonOutlinedStyle"
+                android:background="@color/order"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/myfont"
+                android:textSize="20sp"
                 android:text="장바구니에 담기" />
 
 

@@ -51,6 +51,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completed_order_page)
 
+        test()
+
 
         realdb = RealmenuDataBase.getinstance(this)!!
         sidedb = SidemenuDataBase.getinstance(this)!!
@@ -70,7 +72,10 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
     }
 
-
+    private fun test(){
+        val realmenu_price = intent.getStringExtra("test_menu_pricesum")
+        Log.d(TAG, "test: $realmenu_price")
+    }
 
     private fun drinkmenugetAll(){
         var dirnkmenugetTask = (object :AsyncTask<Unit,Unit,Unit>(){

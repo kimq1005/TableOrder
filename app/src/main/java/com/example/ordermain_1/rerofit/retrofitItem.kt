@@ -1,5 +1,6 @@
 package com.example.ordermain_1.rerofit
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class retrofitItem (
@@ -9,15 +10,21 @@ data class retrofitItem (
         ):Serializable
 
 
-data class retrofitSideItem(
-    var sidemenuimage : String?,
-    var sidemenuname : String?,
-    var sidemenuprice : String?
-):Serializable
+data class TokenCallData(
+    @SerializedName("username")
+    var username :String?,
+
+    @SerializedName("storeId")
+    var storeId : Int?,
+
+    @SerializedName("tableId")
+    var tableId : Int?
+)
 
 
-data class retrofitDrinkItem(
-    var drinkmenuimage : String?,
-    var drinkmenuname : String?,
-    var drinkmenuprice : String?
-):Serializable
+data class PostResult(
+    var status :Int?,
+    var message : String?,
+    var accessToken : String?,
+    var expiredAt : String?
+)

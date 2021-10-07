@@ -20,8 +20,8 @@ class MenuPageUI : AppCompatActivity() {
             private lateinit var menulist : ArrayList<retrofitItem>
 
 
-            private lateinit var viewPagerAdapter : ViewPagerAdapter
-            private lateinit var menuInformationRecyclerViewAdapter : MenuInformationRecyclerViewAdapter
+//            private lateinit var viewPagerAdapter : ViewPagerAdapter
+//            private lateinit var menuInformationRecyclerViewAdapter : MenuInformationRecyclerViewAdapter
             private lateinit var realmenuAdapter: RealMenu_Adapter
             private lateinit var sidemenuAdapter: Sidemenu_Adapter
             private lateinit var drinkmeunAdapter: DrinkMeun_Adapter
@@ -35,7 +35,7 @@ class MenuPageUI : AppCompatActivity() {
 
 
                 viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-                viewModel.setBannerItems(fakeBannerItemList)
+//                viewModel.setBannerItems(fakeBannerItemList)
                 viewModel.setmenuinformationItems(fakeMenuinformation)
                 viewModel.setrealmenuItems(fakeRealMenu)
                 viewModel.setsidemenuItems(fakeSideMenu)
@@ -83,28 +83,28 @@ class MenuPageUI : AppCompatActivity() {
         menulist = bundle?.getSerializable("menu_list") as ArrayList<retrofitItem>
 
 
-        viewPager2.apply {
-            viewPagerAdapter = ViewPagerAdapter(this@MenuPageUI)
-            adapter = viewPagerAdapter
-            registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    tv_page_number.text = "${position+1}"
-                }
-            })
-        }
-
-        shopinformation.apply {
-            menuInformationRecyclerViewAdapter = MenuInformationRecyclerViewAdapter()
-            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL, false)
-            adapter = menuInformationRecyclerViewAdapter
-        }
+//        viewPager2.apply {
+//            viewPagerAdapter = ViewPagerAdapter(this@MenuPageUI)
+//            adapter = viewPagerAdapter
+//            registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+//                override fun onPageSelected(position: Int) {
+//                    super.onPageSelected(position)
+//                    tv_page_number.text = "${position+1}"
+//                }
+//            })
+//        }
+//
+//        shopinformation.apply {
+//            menuInformationRecyclerViewAdapter = MenuInformationRecyclerViewAdapter()
+//            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL, false)
+//            adapter = menuInformationRecyclerViewAdapter
+//        }
 
         realmenurecyclerView.apply{
 
             realmenuAdapter = RealMenu_Adapter()
             realmenuAdapter.submitList(menulist)
-            layoutManager = GridLayoutManager(this@MenuPageUI,2,GridLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this@MenuPageUI,1,GridLayoutManager.VERTICAL,false)
             adapter =  realmenuAdapter
 
         }
@@ -116,13 +116,13 @@ class MenuPageUI : AppCompatActivity() {
 //            adapter= sidemenuAdapter
 
             sidemenuAdapter = Sidemenu_Adapter()
-            layoutManager = GridLayoutManager(this@MenuPageUI,2, GridLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this@MenuPageUI,1, GridLayoutManager.VERTICAL,false)
             adapter = sidemenuAdapter
         }
 
        drinkmenurecyclerView.apply{
             drinkmeunAdapter = DrinkMeun_Adapter()
-            layoutManager = GridLayoutManager(this@MenuPageUI,2, LinearLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this@MenuPageUI,1, LinearLayoutManager.VERTICAL,false)
             adapter = drinkmeunAdapter
         }
 
@@ -131,13 +131,13 @@ class MenuPageUI : AppCompatActivity() {
 
 
     private fun initMenuPageUIViewModel() {
-        viewModel.bannerItemList.observe(this, Observer { bannerItemList ->
-            viewPagerAdapter.submitList(bannerItemList)
-        })
-
-        viewModel.menuinformationitemList.observe(this, { menuinformationitemList ->
-            menuInformationRecyclerViewAdapter.submitList(menuinformationitemList)
-        })
+//        viewModel.bannerItemList.observe(this, Observer { bannerItemList ->
+//            viewPagerAdapter.submitList(bannerItemList)
+//        })
+//
+//        viewModel.menuinformationitemList.observe(this, { menuinformationitemList ->
+//            menuInformationRecyclerViewAdapter.submitList(menuinformationitemList)
+//        })
 
 //        viewModel.realmenuList.observe(this, { realmenuList ->
 //            realmenuAdapter.submitList(menulist)

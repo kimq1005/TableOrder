@@ -1,5 +1,6 @@
 package com.example.ordermain_1.rerofit
 
+import android.graphics.PostProcessor
 import android.util.Log
 import com.example.ordermain_1.rerofit.util.API
 import com.example.ordermain_1.rerofit.util.Log.TAG
@@ -18,7 +19,10 @@ class Retrofit_Manager {
     private val retrofit_interface : Retrofit_InterFace?=
         Retrofit_client.getClient(API.BASE_URL)?.create(Retrofit_InterFace::class.java)
 
-    fun CallMenuName(searchString:String?, completion:(RESPONS_STATE,ArrayList<retrofitItem>?,ArrayList<retrofitSideItem>?)->Unit){
+    private val post_retrofit_interface : Retrofit_InterFace? =
+        Retrofit_client.getClient(API.BUMS_BASE_URL)?.create(Retrofit_InterFace::class.java)
+
+    fun CallMenuName(searchString:String?, completion:(RESPONS_STATE,ArrayList<retrofitItem>?)->Unit){
 
         val term = searchString.let{
             it
@@ -34,7 +38,6 @@ class Retrofit_Manager {
                     200->{
                         response.body()?.let{
                             val menuArray = ArrayList<retrofitItem>()
-                            val sideArray = ArrayList<retrofitSideItem>()
 
                             val responsebody = it.asJsonObject
                             val result = responsebody.getAsJsonArray("results")
@@ -54,14 +57,14 @@ class Retrofit_Manager {
 
 
                                 val menuinfo = retrofitItem(menuImageLink,outputDateString,outputDateString)
-                                val sideinfo = retrofitSideItem(menuImageLink,outputDateString,outputDateString)
+
 
                                 menuArray.add(menuinfo)
-                                sideArray.add(sideinfo)
+
 
                             }
 
-                            completion(RESPONS_STATE.OKAY,menuArray,sideArray)
+                            completion(RESPONS_STATE.OKAY,menuArray)
                         }
                     }
                 }
@@ -70,9 +73,25 @@ class Retrofit_Manager {
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 Log.d(TAG, "레트로핏매니저 : CallMenuName 실패 $t")
-                completion(RESPONS_STATE.FAIL,null,null)
+                completion(RESPONS_STATE.FAIL,null)
             }
 
         })
     }
+
+//    fun PostToken(tokenCallData: TokenCallData){
+//        val call = post_retrofit_interface?.CallPost(tokenCallData)
+//
+//        call?.enqueue(object :retrofit2.Callback<PostResult>{
+//            override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
+//                Log.d(TAG, "onResponse:${response.body()}")
+//            }
+//
+//            override fun onFailure(call: Call<PostResult>, t: Throwable) {
+//                Log.d(TAG, "onFailure: $t")
+//            }
+//
+//        })
+//
+//    }
 }

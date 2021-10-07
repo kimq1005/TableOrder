@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0F5FB"
     tools:context=".PageMainActivity.MainActivity">
 
 
@@ -20,14 +21,14 @@
 
         <TextView
             android:layout_centerVertical="true"
-            android:fontFamily="@font/myfont"
-            android:textStyle="italic"
-            android:textColor="@color/order"
-            android:textSize="30sp"
+            android:fontFamily="@font/osw"
+            android:textStyle="bold"
+            android:textColor="#2D3038"
+            android:textSize="40sp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Call me Your Order"/>
+            android:text="ORDER"/>
 
 
         <LinearLayout
@@ -39,6 +40,8 @@
 
 
                 <TextView
+
+                    android:visibility="invisible"
                     android:id="@+id/maintext1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,6 +51,7 @@
                     android:layout_marginBottom="5dp"/>
 
                 <View
+                    android:visibility="invisible"
                     android:layout_marginTop="2dp"
                     android:background="@color/black"
                     android:layout_width="match_parent"
@@ -61,6 +65,7 @@
                     android:orientation="horizontal">
 
                         <Button
+                            android:visibility="invisible"
                             android:id="@+id/next"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -69,14 +74,16 @@
                             style="?attr/materialButtonOutlinedStyle"/>
 
                         <ImageView
+                            android:visibility="invisible"
                             android:id="@+id/main_camerlogo"
-                            android:layout_width="70dp"
-                            android:layout_height="80dp"
+                            android:layout_width="60dp"
+                            android:layout_height="70dp"
                             android:src="@drawable/cameralogo"
                             />
 
 
                         <Button
+                            android:visibility="invisible"
                             android:id="@+id/next2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

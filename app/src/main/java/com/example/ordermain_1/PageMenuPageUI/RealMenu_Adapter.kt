@@ -52,6 +52,8 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
 
         }
 
+
+
     }
 
     override fun getItemCount(): Int {
