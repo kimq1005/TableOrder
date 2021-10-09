@@ -12,7 +12,7 @@ interface Retrofit_InterFace {
 
 
     @POST(API.POST_URL)
-    fun sibal(@Body tabledata:TableData) : Call<Friend>
+    fun MenuPost(@Body tabledata:TableData) : Call<Friend>
 
     @GET(API.Menu_Url)
     fun OrderHeaderPosts(@Header("Authorization")

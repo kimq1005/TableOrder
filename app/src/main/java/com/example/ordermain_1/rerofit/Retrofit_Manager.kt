@@ -89,7 +89,7 @@ class Retrofit_Manager {
 
         saveToken = SaveToken(App.instance)
 
-        val call3 = httpCall?.sibal(tableData)
+        val call3 = httpCall?.MenuPost(tableData)
 
         call3?.enqueue(object:retrofit2.Callback<Friend>{
             override fun onResponse(call: Call<Friend>, response: Response<Friend>) {
@@ -112,7 +112,7 @@ class Retrofit_Manager {
     }
 
 
-    fun HeaderTokenRequest(completion:(ArrayList<MainMenulist>?,ArrayList<SideMenulist>?)->Unit){
+    fun HeaderTokenRequest(completion:(RESPONS_STATE,ArrayList<MainMenulist>?,ArrayList<SideMenulist>?)->Unit){
         val call = httpCall?.OrderHeaderPosts("Bearer ${saveToken.returnAccessToken()}")
 
         call?.enqueue(object:retrofit2.Callback<JsonElement>{
@@ -180,7 +180,7 @@ class Retrofit_Manager {
 
 
                             }
-                            completion(mainmenulist,sidemenulist)
+                            completion(RESPONS_STATE.OKAY,mainmenulist,sidemenulist)
 
 
                         }
@@ -189,7 +189,7 @@ class Retrofit_Manager {
             }
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
-
+                completion(RESPONS_STATE.FAIL,null,null)
             }
 
         })

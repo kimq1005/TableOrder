@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ordermain_1.*
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
+import com.example.ordermain_1.rerofit.MainMenulist
+import com.example.ordermain_1.rerofit.SideMenulist
 import com.example.ordermain_1.rerofit.retrofitItem
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
@@ -17,7 +19,8 @@ import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 class MenuPageUI : AppCompatActivity() {
 
             //Item
-            private lateinit var menulist : ArrayList<retrofitItem>
+            private lateinit var menulist : ArrayList<MainMenulist>
+            private lateinit var sidemenulist : ArrayList<SideMenulist>
 
 
 //            private lateinit var viewPagerAdapter : ViewPagerAdapter
@@ -80,7 +83,9 @@ class MenuPageUI : AppCompatActivity() {
     private fun initMenuPageUIAdapter() {
 
         val bundle = intent.getBundleExtra("array_bundle")
-        menulist = bundle?.getSerializable("menu_list") as ArrayList<retrofitItem>
+        menulist = bundle?.getSerializable("menu_list") as ArrayList<MainMenulist>
+        sidemenulist = bundle?.getSerializable("side_menu_list") as ArrayList<SideMenulist>
+
 
 
 //        viewPager2.apply {

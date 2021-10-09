@@ -31,55 +31,43 @@ class MainActivity : AppCompatActivity() {
 
         menucall()
 
-
-
 //        Handler().postDelayed({
 //            fadeanimation(this)
 //        }, 1000)
 
-
-
-
-        main_camerlogo.setOnClickListener {
-//            QRscan()
-        }
-
-        next.setOnClickListener {
-//            retrofitCall()
-//            val intent =Intent(this, MenuPageUI::class.java)
-//            startActivity(intent)
-//            Log.d(TAG, "메인엑티비티 가즈아")
-        }
-        
-//        next2.setOnClickListener {
-////            val intent =Intent(this, LastYeah::class.java)
-////            startActivity(intent)
-//            postCall()
-//
-//        }
     }
 
     private fun menucall() {
         Retrofit_Manager.retrofit_manger.HeaderTokenRequest(completion = {
-            menuarraylist, sidearraylist->
+            responsestate,menuarraylist, sidearraylist->
 
             val menulogd = menuarraylist
             Log.d(TAG, "menucall: $menulogd \n $sidearraylist")
+
+            when(responsestate){
+                RESPONS_STATE.OKAY->{
+
+                    val intent = Intent(this,MenuPageUI::class.java)
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("menu_list",menuarraylist)
+                    bundle.putSerializable("side_menu_list",sidearraylist)
+                    intent.putExtra("array_bundle",bundle)
+
+                    startActivity(intent)
+
+                }
+
+                RESPONS_STATE.FAIL->{
+                    Log.d(TAG, "menucall: 으악실패다")
+                }
+            }
         })
     }
 
     fun fadeanimation(activity: Activity) {
 
-//        val integrator = IntentIntegrator(this)
-//        integrator.setPrompt("QR 코드 스캔해요")  //프롬프트
-//        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)   //원하는 규격
-//        integrator.setCameraId(0)   //0은 후면, 1은 전면카메라
-//        integrator.setBeepEnabled(false)    //소리낼지말지
-//        integrator.setBarcodeImageEnabled(true) //이미지
-//        integrator.initiateScan()
-//        val intent =Intent(this, MenuPageUI::class.java)
-//        startActivity(intent)
-//        retrofitCall()
+
         QRscan()
 
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
@@ -110,11 +98,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
             }
 
-
-//            if(result.barcodeImagePath !=null){
-//                val bitmap = BitmapFactory.decodeFile(result.barcodeImagePath)
-//                scannedBitmap.setImageBitmap(bitmap)
-//            }
         }else{
             super.onActivityResult(requestCode, resultCode, data)
         }

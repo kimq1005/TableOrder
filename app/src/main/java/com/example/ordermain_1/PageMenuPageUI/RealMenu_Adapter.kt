@@ -16,6 +16,7 @@ import com.example.ordermain_1.App
 
 import com.example.ordermain_1.R
 import com.example.ordermain_1.PageGoOrderPage.GoOrderPage
+import com.example.ordermain_1.rerofit.MainMenulist
 import com.example.ordermain_1.rerofit.retrofitItem
 import com.example.ordermain_1.rerofit.util.Log.TAG
 import kotlinx.android.synthetic.main.item_layout_realmenu.view.*
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.layout_realmenu_item.view.*
 class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>() {
 
 //    private var realmenuItemList : List<RealMenuItem>?=null
-    private var menuList  = ArrayList<retrofitItem>()
+    private var menuList  = ArrayList<MainMenulist>()
 
 
 
@@ -66,7 +67,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
         private val menuImg : ImageView = itemView.test_menu_image
 
 
-        fun bind(realmeunuitem: retrofitItem){
+        fun bind(realmeunuitem: MainMenulist){
             Glide.with(itemView).load(realmeunuitem.menuimage).into(menuImg)
             itemView.test_menu_name.text = realmeunuitem.menuname
             itemView.test_menu_price.text = realmeunuitem.menuprice
@@ -75,7 +76,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
     }
 
 
-    fun submitList(list:ArrayList<retrofitItem>){
+    fun submitList(list:ArrayList<MainMenulist>){
         menuList = list
         notifyDataSetChanged()
     }

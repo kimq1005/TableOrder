@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ordermain_1.PageGoOrderPage.GoSideOrderPage
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.MainMenulist
+import com.example.ordermain_1.rerofit.SideMenulist
 import kotlinx.android.synthetic.main.item_layout_sidemenu.view.*
 import kotlinx.android.synthetic.main.layout_realmenu_item.view.*
 
 
 class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>() {
 
-    private var sidemenuItemList : List<SidemenuItem>?=null
+    private var sidemenulist = ArrayList<SideMenulist>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SideMenuViewHolder {
         return SideMenuViewHolder(
@@ -24,45 +26,23 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
     }
 
     override fun onBindViewHolder(holder: SideMenuViewHolder, position: Int) {
-        sidemenuItemList?.let{
-            holder.bind(it[position])
-        }
 
-//        holder.itemView.setOnClickListener {
-//            val intent = Intent(holder.itemView.context, GoSideOrderPage::class.java)
-//            intent.putExtra("side_menu_img",holder.itemView.test_menu_image.toString())
-//            intent.putExtra("side_menu_name", holder.itemView.test_menu_name.text)
-//            intent.putExtra("side_menu_price", holder.itemView.test_menu_price.text)
-//            holder.itemView.context.startActivity(intent)
-//        }
-
-        //        holder.itemView.setOnClickListener {
-//            val intent = Intent(holder.itemView.context, GoOrderPage::class.java)
-//
-//            intent.putExtra("menu_img",menuList[position].menuimage)
-//            intent.putExtra("menu_name",holder.itemView.test_menu_name.text)
-//            intent.putExtra("menu_price",holder.itemView.test_menu_price.text)
-//
-//            holder.itemView.context.startActivity(intent)
-//
-//
-//        }
     }
 
     override fun getItemCount(): Int {
-        return sidemenuItemList?.size ?:0
+        return sidemenulist.size
     }
 
     class SideMenuViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
-        init {
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, GoSideOrderPage::class.java)
-                intent.putExtra("side_menu_img",itemView.test_menu_image.toString())
-                intent.putExtra("side_menu_name",itemView.test_menu_name.text)
-                intent.putExtra("side_menu_price",itemView.test_menu_price.text)
-                itemView.context.startActivity(intent)
-            }
-        }
+//        init {
+//            itemView.setOnClickListener {
+//                val intent = Intent(itemView.context, GoSideOrderPage::class.java)
+//                intent.putExtra("side_menu_img",itemView.test_menu_image.toString())
+//                intent.putExtra("side_menu_name",itemView.test_menu_name.text)
+//                intent.putExtra("side_menu_price",itemView.test_menu_price.text)
+//                itemView.context.startActivity(intent)
+//            }
+//        }
 
 
 
@@ -73,8 +53,7 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
 
             Glide.with(itemView).load(sidemeunuitem.sidemenuimg).into(sidemenuImg)
             itemView.test_menu_name.text = sidemeunuitem.sidemenuname
-//            itemView.side_menuinformation_txt.text = sidemeunuitem.sidemenuinformation
-            itemView.test_menu_price.text = sidemeunuitem.sidemenuprice.toString()
+            itemView.test_menu_price.text = sidemeunuitem.sidemenuprice
 
         }
 
@@ -82,8 +61,8 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
     }
 
 
-    fun submitList(list:List<SidemenuItem>?){
-        sidemenuItemList = list
+    fun submitList(list:ArrayList<SideMenulist>){
+        sidemenulist = list
         notifyDataSetChanged()
     }
 
