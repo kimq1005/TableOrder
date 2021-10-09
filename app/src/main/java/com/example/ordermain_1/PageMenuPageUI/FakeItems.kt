@@ -76,7 +76,7 @@ val fakeSideMenu = listOf(
             R.drawable.food1,
                 "셀러드",
                 "요러요한 셀러드입니다",
-                3200
+                3000
         ),
 
         SidemenuItem(
