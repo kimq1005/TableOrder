@@ -15,6 +15,8 @@ interface RealmenuDAO {
     @Query("SELECT * FROM realmenu")
     fun realmenugetAll() : List<RealmenuEntity>
 
+
+
     @Delete
     fun realmenuDelete(realmenuEntity: RealmenuEntity)
 }

@@ -12,7 +12,7 @@ import com.example.ordermain_1.PageLastYeah.LastYeah
 import com.example.ordermain_1.PageMenuPageUI.MenuPageUI
 import com.example.ordermain_1.R
 import com.example.ordermain_1.rerofit.Retrofit_Manager
-import com.example.ordermain_1.rerofit.TokenCallData
+import com.example.ordermain_1.rerofit.TableData
 import com.example.ordermain_1.rerofit.util.RESPONS_STATE
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,10 +27,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
 
-        Handler().postDelayed({
-            fadeanimation(this)
-        }, 1000)
+        menucall()
+
+
+
+//        Handler().postDelayed({
+//            fadeanimation(this)
+//        }, 1000)
 
 
 
@@ -54,6 +59,15 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 
+    private fun menucall() {
+        Retrofit_Manager.retrofit_manger.HeaderTokenRequest(completion = {
+            menuarraylist, sidearraylist->
+
+            val menulogd = menuarraylist
+            Log.d(TAG, "menucall: $menulogd \n $sidearraylist")
+        })
+    }
+
     fun fadeanimation(activity: Activity) {
 
 //        val integrator = IntentIntegrator(this)
@@ -65,7 +79,8 @@ class MainActivity : AppCompatActivity() {
 //        integrator.initiateScan()
 //        val intent =Intent(this, MenuPageUI::class.java)
 //        startActivity(intent)
-        retrofitCall()
+//        retrofitCall()
+        QRscan()
 
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
@@ -88,8 +103,8 @@ class MainActivity : AppCompatActivity() {
         var result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if(result != null) {
             if(result.contents != null){
-                retrofitCall()
-                Toast.makeText(this,"scanned: ${result.contents} format: ${result.formatName}", Toast.LENGTH_SHORT).show()
+
+//                retrofitCall()
 
             }else{
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
@@ -137,7 +152,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun postCall(){
-//        Retrofit_Manager.retrofit_manger.PostToken(TokenCallData("test4",8,116))
-    }
 }

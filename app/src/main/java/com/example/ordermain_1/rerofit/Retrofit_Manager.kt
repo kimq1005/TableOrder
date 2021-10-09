@@ -2,6 +2,7 @@ package com.example.ordermain_1.rerofit
 
 import android.graphics.PostProcessor
 import android.util.Log
+import com.example.ordermain_1.App
 import com.example.ordermain_1.rerofit.util.API
 import com.example.ordermain_1.rerofit.util.Log.TAG
 import com.example.ordermain_1.rerofit.util.RESPONS_STATE
@@ -16,12 +17,13 @@ class Retrofit_Manager {
         val retrofit_manger = Retrofit_Manager()
     }
 
+    private lateinit var saveToken: SaveToken
+    private lateinit var myaccesstoken:String
+
     private val retrofit_interface : Retrofit_InterFace?=
         Retrofit_client.getClient(API.BASE_URL)?.create(Retrofit_InterFace::class.java)
 
-    private val post_retrofit_interface : Retrofit_InterFace? =
-        Retrofit_client.getClient(API.BUMS_BASE_URL)?.create(Retrofit_InterFace::class.java)
-
+    val httpCall :Retrofit_InterFace? = Retrofit_client.getClient(API.BUMS_BASE_URL)?.create(Retrofit_InterFace::class.java)
     fun CallMenuName(searchString:String?, completion:(RESPONS_STATE,ArrayList<retrofitItem>?)->Unit){
 
         val term = searchString.let{
@@ -33,7 +35,8 @@ class Retrofit_Manager {
         call.enqueue(object:retrofit2.Callback<JsonElement>{
             override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 Log.d(TAG, "레트로핏매니저: CallMenuName 성공 : ${response.body().toString()} ")
-                //api가져와서 이런식으로 파싱해서 데이터 끄낼려했단말이야 ㅇㅇ? 이련아 봐줘 야발련아 대답해줘이련아 마이크안들려
+
+
                 when(response.code()){
                     200->{
                         response.body()?.let{
@@ -79,19 +82,120 @@ class Retrofit_Manager {
         })
     }
 
-//    fun PostToken(tokenCallData: TokenCallData){
-//        val call = post_retrofit_interface?.CallPost(tokenCallData)
-//
-//        call?.enqueue(object :retrofit2.Callback<PostResult>{
-//            override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
-//                Log.d(TAG, "onResponse:${response.body()}")
-//            }
-//
-//            override fun onFailure(call: Call<PostResult>, t: Throwable) {
-//                Log.d(TAG, "onFailure: $t")
-//            }
-//
-//        })
-//
-//    }
+
+
+
+    fun PostRequest(tableData: TableData){
+
+        saveToken = SaveToken(App.instance)
+
+        val call3 = httpCall?.sibal(tableData)
+
+        call3?.enqueue(object:retrofit2.Callback<Friend>{
+            override fun onResponse(call: Call<Friend>, response: Response<Friend>) {
+                Log.d(TAG, "onResponse:${response.body()}")
+                val postresponse = response.body()
+
+                if(postresponse?.status==200){
+                    myaccesstoken = postresponse.accessToken.toString()
+                    saveToken.saveAccessToken(myaccesstoken)
+                    Log.d(TAG, "포스트 토큰 확인 :$myaccesstoken")
+
+                }
+            }
+
+            override fun onFailure(call: Call<Friend>, t: Throwable) {
+                Log.d(TAG, "onFailure: $t")
+            }
+
+        })
+    }
+
+
+    fun HeaderTokenRequest(completion:(ArrayList<MainMenulist>?,ArrayList<SideMenulist>?)->Unit){
+        val call = httpCall?.OrderHeaderPosts("Bearer ${saveToken.returnAccessToken()}")
+
+        call?.enqueue(object:retrofit2.Callback<JsonElement>{
+            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
+                Log.d(TAG, "안녕하세요감사해요: ${response.body()}")
+
+                when(response.code()){
+                    200->{
+                        response.body()?.let{
+                            val mainmenulist = ArrayList<MainMenulist>()
+                            val sidemenulist = ArrayList<SideMenulist>()
+                            val drinkmenulist = ArrayList<DrinkMenulist>()
+
+
+                            val menubody = it.asJsonObject
+                            val data = menubody.getAsJsonArray("data")  //data[]
+
+                            data.forEach { data->
+                                val datasObject= data.asJsonObject
+
+                                val chansgemenuid:String
+
+                                val menuid = datasObject.get("id").asInt
+
+                                if(menuid==200){
+                                    val items = datasObject.getAsJsonArray("items")
+                                    items.forEach { items->
+                                        val itemsObject = items.asJsonObject
+
+
+                                        val menuimage = itemsObject.get("image").asString
+                                        val menuname = itemsObject.get("name").asString
+                                        val menuprice = itemsObject.get("price").asInt
+
+
+                                        val menuwow = MainMenulist(
+                                            menuimage,menuname,menuprice.toString())
+
+                                        mainmenulist.add(menuwow)
+                                    }
+
+                                }
+
+                                if(menuid==201){
+                                    val items = datasObject.getAsJsonArray("items")
+                                    items.forEach { items->
+                                        val itemsObject = items.asJsonObject
+
+
+                                        val sidemenuimage = itemsObject.get("image").asString
+                                        val sidemenuname = itemsObject.get("name").asString
+                                        val sidemenuprice = itemsObject.get("price").asInt
+
+
+                                        val sidemenuwow = SideMenulist(
+                                            sidemenuimage,sidemenuname,sidemenuprice.toString())
+
+                                        sidemenulist.add(sidemenuwow)
+                                    }
+
+                                }
+
+
+
+
+
+                            }
+                            completion(mainmenulist,sidemenulist)
+
+
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+
+            }
+
+        })
+    }
+
+
+
+
 }

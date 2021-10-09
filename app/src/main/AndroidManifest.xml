@@ -13,7 +13,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OrderMain_1">
+        android:theme="@style/Theme.OrderMain_1"
+        android:usesCleartextTraffic="true">
+
         <activity android:name=".PageGoOrderPage.GoDrinkOrderPage"></activity>
         <activity android:name=".PageGoOrderPage.GoSideOrderPage" />
         <activity android:name=".PageLastYeah.LastYeah" />

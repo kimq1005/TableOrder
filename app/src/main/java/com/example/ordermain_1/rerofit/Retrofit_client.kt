@@ -56,13 +56,19 @@ object Retrofit_client {
       okhttpClient.addInterceptor(baseInterceptor)
 
 
-      if(retrofitClient==null){
-         retrofitClient=Retrofit.Builder()
-            .baseUrl(API.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okhttpClient.build())
-            .build()
-      }
+//      if(retrofitClient==null){
+//         retrofitClient=Retrofit.Builder()
+//            .baseUrl(baseurl)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .client(okhttpClient.build())
+//            .build()
+//      }
+
+      val retrofitClient = Retrofit.Builder()
+         .baseUrl(baseurl)
+         .addConverterFactory(GsonConverterFactory.create())
+         .build()
+
 
       return retrofitClient
    }

@@ -13,6 +13,7 @@ import com.example.ordermain_1.DataBaseObject.MyTestSum
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
+import com.example.ordermain_1.PageMainActivity.test_mai_value
 import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.*
@@ -46,7 +47,6 @@ class GoOrderPage : AppCompatActivity() {
 
 
         GO_Complted_Page.setOnClickListener { //저장된거야 이건
-            
 
             val realmenu = RealmenuEntity(null,OrderPage_menuName_txt.text.toString(),OrderPage_resultPrice_txt.text.toString(),ZeroBtn.text.toString())
             realmenuInsert(realmenu)
@@ -54,6 +54,9 @@ class GoOrderPage : AppCompatActivity() {
 //            GoCompleteActivity_with_Sum()
             Log.d(TAG, "realmenu 데이터베이스 저장 완료 ${OrderPage_menuName_txt.text}")
             Log.d(TAG, "onCreate:$realmenu")
+
+            test_mai_value.check_sum = OrderPage_resultPrice_txt.text.toString().toInt()
+
         }
 
         menuBtnClick()
@@ -96,6 +99,8 @@ class GoOrderPage : AppCompatActivity() {
         OrderPage_resultPrice_txt.text = menu_price.toString()
 
 
+
+
     }
 
 
@@ -109,7 +114,7 @@ class GoOrderPage : AppCompatActivity() {
         var sum:Int = 0
 
         PlusBtn.setOnClickListener {
-            for(i in 1..1){
+                for(i in 1..1){
                  sum=sum+1
             }
 

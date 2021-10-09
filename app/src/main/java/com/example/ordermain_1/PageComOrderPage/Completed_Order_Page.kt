@@ -64,8 +64,6 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
             startActivity(Intent(this,LastYeah::class.java))
         }
 
-
-
         realmenugetAll()
         sidemenugetAll()
         drinkmenugetAll()
@@ -147,7 +145,6 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
             }
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-
                 sidemenugetAll()
             }
 
@@ -220,8 +217,6 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     override fun ondrinkmenuDeleteListener(drinkmenuEntity: DrinkmenuEntity) {
        drinkmenuDelete(drinkmenuEntity)
     }
-
-
 
 
 }
