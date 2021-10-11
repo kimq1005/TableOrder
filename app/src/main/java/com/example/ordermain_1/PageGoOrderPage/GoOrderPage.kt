@@ -8,16 +8,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.ordermain_1.DataBaseObject.DBobject
-import com.example.ordermain_1.DataBaseObject.MyTestSum
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.PageMainActivity.test_mai_value
 import com.example.ordermain_1.R
-import kotlinx.android.synthetic.main.activity_completed_order_page.*
+import com.example.ordermain_1.rerofit.MainMenulist
 import kotlinx.android.synthetic.main.activity_go_order_page.*
-import kotlinx.android.synthetic.main.layout_realmenu_item.view.*
+import kotlinx.android.synthetic.main.activity_go_order_page.back_icon
 
 
 @SuppressLint("StaticFieldLeak")
@@ -45,6 +43,11 @@ class GoOrderPage : AppCompatActivity() {
             onBackPressed()
         }
 
+        real_orderlist_icon.setOnClickListener {
+            val intent = Intent(this,Completed_Order_Page::class.java)
+            startActivity(intent)
+        }
+
 
         GO_Complted_Page.setOnClickListener { //저장된거야 이건
 
@@ -52,8 +55,8 @@ class GoOrderPage : AppCompatActivity() {
             realmenuInsert(realmenu)
 
 //            GoCompleteActivity_with_Sum()
+            Toast.makeText(this,"장바구니 담기 완료",Toast.LENGTH_SHORT).show()
             Log.d(TAG, "realmenu 데이터베이스 저장 완료 ${OrderPage_menuName_txt.text}")
-            Log.d(TAG, "onCreate:$realmenu")
 
             test_mai_value.check_sum = OrderPage_resultPrice_txt.text.toString().toInt()
 
@@ -66,7 +69,7 @@ class GoOrderPage : AppCompatActivity() {
 
     private fun GoCompleteActivity_with_Sum() {
 
-        Toast.makeText(this,"장바구니 담기 완료",Toast.LENGTH_SHORT).show()
+
         val pricewowsum = OrderPage_resultPrice_txt.text
         val intent = Intent(this,Completed_Order_Page::class.java)
         intent.putExtra("test_menu_pricesum",pricewowsum)
@@ -90,6 +93,7 @@ class GoOrderPage : AppCompatActivity() {
         val menu_name = intent.getStringExtra("menu_name")
         val menu_price = intent.getStringExtra("menu_price")
         val menu_img = intent.getStringExtra("menu_img")
+        val menu_id = intent.getStringExtra("menu_id")
         
 
         Glide.with(this).load(menu_img).into(OrderPage_menuImg_img)
@@ -97,6 +101,7 @@ class GoOrderPage : AppCompatActivity() {
         OrderPage_menuName_txt.text= menu_name.toString()
         OrderPage_menuPrice_txt.text  = menu_price.toString()
         OrderPage_resultPrice_txt.text = menu_price.toString()
+
 
 
 

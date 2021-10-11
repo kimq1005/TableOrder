@@ -23,6 +23,10 @@ import com.example.ordermain_1.PageLastYeah.LastYeahDatabase.LastDataBase
 import com.example.ordermain_1.PageLastYeah.LastYeahDatabase.LastEntity
 import com.example.ordermain_1.PageMenuPageUI.fakeComOrder
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.MainMenulist
+import com.example.ordermain_1.rerofit.Order_Menu_Item
+import com.example.ordermain_1.rerofit.Retrofit_Manager
+import com.example.ordermain_1.rerofit.Small_Order_Menu_Item
 import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 import kotlinx.android.synthetic.main.item_layout_com_order.*
@@ -38,6 +42,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     lateinit var drinkmenuList : List<DrinkmenuEntity>
     lateinit var lastList : List<LastEntity>
 
+    lateinit var mainMenulist: List<MainMenulist>
+
     lateinit var realdb : RealmenuDataBase
     lateinit var sidedb : SidemenuDataBase
     lateinit var drinkdb : DrinkmenuDataBase
@@ -51,7 +57,7 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completed_order_page)
 
-        test()
+//        test()
 
 
         realdb = RealmenuDataBase.getinstance(this)!!
@@ -59,21 +65,57 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         drinkdb = DrinkmenuDataBase.getinstance(this)!!
         lastdb = LastDataBase.getinstance(this)!!
 
-
+        //여기 장바구니임
         wowOrderGobtn.setOnClickListener {
+
+            Log.d(TAG, "onCreate:")
+            val menuitem = ArrayList<Small_Order_Menu_Item>()
+
+
+            val menulist_id_count = Small_Order_Menu_Item(231,1)
+            menuitem.add(menulist_id_count)
+
+            Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(menuitem,"ssss"))
             startActivity(Intent(this,LastYeah::class.java))
         }
 
         realmenugetAll()
         sidemenugetAll()
         drinkmenugetAll()
+        real_price_getAll()
 
     }
 
-    private fun test(){
-        val realmenu_price = intent.getStringExtra("test_menu_pricesum")
-        Log.d(TAG, "test: $realmenu_price")
+    private fun real_price_getAl2l(): Unit {
+        var count_sum: Int = 0
+        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                realmenuList=realdb.realmenuDAO().realmenugetAll()
+            }
+
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                for(i in realmenuList.indices)
+                    count_sum += realmenuList.get(i).realmenuprice!!.toInt()
+
+                for(i in sidemenuList.indices)
+                    count_sum += sidemenuList.get(i).sidemenuprice!!.toInt()
+
+                for(i in drinkmenuList.indices)
+                    count_sum += drinkmenuList.get(i).drinkmenuprice!!.toInt()
+
+                Log.d("합계", "$count_sum")
+                com_resultprice_txt.text = count_sum.toString() + "원"
+            }
+
+        }).execute()
     }
+
+//    private fun test(){
+//        val realmenu_price = intent.getStringExtra("test_menu_pricesum")
+//        Log.d(TAG, "test: $realmenu_price")
+//    }
 
     private fun drinkmenugetAll(){
         var dirnkmenugetTask = (object :AsyncTask<Unit,Unit,Unit>(){
@@ -127,6 +169,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         }).execute()
 
     }
+
+
 
     private fun sidemenuSetRecyclerView() {
         val com_SideMenu_Adapter = Com_SideMenu_Adapter(this)
@@ -216,6 +260,33 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
     override fun ondrinkmenuDeleteListener(drinkmenuEntity: DrinkmenuEntity) {
        drinkmenuDelete(drinkmenuEntity)
+    }
+
+
+    private fun real_price_getAll(): Unit {
+        var count_sum: Int = 0
+        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                realmenuList=realdb.realmenuDAO().realmenugetAll()
+            }
+
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                for(i in realmenuList.indices)
+                    count_sum += realmenuList.get(i).realmenuprice!!.toInt()
+
+                for(i in sidemenuList.indices)
+                    count_sum += sidemenuList.get(i).sidemenuprice!!.toInt()
+
+                for(i in drinkmenuList.indices)
+                    count_sum += drinkmenuList.get(i).drinkmenuprice!!.toInt()
+
+                Log.d("합계", "$count_sum")
+                com_resultprice_txt.text = count_sum.toString() + "원"
+            }
+
+        }).execute()
     }
 
 

@@ -17,6 +17,7 @@ object API {
     const val POST_URL : String = "app/customers"
     const val BUMS_BASE_URL : String = "http://13.124.45.246:8080/"
     const val Menu_Url:String="app/categories/items"
+    const val Order_Url:String="app/orders"
 }
 
 enum class RESPONS_STATE{

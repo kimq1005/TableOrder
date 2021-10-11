@@ -47,6 +47,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
             intent.putExtra("menu_img",menuList[position].menuimage)
             intent.putExtra("menu_name",holder.itemView.test_menu_name.text)
             intent.putExtra("menu_price",holder.itemView.test_menu_price.text)
+            intent.putExtra("menu_id",menuList[position].id)
 
             holder.itemView.context.startActivity(intent)
 
@@ -63,10 +64,7 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
 
     class RealMenuViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
 
-
         private val menuImg : ImageView = itemView.test_menu_image
-
-
         fun bind(realmeunuitem: MainMenulist){
             Glide.with(itemView).load(realmeunuitem.menuimage).into(menuImg)
             itemView.test_menu_name.text = realmeunuitem.menuname

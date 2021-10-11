@@ -35,14 +35,16 @@ class MainActivity : AppCompatActivity() {
 //            fadeanimation(this)
 //        }, 1000)
 
+
+
     }
 
     private fun menucall() {
         Retrofit_Manager.retrofit_manger.HeaderTokenRequest(completion = {
-            responsestate,menuarraylist, sidearraylist->
+            responsestate,menuarraylist, sidearraylist, drinkarraylist->
 
             val menulogd = menuarraylist
-            Log.d(TAG, "menucall: $menulogd \n $sidearraylist")
+            Log.d(TAG, "menucall: $menulogd \n $sidearraylist \n $drinkarraylist")
 
             when(responsestate){
                 RESPONS_STATE.OKAY->{
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
                     bundle.putSerializable("menu_list",menuarraylist)
                     bundle.putSerializable("side_menu_list",sidearraylist)
+                    bundle.putSerializable("drink_menu_list",drinkarraylist)
                     intent.putExtra("array_bundle",bundle)
 
                     startActivity(intent)

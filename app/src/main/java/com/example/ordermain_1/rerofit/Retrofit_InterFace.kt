@@ -18,4 +18,11 @@ interface Retrofit_InterFace {
     fun OrderHeaderPosts(@Header("Authorization")
                    accessToken:String) : Call<JsonElement>
 
+    @POST(API.Order_Url)
+    fun MenuOrderPost(
+        @Header("Authorization")accessToken:String,
+        @Body item : Order_Menu_Item
+    ):Call<MenuResult1>
+
+
 }

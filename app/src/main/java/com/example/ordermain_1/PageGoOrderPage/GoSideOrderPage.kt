@@ -14,6 +14,7 @@ import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.PageGoOrderPage.SidemenuDatabase.SidemenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.SidemenuDatabase.SidemenuEntity
 import com.example.ordermain_1.R
+import kotlinx.android.synthetic.main.activity_go_drink_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.MinusBtn
 import kotlinx.android.synthetic.main.activity_go_order_page.PlusBtn
@@ -36,6 +37,11 @@ class GoSideOrderPage : AppCompatActivity() {
             onBackPressed()
         }
 
+        side_orderlist_icon.setOnClickListener {
+            val intent = Intent(this,Completed_Order_Page::class.java)
+            startActivity(intent)
+        }
+
         sidedb = SidemenuDataBase.getinstance(this)!!
 
 
@@ -45,7 +51,7 @@ class GoSideOrderPage : AppCompatActivity() {
         GO_SideComplted_Page.setOnClickListener {//
             val sidemenu = SidemenuEntity(null,Side_OrderPage_menuName_txt.text.toString(),Side_OrderPage_resultPrice_txt.text.toString(),SideZeroBtn.text.toString())
             sidemenuinsert(sidemenu)
-            Toast.makeText(this,"사이드메뉴 저장됐다 질문받는다",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"장바구니 담기 완료",Toast.LENGTH_SHORT).show()
             Log.d(TAG, "사이드메뉴 저장 로그다")
 
         }

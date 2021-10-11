@@ -21,6 +21,7 @@ data class PostResult(
 
 
 
+
 data class TableData (
     @SerializedName("username")
     var username :String?,
@@ -40,6 +41,7 @@ data class Friend(
 )
 
 data class MainMenulist(
+    var id:Int?,
     var menuimage : String?,
     var menuname : String?,
     var menuprice : String?
@@ -57,3 +59,38 @@ data class DrinkMenulist(
     var drinkmenuname : String?,
     var drinkmenuprice : String?
 ):Serializable
+
+
+data class Order_Menu_Item(
+    @SerializedName("items")
+    val menu_item: List<Small_Order_Menu_Item>?,
+    @SerializedName("request")
+    val request: String?
+)
+
+data class Small_Order_Menu_Item(
+    val id : Int?,
+    var count: Int?
+)
+
+
+data class MenuResult1(
+    var status:String?,
+    var message:String,
+    var data : List<menudata>?
+)
+
+
+data class menudata(
+    var id:Int?,
+    var name :String?,
+    var orderPrice:Int?,
+    var count :Int?,
+    var request :String?,
+    var orderStatus:String?
+)
+
+
+data class test21(
+    var id:Int?,
+)

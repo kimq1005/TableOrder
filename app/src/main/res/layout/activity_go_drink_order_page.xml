@@ -34,7 +34,7 @@
 
 
         <ImageView
-            android:id="@+id/orderlist_icon"
+            android:id="@+id/drink_orderlist_icon"
             app:layout_constraintRight_toLeftOf="@+id/QR_icon_yeah"
 
             android:layout_marginEnd="25dp"

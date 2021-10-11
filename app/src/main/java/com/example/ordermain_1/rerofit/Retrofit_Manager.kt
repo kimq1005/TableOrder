@@ -83,8 +83,6 @@ class Retrofit_Manager {
     }
 
 
-
-
     fun PostRequest(tableData: TableData){
 
         saveToken = SaveToken(App.instance)
@@ -112,7 +110,7 @@ class Retrofit_Manager {
     }
 
 
-    fun HeaderTokenRequest(completion:(RESPONS_STATE,ArrayList<MainMenulist>?,ArrayList<SideMenulist>?)->Unit){
+    fun HeaderTokenRequest(completion:(RESPONS_STATE,ArrayList<MainMenulist>?,ArrayList<SideMenulist>?,ArrayList<DrinkMenulist>?)->Unit){
         val call = httpCall?.OrderHeaderPosts("Bearer ${saveToken.returnAccessToken()}")
 
         call?.enqueue(object:retrofit2.Callback<JsonElement>{
@@ -125,6 +123,7 @@ class Retrofit_Manager {
                             val mainmenulist = ArrayList<MainMenulist>()
                             val sidemenulist = ArrayList<SideMenulist>()
                             val drinkmenulist = ArrayList<DrinkMenulist>()
+                            val test21 = ArrayList<test21>()
 
 
                             val menubody = it.asJsonObject
@@ -133,54 +132,114 @@ class Retrofit_Manager {
                             data.forEach { data->
                                 val datasObject= data.asJsonObject
 
-                                val chansgemenuid:String
 
                                 val menuid = datasObject.get("id").asInt
 
-                                if(menuid==200){
-                                    val items = datasObject.getAsJsonArray("items")
-                                    items.forEach { items->
-                                        val itemsObject = items.asJsonObject
 
 
-                                        val menuimage = itemsObject.get("image").asString
-                                        val menuname = itemsObject.get("name").asString
-                                        val menuprice = itemsObject.get("price").asInt
+
+                                when(menuid){
+                                    200 , 238, 290, 381->{
 
 
-                                        val menuwow = MainMenulist(
-                                            menuimage,menuname,menuprice.toString())
+                                        val items = datasObject.getAsJsonArray("items")
+                                        items.forEach { items->
+                                            val itemsObject = items.asJsonObject
 
-                                        mainmenulist.add(menuwow)
+                                            val mainmenuid = itemsObject.get("id").asInt
+                                            val menuimage = itemsObject.get("image").asString
+                                            val menuname = itemsObject.get("name").asString
+                                            val menuprice = itemsObject.get("price").asInt
+
+
+                                            val menuwow = MainMenulist(mainmenuid,
+                                                menuimage,menuname,menuprice.toString())
+
+//                                            test21.add(test21(menuid))
+                                            mainmenulist.add(menuwow)
+                                        }
+
+
                                     }
 
-                                }
-
-                                if(menuid==201){
-                                    val items = datasObject.getAsJsonArray("items")
-                                    items.forEach { items->
-                                        val itemsObject = items.asJsonObject
+                                    201->{
+                                        val items = datasObject.getAsJsonArray("items")
+                                        items.forEach { items->
+                                            val itemsObject = items.asJsonObject
 
 
-                                        val sidemenuimage = itemsObject.get("image").asString
-                                        val sidemenuname = itemsObject.get("name").asString
-                                        val sidemenuprice = itemsObject.get("price").asInt
+                                            val sidemenuimage = itemsObject.get("image").asString
+                                            val sidemenuname = itemsObject.get("name").asString
+                                            val sidemenuprice = itemsObject.get("price").asInt
 
 
-                                        val sidemenuwow = SideMenulist(
-                                            sidemenuimage,sidemenuname,sidemenuprice.toString())
+                                            val sidemenuwow = SideMenulist(
+                                                sidemenuimage,sidemenuname,sidemenuprice.toString())
 
-                                        sidemenulist.add(sidemenuwow)
+                                            sidemenulist.add(sidemenuwow)
+                                        }
                                     }
 
+                                    202->{
+                                        val items = datasObject.getAsJsonArray("items")
+
+                                        items.forEach { items->
+                                            val itemsObject = items.asJsonObject
+
+                                            val drinkmenuimage = itemsObject.get("image").asString
+                                            val drinkmenuname = itemsObject.get("name").asString
+                                            val drinkmenuprice = itemsObject.get("price").asInt
+
+
+                                            val drinkmenuwow = DrinkMenulist(
+                                                drinkmenuimage,drinkmenuname,drinkmenuprice.toString())
+
+                                            drinkmenulist.add(drinkmenuwow)
+                                        }
+                                    }
                                 }
+//                                if(menuid == 200 and 220){
+//                                    val items = datasObject.getAsJsonArray("items")
+//                                    items.forEach { items->
+//                                        val itemsObject = items.asJsonObject
+//
+//
+//                                        val menuimage = itemsObject.get("image").asString
+//                                        val menuname = itemsObject.get("name").asString
+//                                        val menuprice = itemsObject.get("price").asInt
+//
+//
+//                                        val menuwow = MainMenulist(
+//                                            menuimage,menuname,menuprice.toString())
+//
+//                                        mainmenulist.add(menuwow)
+//                                    }
+//
+//                                }
 
-
-
-
+//                                if(menuid==201){
+//                                    val items = datasObject.getAsJsonArray("items")
+//                                    items.forEach { items->
+//                                        val itemsObject = items.asJsonObject
+//
+//
+//                                        val sidemenuimage = itemsObject.get("image").asString
+//                                        val sidemenuname = itemsObject.get("name").asString
+//                                        val sidemenuprice = itemsObject.get("price").asInt
+//
+//
+//                                        val sidemenuwow = SideMenulist(
+//                                            sidemenuimage,sidemenuname,sidemenuprice.toString())
+//
+//
+//                                        sidemenulist.add(sidemenuwow)
+//
+//                                    }
+//
+//                                }
 
                             }
-                            completion(RESPONS_STATE.OKAY,mainmenulist,sidemenulist)
+                            completion(RESPONS_STATE.OKAY,mainmenulist,sidemenulist,drinkmenulist)
 
 
                         }
@@ -189,12 +248,29 @@ class Retrofit_Manager {
             }
 
             override fun onFailure(call: Call<JsonElement>, t: Throwable) {
-                completion(RESPONS_STATE.FAIL,null,null)
+                completion(RESPONS_STATE.FAIL,null,null,null)
             }
 
         })
     }
 
+
+    fun OrderMenuPost(orderMenuItem: Order_Menu_Item){
+        saveToken = SaveToken(App.instance)
+
+        val call = httpCall?.MenuOrderPost("Bearer ${saveToken.returnAccessToken()}",orderMenuItem)
+
+        call?.enqueue(object:retrofit2.Callback<MenuResult1>{
+            override fun onResponse(call: Call<MenuResult1>, response: Response<MenuResult1>) {
+                Log.d(TAG, "오더메뉴포스트 : ${response.body()}")
+            }
+
+            override fun onFailure(call: Call<MenuResult1>, t: Throwable) {
+                Log.d(TAG, "onFailure: $t")
+            }
+
+        })
+    }
 
 
 

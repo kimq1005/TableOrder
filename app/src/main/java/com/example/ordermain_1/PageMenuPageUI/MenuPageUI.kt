@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ordermain_1.*
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
+import com.example.ordermain_1.rerofit.DrinkMenulist
 import com.example.ordermain_1.rerofit.MainMenulist
 import com.example.ordermain_1.rerofit.SideMenulist
 import com.example.ordermain_1.rerofit.retrofitItem
@@ -21,10 +22,10 @@ class MenuPageUI : AppCompatActivity() {
             //Item
             private lateinit var menulist : ArrayList<MainMenulist>
             private lateinit var sidemenulist : ArrayList<SideMenulist>
+            private lateinit var drinkmenulist : ArrayList<DrinkMenulist>
 
 
-//            private lateinit var viewPagerAdapter : ViewPagerAdapter
-//            private lateinit var menuInformationRecyclerViewAdapter : MenuInformationRecyclerViewAdapter
+
             private lateinit var realmenuAdapter: RealMenu_Adapter
             private lateinit var sidemenuAdapter: Sidemenu_Adapter
             private lateinit var drinkmeunAdapter: DrinkMeun_Adapter
@@ -85,6 +86,7 @@ class MenuPageUI : AppCompatActivity() {
         val bundle = intent.getBundleExtra("array_bundle")
         menulist = bundle?.getSerializable("menu_list") as ArrayList<MainMenulist>
         sidemenulist = bundle?.getSerializable("side_menu_list") as ArrayList<SideMenulist>
+        drinkmenulist = bundle?.getSerializable("drink_menu_list") as ArrayList<DrinkMenulist>
 
 
 
@@ -121,14 +123,16 @@ class MenuPageUI : AppCompatActivity() {
 //            adapter= sidemenuAdapter
 
             sidemenuAdapter = Sidemenu_Adapter()
+            sidemenuAdapter.submitList(sidemenulist)
             layoutManager = GridLayoutManager(this@MenuPageUI,1, GridLayoutManager.VERTICAL,false)
             adapter = sidemenuAdapter
         }
 
        drinkmenurecyclerView.apply{
-            drinkmeunAdapter = DrinkMeun_Adapter()
-            layoutManager = GridLayoutManager(this@MenuPageUI,1, LinearLayoutManager.VERTICAL,false)
-            adapter = drinkmeunAdapter
+           drinkmeunAdapter = DrinkMeun_Adapter()
+           drinkmeunAdapter.submitList(drinkmenulist)
+           layoutManager = GridLayoutManager(this@MenuPageUI,1, GridLayoutManager.VERTICAL,false)
+           adapter = drinkmeunAdapter
         }
 
 
@@ -148,13 +152,13 @@ class MenuPageUI : AppCompatActivity() {
 //            realmenuAdapter.submitList(menulist)
 //        })
 
-        viewModel.sidemenuList.observe(this,{sidemenuList->
-            sidemenuAdapter.submitList(sidemenuList)
-        })
+//        viewModel.sidemenuList.observe(this,{sidemenuList->
+//            sidemenuAdapter.submitList(sidemenuList)
+//        })
 
-        viewModel.drinkmenuList.observe(this,{drinkmenuList->
-            drinkmeunAdapter.submitList(drinkmenuList)
-        })
+//        viewModel.drinkmenuList.observe(this,{drinkmenuList->
+//            drinkmeunAdapter.submitList(drinkmenuList)
+//        })
         
 
 

@@ -8,13 +8,15 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ordermain_1.PageGoOrderPage.GoDrinkOrderPage
+import com.example.ordermain_1.PageGoOrderPage.GoOrderPage
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.DrinkMenulist
 import kotlinx.android.synthetic.main.item_layout_drinkmenu.view.*
 import kotlinx.android.synthetic.main.layout_realmenu_item.view.*
 
 class DrinkMeun_Adapter:RecyclerView.Adapter<DrinkMeun_Adapter.DrinkMenuViewHolder>() {
 
-    private var drinkmenuItemList : List<DrinkmenuItem>?=null
+    private var drinkList = ArrayList<DrinkMenulist>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DrinkMenuViewHolder {
         return DrinkMenuViewHolder(
@@ -25,46 +27,45 @@ class DrinkMeun_Adapter:RecyclerView.Adapter<DrinkMeun_Adapter.DrinkMenuViewHold
 
 
     override fun onBindViewHolder(holder: DrinkMenuViewHolder, position: Int) {
-        drinkmenuItemList?.let{
-            holder.bind(it[position])
+        holder.bind(drinkList[position])
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, GoDrinkOrderPage::class.java)
+
+            intent.putExtra("drink_menu_img",drinkList[position].drinkmenuimage
+            )
+            intent.putExtra("drink_menu_name",holder.itemView.test_menu_name.text)
+            intent.putExtra("drink_menu_price",holder.itemView.test_menu_price.text)
+
+            holder.itemView.context.startActivity(intent)
+
+
         }
     }
 
 
 
     override fun getItemCount(): Int {
-        return drinkmenuItemList?.size ?:0
+        return drinkList.size
     }
 
     class DrinkMenuViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
 
-        init {
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, GoDrinkOrderPage::class.java)
-                intent.putExtra("drink_menu_img",itemView.test_menu_image.toString())
-                intent.putExtra("drink_menu_name",itemView.test_menu_name.text)
-                intent.putExtra("drink_menu_price",itemView.test_menu_price.text)
-                itemView.context.startActivity(intent)
-            }
-        }
 
         private val menuImg : ImageView = itemView.test_menu_image
-        //
 
 
-        fun bind(drinkmeunuitem: DrinkmenuItem){
-            Glide.with(itemView).load(drinkmeunuitem.drinkmenuimg).into(menuImg)
+        fun bind(drinkmeunuitem: DrinkMenulist){
+            Glide.with(itemView).load(drinkmeunuitem.drinkmenuimage).into(menuImg)
             itemView.test_menu_name.text = drinkmeunuitem.drinkmenuname
-//            itemView.tes.text = drinkmeunuitem.drinkmenuinformation
-            itemView.test_menu_price.text = drinkmeunuitem.drinkmenuprice.toString()
+            itemView.test_menu_price.text = drinkmeunuitem.drinkmenuprice
         }
 
 
     }
 
 
-    fun submitList(list:List<DrinkmenuItem>?){
-        drinkmenuItemList = list
+    fun submitList(list:ArrayList<DrinkMenulist>){
+        drinkList = list
         notifyDataSetChanged()
     }
 
