@@ -10,6 +10,7 @@ import com.example.ordermain_1.DataBaseObject.MyTestSum
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.OnDeleteListener
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.test21
 import kotlinx.android.synthetic.main.activity_go_order_page.view.*
 import kotlinx.android.synthetic.main.item_layout_com_order.view.*
 import kotlin.coroutines.coroutineContext
@@ -17,6 +18,7 @@ import kotlin.coroutines.coroutineContext
 class Com_RealMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.Adapter<Com_RealMenu_Adapter.ComOrderViewHolder>() {
 
     lateinit var realmenuList : List<RealmenuEntity>
+    lateinit var test21: List<test21>
 
 
 
@@ -29,9 +31,13 @@ class Com_RealMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.
     override fun onBindViewHolder(holder: ComOrderViewHolder, position: Int) {
 
         val realmenupostion = realmenuList[position]
+
+        val realmenuid = realmenupostion.realmenuid
+
         holder.Holder_realmenuname.text = realmenupostion.realmenuname
         holder.Holder_realmenuprice.text = realmenupostion.realmenuprice
         holder.Holder_realmenusocre.text = realmenupostion.realmenufoodscore
+        holder.Holder_realmenuid.text = realmenuid.toString()
 
         holder.Holder_realmenudelete.setOnClickListener {
             onDeleteListener.onrealmenuDeleteListner(realmenupostion)
@@ -53,6 +59,7 @@ class Com_RealMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.
         val Holder_realmenuprice = itemView.com_price_txt
         val Holder_realmenudelete = itemView.com_delete_btn
         val Holder_realmenusocre = itemView.com_menuscore
+        val Holder_realmenuid = itemView.realmenuidid
 
     }
 

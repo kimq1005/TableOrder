@@ -49,12 +49,14 @@ data class MainMenulist(
 
 
 data class SideMenulist(
+    var id:Int?,
     var sidemenuimage : String?,
     var sidemenuname : String?,
     var sidemenuprice : String?
 ):Serializable
 
 data class DrinkMenulist(
+    var id:Int?,
     var drinkmenuimage : String?,
     var drinkmenuname : String?,
     var drinkmenuprice : String?
@@ -93,4 +95,5 @@ data class menudata(
 
 data class test21(
     var id:Int?,
+    var count:Int?,
 )

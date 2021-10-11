@@ -23,10 +23,7 @@ import com.example.ordermain_1.PageLastYeah.LastYeahDatabase.LastDataBase
 import com.example.ordermain_1.PageLastYeah.LastYeahDatabase.LastEntity
 import com.example.ordermain_1.PageMenuPageUI.fakeComOrder
 import com.example.ordermain_1.R
-import com.example.ordermain_1.rerofit.MainMenulist
-import com.example.ordermain_1.rerofit.Order_Menu_Item
-import com.example.ordermain_1.rerofit.Retrofit_Manager
-import com.example.ordermain_1.rerofit.Small_Order_Menu_Item
+import com.example.ordermain_1.rerofit.*
 import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 import kotlinx.android.synthetic.main.item_layout_com_order.*
@@ -36,6 +33,8 @@ import kotlinx.android.synthetic.main.item_layout_com_order.*
 class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
     val TAG: String ="로그"
+
+
 
     lateinit var realmenuList : List<RealmenuEntity>
     lateinit var sidemenuList : List<SidemenuEntity>
@@ -68,15 +67,9 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         //여기 장바구니임
         wowOrderGobtn.setOnClickListener {
 
-            Log.d(TAG, "onCreate:")
-            val menuitem = ArrayList<Small_Order_Menu_Item>()
+            sisissibalbal()
 
-
-            val menulist_id_count = Small_Order_Menu_Item(231,1)
-            menuitem.add(menulist_id_count)
-
-            Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(menuitem,"ssss"))
-            startActivity(Intent(this,LastYeah::class.java))
+//            startActivity(Intent(this,LastYeah::class.java))
         }
 
         realmenugetAll()
@@ -86,36 +79,7 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
     }
 
-    private fun real_price_getAl2l(): Unit {
-        var count_sum: Int = 0
-        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
-            override fun doInBackground(vararg params: Unit?) {
-                realmenuList=realdb.realmenuDAO().realmenugetAll()
-            }
 
-
-            override fun onPostExecute(result: Unit?) {
-                super.onPostExecute(result)
-                for(i in realmenuList.indices)
-                    count_sum += realmenuList.get(i).realmenuprice!!.toInt()
-
-                for(i in sidemenuList.indices)
-                    count_sum += sidemenuList.get(i).sidemenuprice!!.toInt()
-
-                for(i in drinkmenuList.indices)
-                    count_sum += drinkmenuList.get(i).drinkmenuprice!!.toInt()
-
-                Log.d("합계", "$count_sum")
-                com_resultprice_txt.text = count_sum.toString() + "원"
-            }
-
-        }).execute()
-    }
-
-//    private fun test(){
-//        val realmenu_price = intent.getStringExtra("test_menu_pricesum")
-//        Log.d(TAG, "test: $realmenu_price")
-//    }
 
     private fun drinkmenugetAll(){
         var dirnkmenugetTask = (object :AsyncTask<Unit,Unit,Unit>(){
@@ -284,6 +248,81 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
                 Log.d("합계", "$count_sum")
                 com_resultprice_txt.text = count_sum.toString() + "원"
+            }
+
+        }).execute()
+    }
+
+
+
+    private fun sisissibalbal(): Unit {
+
+        val smallOrderMenuItem = ArrayList<Small_Order_Menu_Item>()
+
+        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                realmenuList=realdb.realmenuDAO().realmenugetAll()
+            }
+
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+
+                for(i in realmenuList.indices){
+
+                    var realmenuname_id: Int
+                    var realmenuscore_count:Int
+
+                    realmenuname_id= realmenuList.get(i).realmenuid!!.toInt() //230이라는 변수가 생기지
+                    realmenuscore_count =realmenuList.get(i).realmenufoodscore!!.toInt()
+                    val realmenul = Small_Order_Menu_Item(realmenuname_id,realmenuscore_count)
+                    smallOrderMenuItem.add(realmenul)
+                }
+
+                for(i in sidemenuList.indices)
+                {
+                    var sidemenuname_id : Int
+                    var sidemenuscore_count:Int
+
+                    sidemenuname_id = sidemenuList.get(i).sidemenuid!!.toInt()
+                    sidemenuscore_count = sidemenuList.get(i).sidemenufoodscore!!.toInt()
+                    val sidemenul = Small_Order_Menu_Item(sidemenuname_id,sidemenuscore_count)
+
+                    smallOrderMenuItem.add(sidemenul)
+
+                }
+
+                for(i in drinkmenuList.indices)
+                {
+                    var drinkmenuname_id : Int
+                    var drinkmenuscore_count:Int
+
+                    drinkmenuname_id = drinkmenuList.get(i).drinkmenuid!!.toInt()
+                    drinkmenuscore_count = drinkmenuList.get(i).drinkmenufoodscore!!.toInt()
+                    val drinkmenul = Small_Order_Menu_Item(drinkmenuname_id,drinkmenuscore_count)
+
+                    smallOrderMenuItem.add(drinkmenul)
+
+                }
+
+                Log.d(TAG, "onPostExecute:$smallOrderMenuItem")
+
+
+
+//            val menuitem = ArrayList<Small_Order_Menu_Item>()
+//
+////                menuitem.add(test21())
+////            val menulist_id_count = Small_Order_Menu_Item(231,1)
+////            menuitem.add(menulist_id_count)
+
+            Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(smallOrderMenuItem,"날봐날봐 귀순"))
+
+
+
+
+
+
+
             }
 
         }).execute()

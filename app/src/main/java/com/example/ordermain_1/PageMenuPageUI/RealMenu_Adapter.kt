@@ -47,7 +47,8 @@ class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>
             intent.putExtra("menu_img",menuList[position].menuimage)
             intent.putExtra("menu_name",holder.itemView.test_menu_name.text)
             intent.putExtra("menu_price",holder.itemView.test_menu_price.text)
-            intent.putExtra("menu_id",menuList[position].id)
+            intent.putExtra("menu_id",menuList[position].id.toString())
+
 
             holder.itemView.context.startActivity(intent)
 

@@ -35,7 +35,7 @@ class DrinkMeun_Adapter:RecyclerView.Adapter<DrinkMeun_Adapter.DrinkMenuViewHold
             )
             intent.putExtra("drink_menu_name",holder.itemView.test_menu_name.text)
             intent.putExtra("drink_menu_price",holder.itemView.test_menu_price.text)
-
+            intent.putExtra("drink_menu_id",drinkList[position].id.toString())
             holder.itemView.context.startActivity(intent)
 
 

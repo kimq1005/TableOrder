@@ -35,6 +35,7 @@ class Sidemenu_Adapter:RecyclerView.Adapter<Sidemenu_Adapter.SideMenuViewHolder>
             intent.putExtra("side_menu_img",sideList[position].sidemenuimage)
             intent.putExtra("side_menu_name",holder.itemView.test_menu_name.text)
             intent.putExtra("side_menu_price",holder.itemView.test_menu_price.text)
+            intent.putExtra("side_menu_id",sideList[position].id.toString())
 
             holder.itemView.context.startActivity(intent)
 

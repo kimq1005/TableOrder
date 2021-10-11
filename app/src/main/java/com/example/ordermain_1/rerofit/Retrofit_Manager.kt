@@ -123,7 +123,7 @@ class Retrofit_Manager {
                             val mainmenulist = ArrayList<MainMenulist>()
                             val sidemenulist = ArrayList<SideMenulist>()
                             val drinkmenulist = ArrayList<DrinkMenulist>()
-                            val test21 = ArrayList<test21>()
+
 
 
                             val menubody = it.asJsonObject
@@ -167,14 +167,18 @@ class Retrofit_Manager {
                                         items.forEach { items->
                                             val itemsObject = items.asJsonObject
 
-
+                                            val sidemenuid = itemsObject.get("id").asInt
                                             val sidemenuimage = itemsObject.get("image").asString
                                             val sidemenuname = itemsObject.get("name").asString
                                             val sidemenuprice = itemsObject.get("price").asInt
 
 
                                             val sidemenuwow = SideMenulist(
-                                                sidemenuimage,sidemenuname,sidemenuprice.toString())
+                                                sidemenuid,
+                                                sidemenuimage,
+                                                sidemenuname,
+                                                sidemenuprice.toString()
+                                            )
 
                                             sidemenulist.add(sidemenuwow)
                                         }
@@ -186,13 +190,18 @@ class Retrofit_Manager {
                                         items.forEach { items->
                                             val itemsObject = items.asJsonObject
 
+                                            val drinkmenuid = itemsObject.get("id").asInt
                                             val drinkmenuimage = itemsObject.get("image").asString
                                             val drinkmenuname = itemsObject.get("name").asString
                                             val drinkmenuprice = itemsObject.get("price").asInt
 
 
                                             val drinkmenuwow = DrinkMenulist(
-                                                drinkmenuimage,drinkmenuname,drinkmenuprice.toString())
+                                                drinkmenuid,
+                                                drinkmenuimage,
+                                                drinkmenuname,
+                                                drinkmenuprice.toString()
+                                            )
 
                                             drinkmenulist.add(drinkmenuwow)
                                         }

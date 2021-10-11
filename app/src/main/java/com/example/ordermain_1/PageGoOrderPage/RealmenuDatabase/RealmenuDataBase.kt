@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = arrayOf(RealmenuEntity::class),version = 1)
+@Database(entities = arrayOf(RealmenuEntity::class),version = 2)
 abstract class RealmenuDataBase:RoomDatabase() {
     abstract fun realmenuDAO() : RealmenuDAO
 

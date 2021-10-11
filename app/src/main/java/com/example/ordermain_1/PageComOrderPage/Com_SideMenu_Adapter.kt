@@ -8,11 +8,13 @@ import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.OnDeleteListener
 import com.example.ordermain_1.PageGoOrderPage.RealmenuDatabase.RealmenuEntity
 import com.example.ordermain_1.PageGoOrderPage.SidemenuDatabase.SidemenuEntity
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.test21
 import kotlinx.android.synthetic.main.item_layout_com_order.view.*
 
 class Com_SideMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.Adapter<Com_SideMenu_Adapter.Com_SidemenuViewHolder>() {
 
     lateinit var sidemenuList : List<SidemenuEntity>
+    lateinit var  test21  : ArrayList<test21>
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Com_SidemenuViewHolder {
@@ -22,6 +24,7 @@ class Com_SideMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView.
 
     override fun onBindViewHolder(holder: Com_SidemenuViewHolder, position: Int) {
         val sidemenupostion = sidemenuList[position]
+
         holder.Holder_sidemenuname.text = sidemenupostion.sidemenuname
         holder.Holder_sidemenuprice.text = sidemenupostion.sidemenuprice
         holder.Holder_drinkmenuscore.text = sidemenupostion.sidemenufoodscore

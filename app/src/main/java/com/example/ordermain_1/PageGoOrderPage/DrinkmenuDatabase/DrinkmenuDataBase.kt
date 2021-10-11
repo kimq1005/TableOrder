@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(DrinkmenuEntity::class),version=1)
+@Database(entities = arrayOf(DrinkmenuEntity::class),version=2)
 abstract class DrinkmenuDataBase : RoomDatabase(){
     abstract fun drinkmenuDAO() : DrinkmenuDAO
 

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = arrayOf(SidemenuEntity::class),version =1)
+@Database(entities = arrayOf(SidemenuEntity::class),version =2)
 abstract class SidemenuDataBase:RoomDatabase() {
     abstract fun sidemenuDAO() : SidemenuDAO
 

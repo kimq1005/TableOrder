@@ -8,6 +8,7 @@ data class DrinkmenuEntity(
     @PrimaryKey(autoGenerate = true)
     var id : Long?=null,
 
+    var drinkmenuid:String? =null,
     var drinkmenuname : String? =null,
     var drinkmenuprice :  String? =null,
     var drinkmenufoodscore : String? =null

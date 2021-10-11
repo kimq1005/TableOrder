@@ -61,7 +61,14 @@ class GoDrinkOrderPage : AppCompatActivity() {
 //        resultprice = list_1.toInt()
 
         GO_Drink_Complted_Page.setOnClickListener {
-            var drinkmenu = DrinkmenuEntity(null,Drink_OrderPage_menuName_txt.text.toString(),Drink_OrderPage_resultPrice_txt.text.toString(),DrinkZeroBtn.text.toString())
+            val drinkmenu = DrinkmenuEntity(
+
+                null,
+                Drink_OrderPage_realmenu_id.text.toString(),
+                Drink_OrderPage_menuName_txt.text.toString(),
+                Drink_OrderPage_resultPrice_txt.text.toString(),
+                DrinkZeroBtn.text.toString())
+
             drinkmenuinsert(drinkmenu)
 
             Toast.makeText(this,"장바구니 담기 완료", Toast.LENGTH_SHORT).show()
@@ -83,11 +90,13 @@ class GoDrinkOrderPage : AppCompatActivity() {
         val drink_menu_name = intent.getStringExtra("drink_menu_name")
         val drink_menu_price = intent.getStringExtra("drink_menu_price")
         val drink_menu_img = getIntent().getStringExtra("drink_menu_img")
+        val drink_menu_id = intent.getStringExtra("drink_menu_id")
 
         Glide.with(this).load(drink_menu_img).into(Drink_OrderPage_menuImg_img)
         Drink_OrderPage_menuName_txt.text= drink_menu_name
         Drink_OrderPage_menuPrice_txt.text  = drink_menu_price
         Drink_OrderPage_resultPrice_txt.text = drink_menu_price
+        Drink_OrderPage_realmenu_id.text = drink_menu_id.toString()
     }
 
     private fun menuBtnClick() {

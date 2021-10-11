@@ -49,7 +49,14 @@ class GoSideOrderPage : AppCompatActivity() {
         menuBtnClick()
 
         GO_SideComplted_Page.setOnClickListener {//
-            val sidemenu = SidemenuEntity(null,Side_OrderPage_menuName_txt.text.toString(),Side_OrderPage_resultPrice_txt.text.toString(),SideZeroBtn.text.toString())
+            val sidemenu = SidemenuEntity(
+                null,
+                Side_OrderPage_realmenu_id.text.toString(),
+                Side_OrderPage_menuName_txt.text.toString(),
+                Side_OrderPage_resultPrice_txt.text.toString(),
+                SideZeroBtn.text.toString()//count
+            )
+
             sidemenuinsert(sidemenu)
             Toast.makeText(this,"장바구니 담기 완료",Toast.LENGTH_SHORT).show()
             Log.d(TAG, "사이드메뉴 저장 로그다")
@@ -62,11 +69,13 @@ class GoSideOrderPage : AppCompatActivity() {
         val side_menu_name = intent.getStringExtra("side_menu_name")
         val side_menu_price = intent.getStringExtra("side_menu_price")
         val side_menu_img = getIntent().getStringExtra("side_menu_img")
+        val side_menu_id = intent.getStringExtra("side_menu_id")
 
         Glide.with(this).load(side_menu_img).into(Side_OrderPage_menuImg_img)
         Side_OrderPage_menuName_txt.text= side_menu_name
         Side_OrderPage_menuPrice_txt.text  = side_menu_price
         Side_OrderPage_resultPrice_txt.text = side_menu_price
+        Side_OrderPage_realmenu_id.text = side_menu_id.toString()
 
 
     }

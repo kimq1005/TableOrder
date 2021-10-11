@@ -9,6 +9,7 @@ data class SidemenuEntity (
     @PrimaryKey(autoGenerate = true)
 
     var id : Long?,
+    var sidemenuid:String? =null,
     var sidemenuname : String? =null,
     var sidemenuprice : String? =null,
     var sidemenufoodscore: String? = null

@@ -51,11 +51,20 @@ class GoOrderPage : AppCompatActivity() {
 
         GO_Complted_Page.setOnClickListener { //저장된거야 이건
 
-            val realmenu = RealmenuEntity(null,OrderPage_menuName_txt.text.toString(),OrderPage_resultPrice_txt.text.toString(),ZeroBtn.text.toString())
+            val realmenu = RealmenuEntity(
+
+                null,
+                OrderPage_realmenu_id.text.toString(),
+                OrderPage_menuName_txt.text.toString(),
+                OrderPage_resultPrice_txt.text.toString(),
+                ZeroBtn.text.toString() //count
+            )
+
             realmenuInsert(realmenu)
 
 //            GoCompleteActivity_with_Sum()
             Toast.makeText(this,"장바구니 담기 완료",Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "하이요: ${OrderPage_realmenu_id.text}")
             Log.d(TAG, "realmenu 데이터베이스 저장 완료 ${OrderPage_menuName_txt.text}")
 
             test_mai_value.check_sum = OrderPage_resultPrice_txt.text.toString().toInt()
@@ -101,6 +110,7 @@ class GoOrderPage : AppCompatActivity() {
         OrderPage_menuName_txt.text= menu_name.toString()
         OrderPage_menuPrice_txt.text  = menu_price.toString()
         OrderPage_resultPrice_txt.text = menu_price.toString()
+        OrderPage_realmenu_id.text = menu_id.toString()
 
 
 

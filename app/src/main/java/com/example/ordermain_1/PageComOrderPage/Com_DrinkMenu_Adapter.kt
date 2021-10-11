@@ -22,6 +22,7 @@ class Com_DrinkMenu_Adapter(var onDeleteListener: OnDeleteListener):RecyclerView
 
     override fun onBindViewHolder(holder: Com_drinkmenuViewHolder, position: Int) {
         val drinkmenupostion = drinkmenuList[position]
+
         holder.Holder_drinkmenuname.text = drinkmenupostion.drinkmenuname
         holder.Holder_drinkmenuprice.text = drinkmenupostion.drinkmenuprice
         holder.Holder_drinkmenusocre.text = drinkmenupostion.drinkmenufoodscore

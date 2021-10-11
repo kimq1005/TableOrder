@@ -8,7 +8,9 @@ import androidx.room.PrimaryKey
 data class RealmenuEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long?,
+    var realmenuid:String? =null,
     var realmenuname: String? = null,
     var realmenuprice: String? = null,
     var realmenufoodscore: String? =null
 )
+
