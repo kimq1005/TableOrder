@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F5FB"
+    android:background="#2D3038"
     tools:context=".PageMainActivity.MainActivity">
 
 
@@ -19,16 +19,26 @@
 <!--            android:layout_centerHorizontal="true"-->
 <!--            />-->
 
-        <TextView
+
+        <ImageView
+            android:id="@+id/main_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:src="@drawable/kinglogo"
             android:layout_centerVertical="true"
-            android:fontFamily="@font/osw"
-            android:textStyle="bold"
-            android:textColor="#2D3038"
-            android:textSize="40sp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ORDER"/>
+           />
+
+
+<!--        <TextView-->
+<!--            android:fontFamily="@font/test1"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="40sp"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/main_logo"-->
+<!--            android:text="O R D E R"/>-->
+
 
 
         <LinearLayout
@@ -65,6 +75,7 @@
                     android:orientation="horizontal">
 
                         <Button
+                            android:visibility="invisible"
                             android:id="@+id/next"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EFEFEF"
+    android:background=" #F0F5FB"
     tools:context=".PageComOrderPage.Completed_Order_Page">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="#2D3038"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,11 +32,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:fontFamily="@font/myfont"
+            android:fontFamily="@font/test2"
             android:gravity="center"
-            android:text="장바구니"
-            android:textColor="@color/black"
+            android:text="Order List"
+            android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/QR_icon"
@@ -51,7 +50,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/qrcode"
+            android:src="@drawable/ic_baseline_realqrwhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +66,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp">
@@ -109,7 +109,7 @@
             <LinearLayout
                 android:id="@+id/com_resultprice_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/drinkorderrecyclerview"
                 android:layout_marginBottom="80dp"
                 android:padding="10dp">
@@ -140,29 +140,6 @@
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/view_11"
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_below="@+id/com_resultprice_layout"
-                android:layout_marginTop="10dp"
-                android:background="#EFEFEF" />
-
-
-            <!--            <EditText-->
-            <!--                android:background="@color/white"-->
-            <!--                android:id="@+id/people_voice"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="150dp"-->
-            <!--                android:layout_below="@id/view_11"-->
-            <!--                android:layout_marginTop="30dp"-->
-            <!--                android:layout_marginBottom="60dp"-->
-            <!--                android:gravity="start|top"-->
-            <!--                android:hint="문의사항을 적어주세요"-->
-            <!--                android:padding="5dp"-->
-            <!--                android:textSize="15sp" />-->
-
-
         </RelativeLayout>
 
 
@@ -172,7 +149,7 @@
         android:id="@+id/constraintlayout1"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/order"
+        android:background="#2D3038"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -182,9 +159,9 @@
             android:id="@+id/wowOrderGobtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/myfont"
+            android:fontFamily="@font/test2"
             android:gravity="center"
-            android:text="주문 하기"
+            android:text="ORDER"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

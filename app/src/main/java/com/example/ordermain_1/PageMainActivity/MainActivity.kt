@@ -86,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         integrator.setBeepEnabled(false)    //소리낼지말지
         integrator.setBarcodeImageEnabled(true) //이미지
         integrator.initiateScan()
-
     }
 
 
