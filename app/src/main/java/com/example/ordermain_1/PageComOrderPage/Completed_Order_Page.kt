@@ -67,9 +67,23 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         //여기 장바구니임
         wowOrderGobtn.setOnClickListener {
 
+
             sisissibalbal()
 
-//            startActivity(Intent(this,LastYeah::class.java))
+            val request = requestEditText.text.toString()
+            val priceresult = com_resultprice_txt.text.toString()
+
+            Log.d(TAG, "onCreate:$request \n $priceresult")
+
+
+            val intent = Intent(this,LastYeah::class.java)
+
+            intent.putExtra("request",request)
+            intent.putExtra("resultprice",priceresult)
+            startActivity(intent)
+
+
+
         }
 
         realmenugetAll()
@@ -247,7 +261,7 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
                     count_sum += drinkmenuList.get(i).drinkmenuprice!!.toInt()
 
                 Log.d("합계", "$count_sum")
-                com_resultprice_txt.text = count_sum.toString() + "원"
+                com_resultprice_txt.text = count_sum.toString() + " 원"
             }
 
         }).execute()
@@ -315,7 +329,7 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 ////            val menulist_id_count = Small_Order_Menu_Item(231,1)
 ////            menuitem.add(menulist_id_count)
 
-            Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(smallOrderMenuItem,"날봐날봐 귀순"))
+            Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(smallOrderMenuItem,requestEditText.text.toString()))
 
 
 

@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/realmenurecyclerview"
-                android:layout_marginTop="-2dp" />
+                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/drinkorderrecyclerview"
@@ -106,11 +106,41 @@
                 android:layout_below="@id/sideorderrecyclerview" />
 
 
+            <View
+                android:layout_below="@id/drinkorderrecyclerview"
+                android:id="@+id/view_2213"
+                android:background="#EFEFEF"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                />
+
+
+            <EditText
+                android:padding="10dp"
+                android:gravity="top"
+                android:background="@color/white"
+                android:hint="문의 사항"
+                android:id="@+id/requestEditText"
+                android:layout_below="@+id/view_2213"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+
+            <View
+
+                android:layout_below="@id/requestEditText"
+                android:id="@+id/view_view"
+                android:background="#EFEFEF"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                />
+
+
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:id="@+id/com_resultprice_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/drinkorderrecyclerview"
+                android:layout_below="@id/view_view"
                 android:layout_marginBottom="80dp"
                 android:padding="10dp">
 
@@ -140,6 +170,15 @@
 
             </LinearLayout>
 
+
+
+
+
+
+
+
+
+
         </RelativeLayout>
 
 
@@ -149,16 +188,17 @@
         android:id="@+id/constraintlayout1"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#2D3038"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
+            android:layout_alignParentBottom="true"
+            android:background="#2D3038"
             android:id="@+id/wowOrderGobtn"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="45dp"
             android:fontFamily="@font/test2"
             android:gravity="center"
             android:text="ORDER"
@@ -167,7 +207,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

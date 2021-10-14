@@ -8,6 +8,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import com.example.ordermain_1.App
 import com.example.ordermain_1.PageLastYeah.LastYeah
 import com.example.ordermain_1.PageMenuPageUI.MenuPageUI
 import com.example.ordermain_1.R
@@ -27,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
+//        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
+//
+//        menucall()
 
-        menucall()
-
-//        Handler().postDelayed({
-//            fadeanimation(this)
-//        }, 1000)
+        Handler().postDelayed({
+            fadeanimation(this)
+        }, 1000)
 
 
 
@@ -69,18 +70,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun fadeanimation(activity: Activity) {
-
-
         QRscan()
-
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
+    fun slowfade(activity: Activity){
+        activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
+        menucall()
+
     }
 
 
 
     private fun QRscan() {
         val integrator = IntentIntegrator(this)
-        integrator.setPrompt("QR 코드 스캔해요")  //프롬프트
+        integrator.setPrompt("QR 코드를 스캔해 주세요.")  //프롬프트
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)   //원하는 규격
         integrator.setCameraId(0)   //0은 후면, 1은 전면카메라
         integrator.setBeepEnabled(false)    //소리낼지말지
@@ -94,7 +99,13 @@ class MainActivity : AppCompatActivity() {
         if(result != null) {
             if(result.contents != null){
 
-//                retrofitCall()
+//                Handler().postDelayed({
+//                    fadeanimation(this)
+//                }, 1000)
+                Handler().postDelayed({
+                    slowfade(this)
+                },1500)
+
 
             }else{
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
