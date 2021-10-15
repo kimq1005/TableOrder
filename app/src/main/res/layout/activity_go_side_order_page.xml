@@ -106,7 +106,7 @@
                 android:id="@+id/Side_OrderPage_menuName_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/osw"
+                android:fontFamily="@font/nanumgothic_extrabold"
                 android:gravity="center"
                 android:padding="20dp"
                 android:text="상품 이름"
@@ -287,9 +287,9 @@
                 android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:background="#2D3038"
-                android:fontFamily="@font/test2"
+                android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
-                android:text="ADD TO CART"
+                android:text="장바구니 담기"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 

@@ -31,11 +31,12 @@
 
 
         <TextView
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/test2"
+            android:fontFamily="@font/nanumgothic_regular"
             android:textSize="25sp"
-            android:text="order completed"
+            android:text="주문서"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/iv_hamburger"
@@ -274,7 +275,6 @@
                 android:id="@+id/last_request"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="문의사항이다 "
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -285,9 +285,9 @@
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:fontFamily="@font/test2"
+            android:fontFamily="@font/nanumgothic_regular"
             android:gravity="center"
-            android:text="Order Cancellation"
+            android:text="주문 취소"
             android:textColor="@color/white"
             android:textSize="20sp"
            />

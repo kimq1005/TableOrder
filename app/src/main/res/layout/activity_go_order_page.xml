@@ -107,7 +107,7 @@
                 android:src="@drawable/food1" />
 
             <TextView
-                android:fontFamily="@font/test1"
+                android:fontFamily="@font/nanumgothic_extrabold"
                 android:id="@+id/OrderPage_menuName_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -295,9 +295,9 @@
                 android:layout_alignParentBottom="true"
                 android:background="#2D3038"
                 android:gravity="center"
-                android:text="Add to Cart"
+                android:text="장바구니 담기"
                 android:textColor="@color/white"
-                android:fontFamily="@font/test1"
+                android:fontFamily="@font/nanumgothic_regular"
                 android:textSize="20sp" />
 
 

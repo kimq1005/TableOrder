@@ -9,9 +9,9 @@
         android:name=".App"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_my_icon"
+        android:label="ORDER"
+        android:roundIcon="@mipmap/ic_my_icon_back_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderMain_1"
         android:usesCleartextTraffic="true">
