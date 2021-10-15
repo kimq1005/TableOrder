@@ -87,7 +87,7 @@ class GoSideOrderPage : AppCompatActivity() {
         val Intprice = Stringprice.toInt()
 
         var sum:Int = 0
-        PlusBtn.setOnClickListener {
+        SidePlusBtn.setOnClickListener {
             for(i in 1..1){
                 sum=sum+1
             }
@@ -98,7 +98,7 @@ class GoSideOrderPage : AppCompatActivity() {
         }
 
 
-        MinusBtn.setOnClickListener {
+        SideMinusBtn.setOnClickListener {
             for(i in 1..1){
                 sum=sum-1
             }

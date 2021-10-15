@@ -15,8 +15,6 @@ import com.example.ordermain_1.R
 import kotlinx.android.synthetic.main.activity_go_drink_order_page.*
 import kotlinx.android.synthetic.main.activity_go_order_page.*
 import kotlinx.android.synthetic.main.activity_go_side_order_page.*
-import kotlinx.android.synthetic.main.activity_go_side_order_page.MinusBtn
-import kotlinx.android.synthetic.main.activity_go_side_order_page.PlusBtn
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 
 
@@ -45,6 +43,7 @@ class GoDrinkOrderPage : AppCompatActivity() {
         drinkdb = DrinkmenuDataBase.getinstance(this)!!
 
         drinkmenucall()
+        menuBtnClick()
 
 
 //        var holymoly = Drink_OrderPage_menuPrice_txt.text
@@ -80,7 +79,7 @@ class GoDrinkOrderPage : AppCompatActivity() {
 
 
         
-        menuBtnClick()
+
 
     }
 
@@ -101,38 +100,38 @@ class GoDrinkOrderPage : AppCompatActivity() {
 
     private fun menuBtnClick() {
 
+        val price = Drink_OrderPage_menuPrice_txt.text
+        val Stringprice = price.toString()
+        val Intprice = Stringprice.toInt()
+
         var sum:Int = 0
-        var result_sum:String? =null
-        PlusBtn.setOnClickListener {
+        DrinkPlusBtn.setOnClickListener {
             for(i in 1..1){
                 sum=sum+1
             }
 
             DrinkZeroBtn.text = sum.toString()
-            Drink_OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
+            Drink_OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
 
         }
 
 
-
-        MinusBtn.setOnClickListener {
+        DrinkMinusBtn.setOnClickListener {
             for(i in 1..1){
                 sum=sum-1
             }
 
             DrinkZeroBtn.text = sum.toString()
-            Drink_OrderPage_resultPrice_txt.text = (sum*resultprice).toString()
+            Drink_OrderPage_resultPrice_txt.text = (sum*Intprice).toString()
 
 
             if(sum<0){
                 sum = 0
-                ZeroBtn.text = sum.toString()
 
             }
 
 
         }
-
 
 
 

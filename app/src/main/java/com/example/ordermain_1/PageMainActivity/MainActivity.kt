@@ -28,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
-//
-//        menucall()
+        Retrofit_Manager.retrofit_manger.PostRequest(TableData("test4",8,116))
 
-        Handler().postDelayed({
-            fadeanimation(this)
-        }, 1000)
+        menucall()
+
+//        Handler().postDelayed({
+//            fadeanimation(this)
+//        }, 1000)
 
 
 

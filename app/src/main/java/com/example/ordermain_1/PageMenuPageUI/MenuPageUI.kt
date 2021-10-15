@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ordermain_1.*
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
@@ -67,6 +68,9 @@ class MenuPageUI : AppCompatActivity() {
                     onBackPressed()
                 }
 
+                scrollevent()
+
+
                 //if(장바구니 담기 버튼이 클릭되었다면){데이터 절로 보내 ㅇㅋ}
 
                 initMenuPageUIAdapter()
@@ -79,6 +83,28 @@ class MenuPageUI : AppCompatActivity() {
 
             }
 
+    private fun scrollevent() {
+
+//        val orignY =scrollView2.scrollY
+//        val viewLocation = IntArray(2)
+//        val scrollLocation = IntArray(2)
+//        scrollView2.getLocationOnScreen(viewLocation)
+
+        mainbtn.setOnClickListener {
+            scrollView2.scrollTo(0,realmenurecyclerView.top)
+        }
+
+        sidebtn.setOnClickListener {
+            scrollView2.scrollTo(0,sidemenurecyclerView.top)
+        }
+
+        drinkbtn.setOnClickListener {
+            scrollView2.scrollTo(0,drinkmenurecyclerView.top)
+        }
+
+
+
+    }
 
 
     private fun initMenuPageUIAdapter() {

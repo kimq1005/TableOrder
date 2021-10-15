@@ -246,13 +246,17 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {
                 realmenuList=realdb.realmenuDAO().realmenugetAll()
+
             }
 
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                for(i in realmenuList.indices)
+                //realmenuList.get(i).realmenuprice는 realmenulist에 들어온 realmenuprice값이야
+                //그럼 나간값만큼 빼주면 되는건데 하 시발 내가 코딩실력이 확실히 부족하다.
+                for(i in realmenuList.indices){
                     count_sum += realmenuList.get(i).realmenuprice!!.toInt()
+                }
 
                 for(i in sidemenuList.indices)
                     count_sum += sidemenuList.get(i).sidemenuprice!!.toInt()
@@ -322,12 +326,6 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
                 Log.d(TAG, "onPostExecute:$smallOrderMenuItem")
 
 
-
-//            val menuitem = ArrayList<Small_Order_Menu_Item>()
-//
-////                menuitem.add(test21())
-////            val menulist_id_count = Small_Order_Menu_Item(231,1)
-////            menuitem.add(menulist_id_count)
 
             Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(smallOrderMenuItem,requestEditText.text.toString()))
 

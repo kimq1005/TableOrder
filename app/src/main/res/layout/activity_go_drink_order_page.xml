@@ -199,7 +199,7 @@
                 android:gravity="right">
 
                 <TextView
-                    android:id="@+id/MinusBtn"
+                    android:id="@+id/DrinkMinusBtn"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
@@ -221,7 +221,7 @@
 
                 <TextView
 
-                    android:id="@+id/PlusBtn"
+                    android:id="@+id/DrinkPlusBtn"
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="20dp"
@@ -290,7 +290,7 @@
                 android:background="#2D3038"
                 android:fontFamily="@font/test2"
                 android:gravity="center"
-                android:text="Add To Cart"
+                android:text="장바구니 담기"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
