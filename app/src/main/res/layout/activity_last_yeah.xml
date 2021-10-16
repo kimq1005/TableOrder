@@ -281,10 +281,12 @@
 
 
         <TextView
+            android:textStyle="bold"
+            android:id="@+id/OrderCancle"
             android:background="#2D3038"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:fontFamily="@font/nanumgothic_regular"
             android:gravity="center"
             android:text="주문 취소"

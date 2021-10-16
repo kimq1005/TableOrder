@@ -24,5 +24,15 @@ interface Retrofit_InterFace {
         @Body item : Order_Menu_Item
     ):Call<MenuResult1>
 
+    @POST(API.Web_Login_URL)
+    fun WebLogin(
+        @Body userpass:userpass
+    ):Call<webtoken>
+
+    @POST(API.Order_Cancle_URL)
+    fun OrderCancle(
+        @Header("Authorization")accessToken:String
+    ):Call<JsonElement>
+
 
 }

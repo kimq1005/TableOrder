@@ -123,6 +123,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+
                 android:id="@+id/mainbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,7 +131,7 @@
                 android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="MAIN"
+                android:text="메인 메뉴"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -144,7 +145,7 @@
                 android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="SIDE"
+                android:text="사이드 메뉴"
                 android:textColor="#2D3038"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -157,7 +158,7 @@
                 android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
                 android:padding="15dp"
-                android:text="DRINK"
+                android:text="음료 주류"
                 android:textColor="#2D3038"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -197,7 +198,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
-                android:text="MAIN"
+                android:text="메인 메뉴"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="25dp"
 
@@ -212,6 +214,7 @@
 
 
             <TextView
+                android:textStyle="bold"
                 android:id="@+id/sidedish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -220,7 +223,7 @@
                 android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="SIDE"
+                android:text="사이드 메뉴"
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 
@@ -232,6 +235,7 @@
 
 
             <TextView
+                android:textStyle="bold"
                 android:id="@+id/drinkdish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -240,7 +244,7 @@
                 android:fontFamily="@font/nanumgothic_regular"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="DRINK"
+                android:text="음료 및 주류"
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 

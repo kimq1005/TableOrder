@@ -20,6 +20,9 @@ class Retrofit_Manager {
     private lateinit var saveToken: SaveToken
     private lateinit var myaccesstoken:String
 
+    private lateinit var websaveToken : WebSaveToken
+    private lateinit var webmyaccesstoken:String
+
     private val retrofit_interface : Retrofit_InterFace?=
         Retrofit_client.getClient(API.BASE_URL)?.create(Retrofit_InterFace::class.java)
 
@@ -276,6 +279,62 @@ class Retrofit_Manager {
 
             override fun onFailure(call: Call<MenuResult1>, t: Throwable) {
                 Log.d(TAG, "onFailure: $t")
+            }
+
+        })
+    }
+
+    fun WebLoginPost(){
+        val call = httpCall?.WebLogin(userpass("kch","1234"))
+
+
+        call?.enqueue(object:retrofit2.Callback<webtoken>{
+            override fun onResponse(call: Call<webtoken>, response: Response<webtoken>) {
+                Log.d(TAG, "onResponse:${response.body()}")
+                val webresponsebody = response.body()
+
+                if(webresponsebody?.status==200){
+                    webmyaccesstoken = webresponsebody.accessToken.toString()
+                    Log.d(TAG, "onResponse:${webmyaccesstoken}")
+
+                    val call2 = httpCall?.OrderCancle("Bearer ${webmyaccesstoken}")
+
+                    call2?.enqueue(object :retrofit2.Callback<JsonElement>{
+                        override fun onResponse(
+                            call: Call<JsonElement>,
+                            response: Response<JsonElement>,
+                        ) {
+                            Log.d(TAG, "주문이 취소 됐슴다 ${response.body()}")
+                        }
+
+                        override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+                            Log.d(TAG, "onFailure:$t")
+
+                        }
+
+                    })
+
+
+                }
+            }
+
+            override fun onFailure(call: Call<webtoken>, t: Throwable) {
+                Log.d(TAG, "onFailure:$t")
+            }
+
+        })
+    }
+
+    fun OrderCanclePost(){
+        val call = httpCall?.OrderCancle("Bearer ${webmyaccesstoken}")
+
+        call?.enqueue(object :retrofit2.Callback<JsonElement>{
+            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
+                Log.d(TAG, "주문이 취소 됐슴다 ${response.raw()}")
+            }
+
+            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
+                Log.d(TAG, "$t")
             }
 
         })

@@ -187,18 +187,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintlayout1"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
 
         <TextView
+            android:textStyle="bold"
             android:layout_alignParentBottom="true"
             android:background="#2D3038"
             android:id="@+id/wowOrderGobtn"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:fontFamily="@font/nanumgothic_regular"
             android:gravity="center"
             android:text="주문하기"

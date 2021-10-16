@@ -1,8 +1,12 @@
 package com.example.ordermain_1.PageLastYeah
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.ordermain_1.R
+import com.example.ordermain_1.rerofit.Retrofit_Manager
+import kotlinx.android.synthetic.main.activity_completed_order_page.*
 import kotlinx.android.synthetic.main.activity_last_yeah.*
 
 class LastYeah : AppCompatActivity() {
@@ -19,5 +23,27 @@ class LastYeah : AppCompatActivity() {
 
         last_menuprice_result.text = menu_priceresult.toString()
         last_request.text = menu_request.toString()
+
+
+        OrderCancle.setOnClickListener {
+
+            Retrofit_Manager.retrofit_manger.WebLoginPost()
+
+            val lastpriceresult = last_menuprice_result.text.toString()
+            val intent = Intent(this,OrderCanclePage::class.java)
+            intent.putExtra("lastresultprice",lastpriceresult)
+
+
+            startActivity(intent)
+
+
+
+
+
+
+
+
+
+        }
     }
 }

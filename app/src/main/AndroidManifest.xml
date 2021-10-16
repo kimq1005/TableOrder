@@ -15,8 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderMain_1"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".PageGoOrderPage.GoDrinkOrderPage"></activity>
+        <activity android:name=".PageLastYeah.OrderCanclePage"></activity>
+        <activity android:name=".PageGoOrderPage.GoDrinkOrderPage" />
         <activity android:name=".PageGoOrderPage.GoSideOrderPage" />
         <activity android:name=".PageLastYeah.LastYeah" />
         <activity android:name=".PageComOrderPage.Completed_Order_Page" />

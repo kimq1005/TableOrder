@@ -97,3 +97,19 @@ data class test21(
     var id:Int?,
     var count:Int?,
 )
+
+data class userpass(
+    @SerializedName("username")
+    var username:String?,
+
+    @SerializedName("password")
+    var password:String
+)
+
+data class webtoken(
+    val status: Int?,
+    val message:String?,
+    val accessToken:String?,
+    val expiredAt:String?,
+    val refreshToken:String?
+)

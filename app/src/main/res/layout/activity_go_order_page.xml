@@ -291,14 +291,24 @@
             <TextView
                 android:id="@+id/GO_Complted_Page"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="60dp"
                 android:layout_alignParentBottom="true"
                 android:background="#2D3038"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="장바구니 담기"
                 android:textColor="@color/white"
                 android:fontFamily="@font/nanumgothic_regular"
                 android:textSize="20sp" />
+
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/GO_Complted_Page"
+                android:src="@drawable/whiecart" />
 
 
         </RelativeLayout>

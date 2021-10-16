@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background=" #F0F5FB"
+    tools:context=".PageLastYeah.LastYeah">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Last_Order_TTT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2D3038"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_hamburger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/cancel_go_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumgothic_regular"
+            android:textSize="25sp"
+            android:text="ORDER"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/iv_hamburger"
+            app:layout_constraintRight_toLeftOf="@+id/QR_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/QR_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/ic_baseline_realqrwhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+
+        <View
+            android:id="@+id/Last_view1"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="15dp"
+            android:background="#EFEFEF" />
+
+        <RelativeLayout
+            android:id="@+id/Last_MenuInfo_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Last_view1"
+            android:layout_marginTop="15dp"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="주문이 취소 되었습니다"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="10dp"-->
+                <!--                    android:text="1"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="17sp" />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="10dp"-->
+                <!--                    android:text="개"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="17sp"-->
+                <!--                    android:textStyle="bold" />-->
+
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_alignParentEnd="true">-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="15000"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="17dp"-->
+                <!--                    android:textStyle="bold" />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="10dp"-->
+                <!--                    android:text="원"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="17sp" />-->
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:id="@+id/Last_view2"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_below="@+id/Last_MenuInfo_layout"
+            android:layout_marginTop="15dp"
+            android:background="#EFEFEF" />
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/Last_TimeNunmber_layout"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@+id/Last_view2"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:padding="10dp">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/Last_Order_Time"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="주문일시 : " />-->
+
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="주문일시 : 2021년 7월 2일 오후 14:00" />-->
+
+
+        <!--            </LinearLayout>-->
+
+
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/Last_Order_Number"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_below="@id/Last_Order_Time">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_below="@+id/Last_StoreName"-->
+        <!--                    android:text="주문번호 : " />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="AXIEKDCIEAQER945AE" />-->
+
+        <!--            </LinearLayout>-->
+
+
+        <!--        </LinearLayout>-->
+
+
+        <!--        <View-->
+        <!--            android:id="@+id/Last_view3"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="2px"-->
+        <!--            android:layout_below="@+id/"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:background="#EFEFEF" />-->
+
+        <RelativeLayout
+            android:id="@+id/Last_price_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Last_MenuInfo_layout"
+            android:layout_marginTop="15dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="총 취소금액"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                >
+
+                <TextView
+                    android:id="@+id/last_menuprice_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30000"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:id="@+id/Last_view4"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_below="@+id/Last_price_layout"
+            android:layout_marginTop="15dp"
+            android:background="#EFEFEF" />
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
