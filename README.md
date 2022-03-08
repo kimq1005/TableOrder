@@ -34,7 +34,6 @@
 * 메인 화면
 
   <img src = "https://user-images.githubusercontent.com/68366753/157180257-9d2fa025-38e5-4c0f-82ad-1750dedc1675.png" width="25%" height="25%">
-  ![image](https://user-images.githubusercontent.com/68366753/157180257-9d2fa025-38e5-4c0f-82ad-1750dedc1675.png)
 
 
       
@@ -44,19 +43,15 @@
 * 메뉴목록
 
 
-  <img src = "https://user-images.githubusercontent.com/68366753/157180408-ef83906d-c293-4cb2-87b9-8d53128497d3.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/157180558-7a126021-0f4b-40a1-b211-81b26eab7bb1.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/157180614-90649976-4683-4afa-90cd-58405716718d.png" width="20%" height="20%">
-  <img src = "" width="20%" height="20%"><img src = "" width="20%" height="20%">
+  <img src = "https://user-images.githubusercontent.com/68366753/157180408-ef83906d-c293-4cb2-87b9-8d53128497d3.png" width="20%" height="20%"><img src = "https://user-images.githubusercontent.com/68366753/157180614-90649976-4683-4afa-90cd-58405716718d.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/157180558-7a126021-0f4b-40a1-b211-81b26eab7bb1.png" width="20%" height="20%">  
   
   
 
  
- 
 
- 
+* 장바구니  
 
-* 즐겨찾기  
-  
-  <img src = "https://user-images.githubusercontent.com/68366753/154833778-2555b0fb-5ad0-4151-9f2a-69a81e93b436.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/154833794-e0d1a9a0-d352-428f-b41f-8a97f8fed582.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/154833814-9eeed1a5-78d2-4b4a-976a-b6c8145bc3ca.png" width="20%" height="20%">  
+  <img src = "(https://user-images.githubusercontent.com/68366753/157180898-ae866bc9-6cb5-45ee-bc4d-9726d2a6375c.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/157181055-19d44ef4-2bda-4a82-826e-aafaa411b80a.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/157181117-fd348659-4d0c-44e2-91a5-70da85c2b362.png" width="20%" height="20%"><img src = "https://user-images.githubusercontent.com/68366753/157181213-1b47df18-77d5-4ffe-8327-28d118745abd.png" width="20%" height="20%">    
 
 
 
