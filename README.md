@@ -7,11 +7,9 @@
 <img src="https://user-images.githubusercontent.com/69130921/137612709-e8773a2b-e283-47a4-9b6f-6d86acb5f9cc.png">
 
 
-# Android
 
-<br>
 
-## APP 이용 방법
+## Android
 1. 사용자가 매장 QR코드를 인식하면 해당 매장의 메뉴 페이지로 이동한다.
    - 메뉴 페이지에는 매장에 대한 설명 및 대표 메뉴, 사이드 메뉴, 모든 메뉴가 표시된다.
    - 메뉴 클릭시 메뉴에 대한 상세 설명이 표시된다.
