@@ -9,6 +9,7 @@
 
 
 
+
 ## Android
 1. 사용자가 매장 QR코드를 인식하면 해당 매장의 메뉴 페이지로 이동한다.
    - 메뉴 페이지에는 매장에 대한 설명 및 대표 메뉴, 사이드 메뉴, 모든 메뉴가 표시된다.
@@ -31,7 +32,29 @@
 
 # 📷스크린샷
 * 메인 화면
- <img src = "https://user-images.githubusercontent.com/68366753/157177874-f5f370d8-b460-4380-8b23-32ef476c4039.png" width="25%" height="25%">    
+
+  <img src = "https://user-images.githubusercontent.com/68366753/154833313-2a0e1467-56d8-444a-8d4e-65f875c1fce5.png" width="25%" height="25%">   
+    
+      
+      
+  
+  
+* 정류장(역) 검색
+
+  <img src = "https://user-images.githubusercontent.com/68366753/154833313-2a0e1467-56d8-444a-8d4e-65f875c1fce5.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/154833623-b78084e8-0876-481e-81ee-37095d575020.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/154833637-3c48804e-a15b-4749-aed2-5c204424a4e3.png" width="20%" height="20%">
+  <img src = "https://user-images.githubusercontent.com/68366753/154833703-77f69573-f9a3-4a9e-be57-328d5554961b.png" width="20%" height="20%"><img src = "https://user-images.githubusercontent.com/68366753/156972490-35405ebe-15b3-4945-828b-03424f39ebf0.png" width="20%" height="20%">
+  
+  
+
+ 
+ 
+
+ 
+
+* 즐겨찾기  
+  
+  <img src = "https://user-images.githubusercontent.com/68366753/154833778-2555b0fb-5ad0-4151-9f2a-69a81e93b436.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/154833794-e0d1a9a0-d352-428f-b41f-8a97f8fed582.png" width="20%" height="20%">  <img src = "https://user-images.githubusercontent.com/68366753/154833814-9eeed1a5-78d2-4b4a-976a-b6c8145bc3ca.png" width="20%" height="20%">  
+
 
 
 ## ADMIN 이용 방법
