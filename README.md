@@ -33,7 +33,9 @@
 # 📷스크린샷
 * 메인 화면
 
-  <img src = "https://user-images.githubusercontent.com/68366753/157179905-de47e8dd-fa44-42e8-90f5-a56d8ad54bc5.png" width="25%" height="25%">   
+  <img src = "https://user-images.githubusercontent.com/68366753/157180257-9d2fa025-38e5-4c0f-82ad-1750dedc1675.png" width="25%" height="25%">
+  ![image](https://user-images.githubusercontent.com/68366753/157180257-9d2fa025-38e5-4c0f-82ad-1750dedc1675.png)
+
 
       
       
