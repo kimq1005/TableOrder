@@ -30,7 +30,8 @@
 * Kotlin, MVC, Retrofit2, OKHttp, Gson, Room, Glide
 
 # 📷스크린샷
-* 메인 화면  
+* 메인 화면
+ <img src = "https://user-images.githubusercontent.com/68366753/157177874-f5f370d8-b460-4380-8b23-32ef476c4039.png" width="25%" height="25%">    
 
 
 ## ADMIN 이용 방법
