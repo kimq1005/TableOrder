@@ -1,17 +1,5 @@
 # TableOrder
-테이블의 QR 코드를 이용해 자리에서 핸드폰으로 주문을 할 수 있는 시비스입니다.(진행중)
-
-- JAVA 11
-- Gradle 6.8.3
-- Spring Boot 2.4.5
-- Mysql
-- React
-- Android 
-
-<br>
-
-## WBS
-[WBS 링크](https://docs.google.com/spreadsheets/d/10HF0dJNTQ_49pUTCzdZiGQYHhlVW0PRulTBQQK-qIwQ/edit?usp=sharing)
+테이블의 QR 코드를 이용해 자리에서 핸드폰으로 주문을 할 수 있는 시비스입니다.
 
 <br>
 
@@ -19,10 +7,14 @@
 <img src="https://user-images.githubusercontent.com/69130921/137612709-e8773a2b-e283-47a4-9b6f-6d86acb5f9cc.png">
 
 
+#Android
+
+<br>
+
 ## APP 이용 방법
 1. 사용자가 매장 QR코드를 인식하면 해당 매장의 메뉴 페이지로 이동한다.
    - 메뉴 페이지에는 매장에 대한 설명 및 대표 메뉴, 사이드 메뉴, 모든 메뉴가 표시된다.
-   - 메뉴 클릭시 메뉴에 대한 상세 설명 및 리뷰가 표시된다.
+   - 메뉴 클릭시 메뉴에 대한 상세 설명이 표시된다.
 
 2. 메뉴페이지에 있는 메뉴를 바로 주문하거나 장바구니에 담을 수 있다.
    - 메뉴 페이지에는 주문하기 버튼, 장바구니에 담기 버튼 및 아이콘이 존재한다.
@@ -35,7 +27,13 @@
    - 주문 상세 정보는 주문 메뉴, 총 결제금액, 문의사항이 표기된다.
    - 주문 취소 버튼 및 주문 내역 삭제 버튼이 존재한다.
 
-<br>
+
+# 🛠Tech Stack
+* Kotlin, MVC, Retrofit2, OKHttp, Gson, Room, Glide
+
+# 📷스크린샷
+* 메인 화면  
+
 
 ## ADMIN 이용 방법
 ### 메인 페이지
