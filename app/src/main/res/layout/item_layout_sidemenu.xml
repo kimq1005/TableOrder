@@ -11,10 +11,9 @@
 
     <View
         android:id="@+id/view_2"
-        android:background="#EFEFEF"
         android:layout_width="match_parent"
         android:layout_height="2px"
-        />
+        android:background="#EFEFEF" />
 
 
     <TextView

@@ -9,7 +9,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ordermain_1.DataBaseObject.DBobject
-import com.example.ordermain_1.MainActivityViewModel
 import com.example.ordermain_1.PageGoOrderPage.DrinkmenuDatabase.DrinkmenuDataBase
 import com.example.ordermain_1.PageGoOrderPage.DrinkmenuDatabase.DrinkmenuEntity
 import com.example.ordermain_1.PageGoOrderPage.GoOrderPage
@@ -32,31 +31,23 @@ import kotlinx.android.synthetic.main.item_layout_com_order.*
 @SuppressLint("StaticFieldLeak")
 class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
-    val TAG: String ="로그"
+    val TAG: String = "로그"
 
 
-
-    lateinit var realmenuList : List<RealmenuEntity>
-    lateinit var sidemenuList : List<SidemenuEntity>
-    lateinit var drinkmenuList : List<DrinkmenuEntity>
-    lateinit var lastList : List<LastEntity>
-
-    lateinit var mainMenulist: List<MainMenulist>
-
-    lateinit var realdb : RealmenuDataBase
-    lateinit var sidedb : SidemenuDataBase
-    lateinit var drinkdb : DrinkmenuDataBase
-    lateinit var lastdb : LastDataBase
+    lateinit var realmenuList: List<RealmenuEntity>
+    lateinit var sidemenuList: List<SidemenuEntity>
+    lateinit var drinkmenuList: List<DrinkmenuEntity>
 
 
+    lateinit var realdb: RealmenuDataBase
+    lateinit var sidedb: SidemenuDataBase
+    lateinit var drinkdb: DrinkmenuDataBase
+    lateinit var lastdb: LastDataBase
 
-    private lateinit var viewModel : MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_completed_order_page)
-
-//        test()
 
 
         realdb = RealmenuDataBase.getinstance(this)!!
@@ -64,11 +55,11 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         drinkdb = DrinkmenuDataBase.getinstance(this)!!
         lastdb = LastDataBase.getinstance(this)!!
 
-        //여기 장바구니임
+
         wowOrderGobtn.setOnClickListener {
 
 
-            sisissibalbal()
+            menutotalOrder()
 
             val request = requestEditText.text.toString()
             val priceresult = com_resultprice_txt.text.toString()
@@ -76,12 +67,11 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
             Log.d(TAG, "onCreate:$request \n $priceresult")
 
 
-            val intent = Intent(this,LastYeah::class.java)
+            val intent = Intent(this, LastYeah::class.java)
 
-            intent.putExtra("request",request)
-            intent.putExtra("resultprice",priceresult)
+            intent.putExtra("request", request)
+            intent.putExtra("resultprice", priceresult)
             startActivity(intent)
-
 
 
         }
@@ -94,9 +84,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     }
 
 
-
-    private fun drinkmenugetAll(){
-        var dirnkmenugetTask = (object :AsyncTask<Unit,Unit,Unit>(){
+    private fun drinkmenugetAll() {
+        var dirnkmenugetTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 drinkmenuList = drinkdb.drinkmenuDAO().drinkmenugetAll()
             }
@@ -108,19 +97,18 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         }).execute()
     }
 
-    private fun drinkmenuSetRecyclerView(){
+    private fun drinkmenuSetRecyclerView() {
         val com_DrinkMenu_Adapter = Com_DrinkMenu_Adapter(this)
         com_DrinkMenu_Adapter.submitList(drinkmenuList)
-
-        drinkorderrecyclerview.apply{
+        drinkorderrecyclerview.apply {
             layoutManager = LinearLayoutManager(this@Completed_Order_Page)
             adapter = com_DrinkMenu_Adapter
         }
 
     }
 
-    private fun drinkmenuDelete(drinkmenuEntity: DrinkmenuEntity){
-        var drinkmenudeleteTask = (object:AsyncTask<Unit,Unit,Unit>(){
+    private fun drinkmenuDelete(drinkmenuEntity: DrinkmenuEntity) {
+        var drinkmenudeleteTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 drinkdb.drinkmenuDAO().drinkmenudelete(drinkmenuEntity)
             }
@@ -134,9 +122,9 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     }
 
     private fun sidemenugetAll() {
-        var sidemenugetTask =(object : AsyncTask<Unit,Unit,Unit>(){
+        var sidemenugetTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                sidemenuList= sidedb.sidemenuDAO().sidemenugetALl()
+                sidemenuList = sidedb.sidemenuDAO().sidemenugetALl()
             }
 
             override fun onPostExecute(result: Unit?) {
@@ -149,22 +137,22 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     }
 
 
-
     private fun sidemenuSetRecyclerView() {
         val com_SideMenu_Adapter = Com_SideMenu_Adapter(this)
         com_SideMenu_Adapter.submitList(sidemenuList)
 
-        sideorderrecyclerview.apply{
+        sideorderrecyclerview.apply {
             layoutManager = LinearLayoutManager(this@Completed_Order_Page)
             adapter = com_SideMenu_Adapter
         }
     }
 
-    private fun sidemenuDelete(sidemenuEntity: SidemenuEntity){
-        var sidemenudeleteTask =(object:AsyncTask<Unit,Unit,Unit>(){
+    private fun sidemenuDelete(sidemenuEntity: SidemenuEntity) {
+        var sidemenudeleteTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 sidedb.sidemenuDAO().sidemenuDelete(sidemenuEntity)
             }
+
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
                 sidemenugetAll()
@@ -174,9 +162,9 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     }
 
     private fun realmenugetAll() {
-        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
+        val realmenugetallTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                realmenuList=realdb.realmenuDAO().realmenugetAll()
+                realmenuList = realdb.realmenuDAO().realmenugetAll()
             }
 
             override fun onPostExecute(result: Unit?) {
@@ -187,8 +175,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         }).execute()
     }
 
-    private fun realmenuSetRecyclerView(){
-        val com_RealMenu_Adapter =Com_RealMenu_Adapter(this)
+    private fun realmenuSetRecyclerView() {
+        val com_RealMenu_Adapter = Com_RealMenu_Adapter(this)
         com_RealMenu_Adapter.submitList(realmenuList)
 
         realmenurecyclerview.apply {
@@ -198,8 +186,8 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
     }
 
-    private fun realmenuDelete(realmenuEntity: RealmenuEntity){
-        val realmenuDeleteTask=(object:AsyncTask<Unit,Unit,Unit>(){
+    private fun realmenuDelete(realmenuEntity: RealmenuEntity) {
+        val realmenuDeleteTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 realdb.realmenuDAO().realmenuDelete(realmenuEntity)
             }
@@ -213,55 +201,41 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
         }).execute()
     }
 
-    private fun lastinsert(lastEntity: LastEntity){
-        val lastinsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
-            override fun doInBackground(vararg params: Unit?) {
-                lastdb.lastDAO().lastinsert(lastEntity)
-            }
-
-            override fun onPostExecute(result: Unit?) {
-                super.onPostExecute(result)
-                lastdb.lastDAO().lastgetAll()
-            }
-        })
-    }
-
-
 
     override fun onrealmenuDeleteListner(realmenuEntity: RealmenuEntity) {
         realmenuDelete(realmenuEntity)
     }
 
     override fun onsidemenuDeleteListener(sidemenuEntity: SidemenuEntity) {
-       sidemenuDelete(sidemenuEntity)
+        sidemenuDelete(sidemenuEntity)
     }
 
+
     override fun ondrinkmenuDeleteListener(drinkmenuEntity: DrinkmenuEntity) {
-       drinkmenuDelete(drinkmenuEntity)
+        drinkmenuDelete(drinkmenuEntity)
     }
 
 
     private fun real_price_getAll(): Unit {
         var count_sum: Int = 0
-        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
+        val realmenugetallTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                realmenuList=realdb.realmenuDAO().realmenugetAll()
+                realmenuList = realdb.realmenuDAO().realmenugetAll()
 
             }
 
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                //realmenuList.get(i).realmenuprice는 realmenulist에 들어온 realmenuprice값이야
-                //그럼 나간값만큼 빼주면 되는건데 하 시발 내가 코딩실력이 확실히 부족하다.
-                for(i in realmenuList.indices){
+
+                for (i in realmenuList.indices) {
                     count_sum += realmenuList.get(i).realmenuprice!!.toInt()
                 }
 
-                for(i in sidemenuList.indices)
+                for (i in sidemenuList.indices)
                     count_sum += sidemenuList.get(i).sidemenuprice!!.toInt()
 
-                for(i in drinkmenuList.indices)
+                for (i in drinkmenuList.indices)
                     count_sum += drinkmenuList.get(i).drinkmenuprice!!.toInt()
 
                 Log.d("합계", "$count_sum")
@@ -272,54 +246,52 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
     }
 
 
-
-    private fun sisissibalbal(): Unit {
+    private fun menutotalOrder() {
 
         val smallOrderMenuItem = ArrayList<Small_Order_Menu_Item>()
 
-        val realmenugetallTask=(object:AsyncTask<Unit,Unit,Unit>(){
+        val realmenugetallTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                realmenuList=realdb.realmenuDAO().realmenugetAll()
+                realmenuList = realdb.realmenuDAO().realmenugetAll()
             }
 
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
 
-                for(i in realmenuList.indices){
+                for (i in realmenuList.indices) {
 
                     var realmenuname_id: Int
-                    var realmenuscore_count:Int
+                    var realmenuscore_count: Int
 
-                    realmenuname_id= realmenuList.get(i).realmenuid!!.toInt() //230이라는 변수가 생기지
-                    realmenuscore_count =realmenuList.get(i).realmenufoodscore!!.toInt()
-                    val realmenul = Small_Order_Menu_Item(realmenuname_id,realmenuscore_count)
+                    realmenuname_id = realmenuList.get(i).realmenuid!!.toInt()
+                    realmenuscore_count = realmenuList.get(i).realmenufoodscore!!.toInt()
+                    val realmenul = Small_Order_Menu_Item(realmenuname_id, realmenuscore_count)
                     smallOrderMenuItem.add(realmenul)
                 }
 
-                for(i in sidemenuList.indices)
-                {
-                    var sidemenuname_id : Int
-                    var sidemenuscore_count:Int
+                for (i in sidemenuList.indices) {
+                    var sidemenuname_id: Int
+                    var sidemenuscore_count: Int
 
                     sidemenuname_id = sidemenuList.get(i).sidemenuid!!.toInt()
                     sidemenuscore_count = sidemenuList.get(i).sidemenufoodscore!!.toInt()
-                    val sidemenul = Small_Order_Menu_Item(sidemenuname_id,sidemenuscore_count)
+                    val sidemenul = Small_Order_Menu_Item(sidemenuname_id, sidemenuscore_count)
 
                     smallOrderMenuItem.add(sidemenul)
 
                 }
 
-                for(i in drinkmenuList.indices)
-                {
-                    var drinkmenuname_id : Int
-                    var drinkmenuscore_count:Int
+                for (i in drinkmenuList.indices) {
+                    var drinkmenuname_id: Int
+                    var drinkmenuscore_count: Int
 
                     drinkmenuname_id = drinkmenuList.get(i).drinkmenuid!!.toInt()
                     drinkmenuscore_count = drinkmenuList.get(i).drinkmenufoodscore!!.toInt()
-                    val drinkmenul = Small_Order_Menu_Item(drinkmenuname_id,drinkmenuscore_count)
+                    val drinkmenul = Small_Order_Menu_Item(drinkmenuname_id, drinkmenuscore_count)
 
                     smallOrderMenuItem.add(drinkmenul)
+
 
                 }
 
@@ -327,12 +299,12 @@ class Completed_Order_Page : AppCompatActivity(), OnDeleteListener {
 
 
 
-            Retrofit_Manager.retrofit_manger.OrderMenuPost(Order_Menu_Item(smallOrderMenuItem,requestEditText.text.toString()))
-
-
-
-
-
+                Retrofit_Manager.retrofit_manger.OrderMenuPost(
+                    Order_Menu_Item(
+                        smallOrderMenuItem,
+                        requestEditText.text.toString()
+                    )
+                )
 
 
             }

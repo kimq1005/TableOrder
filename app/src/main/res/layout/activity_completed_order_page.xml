@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background=" #F0F5FB"
+    android:background="#F0F5FB"
     tools:context=".PageComOrderPage.Completed_Order_Page">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -99,12 +99,13 @@
                 android:layout_below="@id/realmenurecyclerview"
                 />
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/drinkorderrecyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/sideorderrecyclerview" />
-
+                android:layout_below="@id/sideorderrecyclerview"
+                android:layout_marginTop="2dp" />
 
             <View
                 android:layout_below="@id/drinkorderrecyclerview"
@@ -116,14 +117,14 @@
 
 
             <EditText
-                android:padding="10dp"
-                android:gravity="top"
-                android:background="@color/white"
-                android:hint="문의 사항"
                 android:id="@+id/requestEditText"
-                android:layout_below="@+id/view_2213"
                 android:layout_width="match_parent"
-                android:layout_height="120dp" />
+                android:layout_height="120dp"
+                android:layout_below="@+id/view_2213"
+                android:background="@color/white"
+                android:gravity="top"
+                android:hint="문의 사항"
+                android:padding="10dp" />
 
             <View
 

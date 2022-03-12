@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.layout_realmenu_item.view.*
 
 class RealMenu_Adapter:RecyclerView.Adapter<RealMenu_Adapter.RealMenuViewHolder>() {
 
-//    private var realmenuItemList : List<RealMenuItem>?=null
     private var menuList  = ArrayList<MainMenulist>()
 
 

@@ -14,7 +14,6 @@ val fakeBannerItemList =  listOf(
 )
 
 
-
 val fakeMenuinformation = listOf(
     Menu_informationItem(
             "명문초밥 수원점",

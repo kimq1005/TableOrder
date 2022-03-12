@@ -283,7 +283,6 @@
 
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/GO_Drink_Complted_Page"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -293,17 +292,17 @@
                 android:gravity="center"
                 android:text="장바구니 담기"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <ImageView
-                android:layout_marginLeft="10dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginBottom="15dp"
-                android:layout_alignParentBottom="true"
                 android:layout_alignLeft="@+id/GO_Drink_Complted_Page"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
                 android:src="@drawable/whiecart" />
-
 
 
         </RelativeLayout>

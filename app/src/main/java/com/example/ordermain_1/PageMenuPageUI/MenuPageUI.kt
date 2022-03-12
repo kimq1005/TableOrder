@@ -3,105 +3,77 @@ package com.example.ordermain_1.PageMenuPageUI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.ordermain_1.*
 import com.example.ordermain_1.PageComOrderPage.Completed_Order_Page
 import com.example.ordermain_1.rerofit.DrinkMenulist
 import com.example.ordermain_1.rerofit.MainMenulist
 import com.example.ordermain_1.rerofit.SideMenulist
-import com.example.ordermain_1.rerofit.retrofitItem
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_menu_page_ui.*
 
 class MenuPageUI : AppCompatActivity() {
 
-            //Item
-            private lateinit var menulist : ArrayList<MainMenulist>
-            private lateinit var sidemenulist : ArrayList<SideMenulist>
-            private lateinit var drinkmenulist : ArrayList<DrinkMenulist>
+    //Item
+    private lateinit var menulist: ArrayList<MainMenulist>
+    private lateinit var sidemenulist: ArrayList<SideMenulist>
+    private lateinit var drinkmenulist: ArrayList<DrinkMenulist>
+
+
+    private lateinit var realmenuAdapter: RealMenu_Adapter
+    private lateinit var sidemenuAdapter: Sidemenu_Adapter
+    private lateinit var drinkmeunAdapter: DrinkMeun_Adapter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_menu_page_ui)
 
 
 
-            private lateinit var realmenuAdapter: RealMenu_Adapter
-            private lateinit var sidemenuAdapter: Sidemenu_Adapter
-            private lateinit var drinkmeunAdapter: DrinkMeun_Adapter
-            private lateinit var viewModel : MainActivityViewModel
+        QR_icon_yeah.setOnClickListener {
+            val integrator = IntentIntegrator(this)
+            integrator.setPrompt("QR코드 스캔을 해주세요.")  //프롬프트
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)   //원하는 규격
+            integrator.setCameraId(0)   //0은 후면, 1은 전면카메라
+            integrator.setBeepEnabled(false)    //소리낼지말지
+            integrator.setBarcodeImageEnabled(true) //이미지
+            integrator.initiateScan()
+        }
 
+        orderlist_icon.setOnClickListener {
+            val intent = Intent(this, Completed_Order_Page::class.java)
+            startActivity(intent)
+        }
 
-            override fun onCreate(savedInstanceState: Bundle?) {
+        back_icon.setOnClickListener {
+            onBackPressed()
+        }
 
-                super.onCreate(savedInstanceState)
-                setContentView(R.layout.activity_menu_page_ui)
+        scrollevent()
+        initMenuPageUIAdapter()
 
+        basketlist.setOnClickListener {
+            val intent = Intent(this, Completed_Order_Page::class.java)
+            startActivity(intent)
+        }
 
-                viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-//                viewModel.setBannerItems(fakeBannerItemList)
-                viewModel.setmenuinformationItems(fakeMenuinformation)
-                viewModel.setrealmenuItems(fakeRealMenu)
-                viewModel.setsidemenuItems(fakeSideMenu)
-                viewModel.setdrinkmenuItems(fakeDrinkMenu)
-
-
-
-
-                QR_icon_yeah.setOnClickListener {
-                    val integrator = IntentIntegrator(this)
-                    integrator.setPrompt("QR 코드 스캔해요")  //프롬프트
-                    integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)   //원하는 규격
-                    integrator.setCameraId(0)   //0은 후면, 1은 전면카메라
-                    integrator.setBeepEnabled(false)    //소리낼지말지
-                    integrator.setBarcodeImageEnabled(true) //이미지
-                    integrator.initiateScan()
-                }
-
-                orderlist_icon.setOnClickListener {
-                    val intent = Intent(this,Completed_Order_Page::class.java)
-                    startActivity(intent)
-                }
-
-                back_icon.setOnClickListener {
-                    onBackPressed()
-                }
-
-                scrollevent()
-
-
-                //if(장바구니 담기 버튼이 클릭되었다면){데이터 절로 보내 ㅇㅋ}
-
-                initMenuPageUIAdapter()
-                initMenuPageUIViewModel()
-
-                ohshit23.setOnClickListener {
-                    val intent= Intent(this, Completed_Order_Page::class.java)
-                    startActivity(intent)
-                }
-
-            }
+    }
 
     private fun scrollevent() {
 
-//        val orignY =scrollView2.scrollY
-//        val viewLocation = IntArray(2)
-//        val scrollLocation = IntArray(2)
-//        scrollView2.getLocationOnScreen(viewLocation)
-
         mainbtn.setOnClickListener {
-            scrollView2.scrollTo(0,realmenurecyclerView.top)
+            scrollView2.scrollTo(0, realmenurecyclerView.top)
         }
 
         sidebtn.setOnClickListener {
-            scrollView2.scrollTo(0,sidemenurecyclerView.top)
+            scrollView2.scrollTo(0, sidemenurecyclerView.top)
         }
 
         drinkbtn.setOnClickListener {
-            scrollView2.scrollTo(0,drinkmenurecyclerView.top)
+            scrollView2.scrollTo(0, drinkmenurecyclerView.top)
         }
-
 
 
     }
@@ -116,78 +88,33 @@ class MenuPageUI : AppCompatActivity() {
 
 
 
-//        viewPager2.apply {
-//            viewPagerAdapter = ViewPagerAdapter(this@MenuPageUI)
-//            adapter = viewPagerAdapter
-//            registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
-//                override fun onPageSelected(position: Int) {
-//                    super.onPageSelected(position)
-//                    tv_page_number.text = "${position+1}"
-//                }
-//            })
-//        }
-//
-//        shopinformation.apply {
-//            menuInformationRecyclerViewAdapter = MenuInformationRecyclerViewAdapter()
-//            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL, false)
-//            adapter = menuInformationRecyclerViewAdapter
-//        }
-
-        realmenurecyclerView.apply{
+        realmenurecyclerView.apply {
 
             realmenuAdapter = RealMenu_Adapter()
             realmenuAdapter.submitList(menulist)
-            layoutManager = GridLayoutManager(this@MenuPageUI,1,GridLayoutManager.VERTICAL,false)
-            adapter =  realmenuAdapter
+            layoutManager = GridLayoutManager(this@MenuPageUI, 1, GridLayoutManager.VERTICAL, false)
+            adapter = realmenuAdapter
 
         }
 
-        sidemenurecyclerView.apply{
+        sidemenurecyclerView.apply {
 
-//            sidemenuAdapter = Sidemenu_Adapter()
-//            layoutManager = LinearLayoutManager(this@MenuPageUI, LinearLayoutManager.VERTICAL,false)
-//            adapter= sidemenuAdapter
 
             sidemenuAdapter = Sidemenu_Adapter()
             sidemenuAdapter.submitList(sidemenulist)
-            layoutManager = GridLayoutManager(this@MenuPageUI,1, GridLayoutManager.VERTICAL,false)
+            layoutManager = GridLayoutManager(this@MenuPageUI, 1, GridLayoutManager.VERTICAL, false)
             adapter = sidemenuAdapter
         }
 
-       drinkmenurecyclerView.apply{
-           drinkmeunAdapter = DrinkMeun_Adapter()
-           drinkmeunAdapter.submitList(drinkmenulist)
-           layoutManager = GridLayoutManager(this@MenuPageUI,1, GridLayoutManager.VERTICAL,false)
-           adapter = drinkmeunAdapter
+        drinkmenurecyclerView.apply {
+            drinkmeunAdapter = DrinkMeun_Adapter()
+            drinkmeunAdapter.submitList(drinkmenulist)
+            layoutManager = GridLayoutManager(this@MenuPageUI, 1, GridLayoutManager.VERTICAL, false)
+            adapter = drinkmeunAdapter
         }
 
 
     }
 
-
-    private fun initMenuPageUIViewModel() {
-//        viewModel.bannerItemList.observe(this, Observer { bannerItemList ->
-//            viewPagerAdapter.submitList(bannerItemList)
-//        })
-//
-//        viewModel.menuinformationitemList.observe(this, { menuinformationitemList ->
-//            menuInformationRecyclerViewAdapter.submitList(menuinformationitemList)
-//        })
-
-//        viewModel.realmenuList.observe(this, { realmenuList ->
-//            realmenuAdapter.submitList(menulist)
-//        })
-
-//        viewModel.sidemenuList.observe(this,{sidemenuList->
-//            sidemenuAdapter.submitList(sidemenuList)
-//        })
-
-//        viewModel.drinkmenuList.observe(this,{drinkmenuList->
-//            drinkmeunAdapter.submitList(drinkmenuList)
-//        })
-        
-
-
-    }
 
 }

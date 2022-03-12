@@ -14,9 +14,6 @@ class LastYeah : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_last_yeah)
 
-//        val drink_menu_name = intent.getStringExtra("drink_menu_name")
-//        val drink_menu_price = intent.getStringExtra("drink_menu_price")
-//        val drink_menu_img = getIntent().getStringExtra("drink_menu_img")
 
         val menu_request = intent.getStringExtra("request")
         val menu_priceresult = intent.getStringExtra("resultprice")
@@ -30,18 +27,11 @@ class LastYeah : AppCompatActivity() {
             Retrofit_Manager.retrofit_manger.WebLoginPost()
 
             val lastpriceresult = last_menuprice_result.text.toString()
-            val intent = Intent(this,OrderCanclePage::class.java)
-            intent.putExtra("lastresultprice",lastpriceresult)
+            val intent = Intent(this, OrderCanclePage::class.java)
+            intent.putExtra("lastresultprice", lastpriceresult)
 
 
             startActivity(intent)
-
-
-
-
-
-
-
 
 
         }

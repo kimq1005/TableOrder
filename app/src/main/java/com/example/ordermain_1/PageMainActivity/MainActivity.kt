@@ -21,49 +21,41 @@ import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG : String = "로그"
-//    private val plusList = ArrayList<String>
+    val TAG: String = "로그"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Retrofit_Manager.retrofit_manger.PostRequest(TableData("test4",8,310))
 
-        menucall()
-
-//        Handler().postDelayed({
-//            fadeanimation(this)
-//        }, 1000)
-
+        slowfade(this)
 
 
     }
 
     private fun menucall() {
-        Retrofit_Manager.retrofit_manger.HeaderTokenRequest(completion = {
-            responsestate,menuarraylist, sidearraylist, drinkarraylist->
+        Retrofit_Manager.retrofit_manger.HeaderTokenRequest(completion = { responsestate, menuarraylist, sidearraylist, drinkarraylist ->
 
             val menulogd = menuarraylist
             Log.d(TAG, "menucall: $menulogd \n $sidearraylist \n $drinkarraylist")
 
-            when(responsestate){
-                RESPONS_STATE.OKAY->{
+            when (responsestate) {
+                RESPONS_STATE.OKAY -> {
 
-                    val intent = Intent(this,MenuPageUI::class.java)
+                    val intent = Intent(this, MenuPageUI::class.java)
                     val bundle = Bundle()
 
-                    bundle.putSerializable("menu_list",menuarraylist)
-                    bundle.putSerializable("side_menu_list",sidearraylist)
-                    bundle.putSerializable("drink_menu_list",drinkarraylist)
-                    intent.putExtra("array_bundle",bundle)
+                    bundle.putSerializable("menu_list", menuarraylist)
+                    bundle.putSerializable("side_menu_list", sidearraylist)
+                    bundle.putSerializable("drink_menu_list", drinkarraylist)
+                    intent.putExtra("array_bundle", bundle)
 
                     startActivity(intent)
 
                 }
 
-                RESPONS_STATE.FAIL->{
-                    Log.d(TAG, "menucall: 으악실패다")
+                RESPONS_STATE.FAIL -> {
+                    Log.d(TAG, "menucall: 실패")
                 }
             }
         })
@@ -74,13 +66,12 @@ class MainActivity : AppCompatActivity() {
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
-    fun slowfade(activity: Activity){
+    fun slowfade(activity: Activity) {
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
+        Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh", 8, 310))
         menucall()
 
     }
-
 
 
     private fun QRscan() {
@@ -96,10 +87,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         var result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-        if(result != null) {
-            if(result.contents != null){
+        if (result != null) {
+            if (result.contents != null) {
 
-                Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh",8,310))
+                Retrofit_Manager.retrofit_manger.PostRequest(TableData("kimsh", 8, 310))
                 menucall()
 
 //                Handler().postDelayed({
@@ -110,44 +101,43 @@ class MainActivity : AppCompatActivity() {
 //                },1500)
 
 
-            }else{
-                Toast.makeText(this,"Cancelled", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show()
             }
 
-        }else{
+        } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
 
     }
 
 
-
     private fun retrofitCall() {
 
-
-        Retrofit_Manager.retrofit_manger.CallMenuName(searchString = "pizza", completion = {
-            responsestate,menuarrayList ->
-
-
-            when(responsestate){
-                RESPONS_STATE.OKAY->{
-                    Log.d(TAG, "메인엑티비티 레트로핏 성공 : $menuarrayList ")
+        Retrofit_Manager.retrofit_manger.CallMenuName(
+            searchString = "pizza",
+            completion = { responsestate, menuarrayList ->
 
 
-                    val intent = Intent(this,MenuPageUI::class.java)
-                    val bundle = Bundle()
+                when (responsestate) {
+                    RESPONS_STATE.OKAY -> {
+                        Log.d(TAG, "메인엑티비티 레트로핏 성공 : $menuarrayList ")
 
-                    bundle.putSerializable("menu_list",menuarrayList)
-                    intent.putExtra("array_bundle",bundle)
 
-                    startActivity(intent)
+                        val intent = Intent(this, MenuPageUI::class.java)
+                        val bundle = Bundle()
+
+                        bundle.putSerializable("menu_list", menuarrayList)
+                        intent.putExtra("array_bundle", bundle)
+
+                        startActivity(intent)
+                    }
+
+                    RESPONS_STATE.FAIL -> {
+                        Log.d(TAG, "메인엑티비티 레트로핏실패요")
+                    }
                 }
-
-                RESPONS_STATE.FAIL->{
-                    Log.d(TAG, "메인엑티비티 레트로핏실패요")
-                }
-            }
-        })
+            })
 
     }
 
