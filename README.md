@@ -34,7 +34,7 @@
 # 🛠Tech Stack
 * Kotlin
 * MVC
-* Retrofit2, OKHttp, Gson
+* Retrofit2, Gson
 * Room 
 * Glide
 
