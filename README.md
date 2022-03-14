@@ -48,7 +48,7 @@
 
 
 
-# 📷스크린샷
+# 📷스크린샷 & 구동영상
 * 메인 화면
 
   <img src = "https://user-images.githubusercontent.com/68366753/157181859-bf03bd99-9567-475d-8c48-0bf867cb83dc.png" width="25%" height="25%">
